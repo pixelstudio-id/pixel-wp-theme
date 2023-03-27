@@ -1,9 +1,9 @@
 {
-  "name": "edje-wp-theme",
+  "name": "pixel-wp-theme",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hrsetyono/edje-wp-theme.git"
+    "url": "git+https://github.com/pixelstudio-id/pixel-wp-theme.git"
   },
   "dependencies": {
     "swiper": "^8.3.2"

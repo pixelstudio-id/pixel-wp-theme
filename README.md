@@ -1,15 +1,13 @@
-# Edje WordPress Theme
+# Pixel WordPress Theme
 
-A WordPress starter theme built with Timber.
+A WordPress starter theme built with Gutenberg and good-old widgets.
 
 Stylesheet is compiled with **Node Sass**. Visit that link to know how to compile Sass.
 
 **REQUIREMENTS**
 
-- PHP 7.3+
-- WordPress 5.9+
-- [Composer 1.8](https://getcomposer.org/)
-- Node JS
+- PHP 7.3 or 7.4
+- WordPress 5.9
 
 **TABLE OF CONTENTS**
 
@@ -22,11 +20,11 @@ Stylesheet is compiled with **Node Sass**. Visit that link to know how to compil
 **MANUAL**
 
 1. Copy this repo to your WordPress theme directory.
-1. Download [Edje WP Library](https://github.com/hrsetyono/edje-wp-library) plugin and put it into your Plugin directory.
+1. Download [Pixel WP Library](https://github.com/pixelstudio-id/pixel-wp-library) plugin and put it into your Plugin directory.
 
 **WITH COMPOSER**
 
-> Available in Packagist under the name `pixelstudio/edje-wp-theme`.
+> Available in Packagist under the name `pixelstudio/pixel-wp-theme`.
 
 This is our workflow for starting a new project:
 
@@ -42,8 +40,8 @@ This is our workflow for starting a new project:
         { "name": "Pixel Studio", "email": "info@pixelstudio.id", "homepage": "https://pixelstudio.id" }
       ],
       "require": {
-        "pixelstudio/edje-wp-theme": "~14.1",
-        "pixelstudio/edje-wp-library": "~9.0.0"
+        "pixelstudio/pixel-wp-theme": "~5.9.0",
+        "pixelstudio/pixel-wp-library": "~5.9.0"
       },
       "require-dev": {},
       "suggest": {},
@@ -56,7 +54,7 @@ This is our workflow for starting a new project:
 
 1. Run the command `composer update` in that directory.
 
-1. After first run, rename `edje-wp-theme` so it won't be overriden the next time you run `composer update`. Also remove `pixelstudio/edje-wp-theme` in your Composer JSON.
+1. After first run, rename `pixel-wp-theme` so it won't be overriden the next time you run `composer update`. Also remove `pixelstudio/pixel-wp-theme` in your Composer JSON.
 
 ## Compiling Sass
 
@@ -83,11 +81,3 @@ Here are some websites that uses this theme:
 - [GES13 - Refrigeration Distributor](https://ges13.com)
 - [Paritama - Garden Architecture](https://paritama.com)
 - [Pandarin - Mandarin Learning Center](https://pandarin.net)
-
-## Useful Links
-
-1. [What is Edje Sass?](https://github.com/hrsetyono/edje/wiki)
-1. [What is Edje WordPress Library?](https://github.com/hrsetyono/edje-wp-library)
-1. [What is Edje WooCommerce Library?](https://github.com/hrsetyono/edje-wc-library)
-1. [How to compile Sass files?](https://github.com/hrsetyono/edje/wiki#installation)
-1. [How to debug with mobile browser?](https://github.com/hrsetyono/generator-edje/wiki/My-Workflow#debugging-in-mobile)

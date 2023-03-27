@@ -44,7 +44,7 @@ export default {
   toggle(isChecked) {
     document.querySelector('body').classList.toggle('h-is-dark', isChecked);
 
-    // the checker for this is outputed into wp_body_open() by Edje WP Library
+    // the checker for this is outputed into wp_body_open() by Pixel WP Library
     localStorage.setItem('hDarkMode', isChecked);
   },
 };

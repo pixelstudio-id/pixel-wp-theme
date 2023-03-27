@@ -1,9 +1,9 @@
 {
-  "name": "pixelstudio/edje-wp-theme",
-  "description": "A WordPress starter theme for developer using Timber Library and ACF Pro.",
-  "keywords": ["wordpress", "plugin", "library"],
+  "name": "pixelstudio/pixel-wp-theme",
+  "description": "WordPress boilerplate theme built with Gutenberg and good-old widgets",
+  "keywords": ["wordpress", "theme", "template"],
   "type": "wordpress-theme",
-  "homepage": "https://github.com/hrsetyono/edje-wp-theme/",
+  "homepage": "https://github.com/pixelstudio-id/pixel-wp-theme/",
   "authors": [
     {
       "name": "Pixel Studio",

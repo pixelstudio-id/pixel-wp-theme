@@ -179,6 +179,15 @@
   &:not(.has-background)
     margin-top: var(--blockWideGap)
     margin-bottom: var(--blockWideGap)
+    padding-left: 0 !important
+    padding-right: 0 !important
+
+  &.has-background.alignfull
+    padding-top: var(--blockWideGap)
+    padding-bottom: var(--blockWideGap)
+    padding-left: 0 !important
+    padding-right: 0 !important
+    border-radius: 0
 
   &:first-child
     margin-top: 0
@@ -186,18 +195,32 @@
   &:last-child
     margin-bottom: 0
 
-  &.has-background.alignfull
-    padding: var(--blockWideGap) var(--gridRim)
-    border-radius: 0
-  
   &.has-background:not(.alignfull)
     padding: var(--blockGap)
     border-radius: var(--gRadius)
 
+// Group Alignment
+.wp-block-group.is-layout-constrained
+  &[class*="is-content-justification-"]
+    display: flex
+    
+    > *
+      margin-right: 0
+      margin-left: 0
 
-// Large spacing
-.wp-block-group.is-style-h-large-spacing
-  padding: calc(var(--blockWideGap) * 1.5) 0
+// Row Group
+.wp-block-group.is-layout-flex
+  display: flex
+  flex-wrap: wrap
+  column-gap: var(--blockGap)
+  row-gap: var(--blockGap)
+
+  &.is-nowrap
+    flex-wrap: nowrap
+
+  > *
+    width: auto
+    margin: 0
 
 ///// SPACER
 
@@ -217,7 +240,7 @@
 .wp-block-separator
   display: block
   border-top: 2px solid var(--bgColor, var(--gray))
-  margin: 2.5rem auto
+  margin: var(--space4) auto
   padding: 0
   width: 120px
   line-height: 1
@@ -234,8 +257,8 @@
     text-align: center
 
     &::before
-      content: "• • •"
-      padding-left: 2rem
+      content: "···"
+      padding-left: var(--space3)
       font-family: var(--codeFontFamily)
       font-size: var(--lFontSize)
       letter-spacing: 1.5rem

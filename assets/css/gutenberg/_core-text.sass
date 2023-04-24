@@ -23,14 +23,14 @@ main
     color: var(--linkColorHover, var(--color1))
 
 main,
-.wp-block-group__inner-container
+.wp-block-group
   > *
     margin: 0 auto
     max-width: var(--contentSize)
 
 // Add rim to the side
 body:not(.single-post) main,
-.wp-block-group.alignfull .wp-block-group__inner-container,
+.wp-block-group.alignfull .wp-block-group,
 .wp-block-cover__inner-container
   @media ($below-l)
     padding-right: var(--gridRim)
@@ -38,7 +38,7 @@ body:not(.single-post) main,
 
   
 main,
-.wp-block-group__inner-container,
+.wp-block-group,
 .wp-block-cover__inner-container,
 .wp-block-media-text__content,
 .wp-block-column
@@ -132,11 +132,8 @@ main,
 ///// PARAGRAPH
 
 p.has-background
-  padding: 1rem
+  padding: var(--space0)
   border-radius: var(--gRadius)
-
-p.is-style-h-no-spacing
-  margin-top: 0 !important
 
 .has-drop-cap:first-letter
   float: left
@@ -184,10 +181,6 @@ h1, h2, h3, h4, h5, h6
   strong
     font-weight: var(--fontWeight)
 
-  &.is-style-h-no-spacing
-    line-height: var(--lineHeight) // make line height larger
-    margin-bottom: calc(var(--blockGap) * -1)
-
 
 ///// LIST
 
@@ -201,7 +194,7 @@ ol.has-background
 .wp-block-quote
   position: relative
   padding: 0.5rem 2rem
-  border-left: 3px solid var(--text)
+  border-left: 3px solid
 
   > * + *
     margin-top: 1rem
@@ -209,11 +202,11 @@ ol.has-background
   cite
     display: block
     font-size: var(--sFontSize)
-    color: var(--gray)
+    opacity: .5
 
   &.has-text-align-right
     border-left: none
-    border-right: 3px solid var(--text)
+    border-right: 3px solid
 
   &.has-text-align-center
     padding-top: 1.5rem
@@ -228,32 +221,6 @@ ol.has-background
       height: 3px
       background-color: var(--text)
       transform: translateX(-50%)
-
-.wp-block-quote.is-style-large
-  padding-top: 1rem
-  padding-bottom: 1rem
-  margin-top: 2.5rem
-  margin-bottom: 2.5rem
-  border-left: none
-  border-right: none
-  border-top: 3px solid var(--gray)
-  border-bottom: 3px solid var(--gray)
-
-  font-size: var(--h5Size)
-
-  &::before,
-  &::after
-    display: none
-
-  cite
-    text-align: right
-    font-size: var(--sFontSize)
-
-  &.has-text-align-center cite
-    text-align: center
-
-  &.has-text-align-right cite
-    text-align: left
 
 // QUOTE Testimony
 .wp-block-quote.is-style-h-testimony

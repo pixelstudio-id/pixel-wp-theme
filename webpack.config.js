@@ -29,7 +29,7 @@ const jsPath = './assets/js';
 const shopPath = './woocommerce';
 const outputPath = '_dist';
 
-const localDomain = 'http://lab.test/';
+const localDomain = 'http://lab-62.test/';
 const entryPoints = {
   app: `${jsPath}/app.js`,
   gutenberg: `${cssPath}/gutenberg.sass`,

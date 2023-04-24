@@ -35,14 +35,12 @@
 
 <?php else: ?>
   <div class="wp-block-group">
-    <div class="wp-block-group__inner-container">
-      <h1 class="has-text-align-center has-main-color">
-        Posts Not Found
-      </h1>
-      <p class="has-text-align-center">
-        Sorry, there are no posts that fit this category.
-      </p>
-    </div>
+    <h1 class="has-text-align-center has-main-color">
+      Posts Not Found
+    </h1>
+    <p class="has-text-align-center">
+      Sorry, there are no posts that fit this category.
+    </p>
   </div>
 <?php endif; ?>
 <?php wp_reset_postdata(); ?>

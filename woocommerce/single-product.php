@@ -71,12 +71,10 @@ $related_args = [
   <?php // do_action('woocommerce_after_single_product'); ?>
 
   <section class="product-related / wp-block-group alignfull">
-    <div class="wp-block-group__inner-container">
-      <h3 class="alignwide">
-        <?= __('Related Products') ?>
-      </h3>
-      <?php get_template_part('woocommerce/parts/products', '', $related_args); ?>
-    </div>
+    <h3 class="alignwide">
+      <?= __('Related Products') ?>
+    </h3>
+    <?php get_template_part('woocommerce/parts/products', '', $related_args); ?>
   </section>
 
   <?php // Mobile bottom bar containing "Add to Cart" button ?>

@@ -5,28 +5,6 @@
   --lineHeight : 1.65
   --letterSpacing  : 0
 
-  --fontSize   : 16px
-  --xsFontSize : 12px
-  --sFontSize  : 14px
-  --mFontSize  : 18px
-  --lFontSize  : 22px
-  --xlFontSize : 30px
-
-  // deprecated, use the above instead
-  --xsmallFontSize : var(--xsFontSize)
-  --smallFontSize  : var(--sFontSize)
-  --mediumFontSize : var(--mFontSize)
-  --largeFontSize  : var(--lFontSize)
-  --hugeFontSize   : var(--xlFontSize)
-
-  // alias
-  // --xsFontSize : var(--xsmallFontSize)
-  // --sFontSize  : var(--smallFontSize)
-  // --mFontSize  : var(--mediumFontSize)
-  // --lFontSize  : var(--largeFontSize)
-  // --xlFontSize : var(--hugeFontSize)
-
-  // HEADING -----
   --hFontFamily    : "Noto Serif", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times","Source Serif Pro", serif
   --hFontStyle     : normal
   --hFontWeight    : 700
@@ -35,12 +13,20 @@
   --hTextTransform : initial
   --hColor         : inherit
 
-  --h1Size : 46px
-  --h2Size : 38px
-  --h3Size : 30px
-  --h4Size : 24px
-  --h5Size : 20px
+  // https://utopia.fyi/type/calculator?c=360,16,1.125,1120,18,1.2,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  --xsFontSize : clamp(0.78rem, calc(0.79rem + -0.02vw), 0.79rem)
+  --sFontSize  : clamp(0.89rem, calc(0.87rem + 0.10vw), 0.94rem)
+  --fontSize   : clamp(1.00rem, calc(0.94rem + 0.26vw), 1.13rem)
+  --mFontSize  : clamp(1.13rem, calc(1.02rem + 0.47vw), 1.35rem)
+  --lFontSize  : clamp(1.27rem, calc(1.10rem + 0.75vw), 1.62rem)
+  --xlFontSize : clamp(1.42rem, calc(1.18rem + 1.09vw), 1.94rem)
+
   --h6Size : var(--fontSize)
+  --h5Size : var(--mFontSize)
+  --h4Size : var(--lFontSize)
+  --h3Size : var(--xlFontSize)
+  --h2Size : clamp(1.60rem, calc(1.26rem + 1.54vw), 2.33rem)
+  --h1Size : clamp(1.80rem, calc(1.33rem + 2.10vw), 2.80rem)
 
   // PREFORMATTED -----
   --codeFontFamily : SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace
@@ -60,59 +46,41 @@
   --linkColor      : inherit
   --linkColorHover : var(--color1)
 
-
   // LAYOUT -----
   --contentSize : 650px
   --wideSize : #{ $size-large }
-  --blogWidth : var(--contentSize)
-  --siteWidth : var(--wideSize)
 
-  --gridGap   : 20px
-  --gridRim   : 1rem
-  --tileGap   : 20px
+  // https://utopia.fyi/space/calculator?c=360,16,1.2,1120,18,1.2,5,2,&s=0.75|0.5|0.25,1.25|1.5|2|2.5|3|4,s-l&g=s,l,xl,12
+  --space-3: clamp(0.25rem, calc(0.22rem + 0.13vw), 0.31rem)
+  --space-2: clamp(0.50rem, calc(0.47rem + 0.13vw), 0.56rem)
+  --space-1: clamp(0.75rem, calc(0.69rem + 0.26vw), 0.88rem)
+  --space0: clamp(1.00rem, calc(0.94rem + 0.26vw), 1.13rem)
+  --space1: clamp(1.25rem, calc(1.16rem + 0.39vw), 1.44rem)
+  --space2: clamp(1.50rem, calc(1.41rem + 0.39vw), 1.69rem)
+  --space3: clamp(2.00rem, calc(1.88rem + 0.53vw), 2.25rem)
+  --space4: clamp(2.50rem, calc(2.35rem + 0.66vw), 2.81rem)
+  --space5: clamp(3.00rem, calc(2.82rem + 0.79vw), 3.38rem)
+  --space6: clamp(4.00rem, calc(3.76rem + 1.05vw), 4.50rem)
 
-  // GLOBAL
+  --gridGap   : var(--space1)
+  --gridRim   : var(--space0)
+  --tileGap   : var(--space1)
+  
+  --blockGap  : var(--space1)
+  --blockWideGap : var(--space4)
+
+  // GLOBAL -----
   --gRadius: 4px
   --largeRadius: 8px
   --gTransition: all .25s ease-in-out
 
-  // INPUT
-  --inputColor : var(--text)
-  --inputPlaceholderColor: var(--gray)
-  --inputBg      : var(--textInvert)
-  --inputBgFocus : var(--textInvert)
-
-  // WP
   --adminBarHeight : 0px
   --headerHeight   : 80px
 
-  --blockGap  : 1.5rem
-  --blockWideGap : 3rem
-  --blockSpacing: var(--blockGap)
-  --groupSpacing: var(--blockWideGap)
-
-  
-  @media ($below-m)
-    --h1Size : 40px
-    --h2Size : 32px
-    --h3Size : 26px
-    --h4Size : 22px
-    --h5Size : 18px
-    --h6Size : var(--fontSize)
-
   @media ($below-s)
-    --h1Size : 32px
-    --h2Size : 26px
-    --h3Size : 22px
-    --h4Size : 20px
-    --h5Size : 18px
-    --h6Size : var(--fontSize)
-
     --headerHeight: 57px
-    --blockWideGap: 2.5rem
 
   @media ($below-xs)
-    --blockGap: 1rem
     --headerHeight: 52px
 
 body.admin-bar
@@ -120,6 +88,24 @@ body.admin-bar
 
   @media ($below-adminbar)
     --adminBarHeight : 0px
+
+// WORDPRESS VARIABLE
+\:root
+  // for use in frontend
+  --wp--preset--spacing--space-1: var(--space1)
+  --wp--preset--spacing--space-2: var(--space2)
+  --wp--preset--spacing--space-3: var(--space3)
+  --wp--preset--spacing--space-4: var(--space4)
+  --wp--preset--spacing--space-5: var(--space5)
+  --wp--preset--spacing--space-6: var(--space6)
+
+  // for use in wp-admin because it doesn't add the extra dash
+  --wp--preset--spacing--space1: var(--space1)
+  --wp--preset--spacing--space2: var(--space2)
+  --wp--preset--spacing--space3: var(--space3)
+  --wp--preset--spacing--space4: var(--space4)
+  --wp--preset--spacing--space5: var(--space5)
+  --wp--preset--spacing--space6: var(--space6)
 
 
 ///// FONT FACES

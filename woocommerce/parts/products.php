@@ -55,14 +55,12 @@
   
 <?php else: ?>
   <div class="wp-block-group">
-    <div class="wp-block-group__inner-container">
-      <h2 class="has-text-align-center">
-        Product Not Found
-      </h2>
-      <p class="has-text-align-center">
-        Sorry, there is no product in this category
-      </p>
-    </div>
+    <h2 class="has-text-align-center">
+      Product Not Found
+    </h2>
+    <p class="has-text-align-center">
+      Sorry, there is no product in this category
+    </p>
   </div>
   
 <?php endif; ?>

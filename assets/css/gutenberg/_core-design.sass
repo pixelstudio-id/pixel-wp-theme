@@ -4,7 +4,7 @@
   --gap: 1rem
   --bgColor: var(--color1)
   --textColor: var(--textInvert)
-  
+
   display: flex
   align-items: center
   flex-wrap: wrap
@@ -51,6 +51,7 @@
   text-decoration: none
   text-transform: uppercase
   font-weight: 700
+  font-size: var(--sFontSize)
   letter-spacing: 0.05em
   color: var(--textColor, var(--textInvert))
   vertical-align: top
@@ -175,29 +176,29 @@
   
 .wp-block-group
   position: relative
+
+  &.alignfull
+    padding-left: 0 !important
+    padding-right: 0 !important
   
   &:not(.has-background)
-    margin-top: var(--blockWideGap)
-    margin-bottom: var(--blockWideGap)
-    padding-left: 0 !important
-    padding-right: 0 !important
+    margin-top: var(--space3)
+    margin-bottom: var(--space3)
 
   &.has-background.alignfull
-    padding-top: var(--blockWideGap)
-    padding-bottom: var(--blockWideGap)
-    padding-left: 0 !important
-    padding-right: 0 !important
+    padding-top: var(--space3)
+    padding-bottom: var(--space3)
     border-radius: 0
+
+  &.has-background:not(.alignfull)
+    padding: var(--space1)
+    border-radius: var(--gRadius)
 
   &:first-child
     margin-top: 0
 
   &:last-child
     margin-bottom: 0
-
-  &.has-background:not(.alignfull)
-    padding: var(--blockGap)
-    border-radius: var(--gRadius)
 
 // Group Alignment
 .wp-block-group.is-layout-constrained

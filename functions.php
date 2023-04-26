@@ -53,8 +53,7 @@ function my_after_setup_theme() {
   ]);
   add_post_type_support('page', 'excerpt'); // allow page to have excerpt
 
-  // Edje Support
-  add_theme_support('h-widget-builder-v2');
+  // Pixel Library Support
   add_theme_support('h-mega-menu');
   add_theme_support('h-faq-block-v2');
   add_theme_support('h-icon-block');
@@ -62,10 +61,8 @@ function my_after_setup_theme() {
   add_theme_support('h-dark-mode'); // Enable this and uncomment the CSS & JS if you want dark mode
 
   // Gutenberg support
-	// add_theme_support('wp-block-styles');
-	// add_editor_style('editor-style.css');
-
-  // add_theme_support('responsive-embeds');
+  add_theme_support('block-template-parts');
+  add_theme_support('responsive-embeds');
   remove_theme_support('core-block-patterns');
   
   /**

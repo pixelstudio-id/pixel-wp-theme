@@ -139,7 +139,10 @@
     z-index: 105
     background-color: rgba(black, .5)
 
-.hwc-widget-button
+  body.woocommerce-cart &
+    display: none
+
+.h-widget-button
   display: flex
   align-items: center
 
@@ -150,11 +153,10 @@
   border-radius: var(--gRadius)
 
   color: var(--text)
-  font-family: var(--fontFamily)
-  font-size: var(--fontSize)
-  font-weight: var(--fontWeight)
+  font-weight: var(--hFontWeight)
+  text-transform: uppercase
   text-align: center
-  letter-spacing: 0
+  letter-spacing: 0.025em
   line-height: 1
 
   @media ($below-m)
@@ -212,6 +214,7 @@
 
   span
     display: inline-block
+    margin-left: 0.5rem
 
     // Hide the "Cart" text
     @media ($below-xs)
@@ -381,8 +384,14 @@
     font-size: var(--xsFontSize)
     color: var(--text)
 
+    .has-buttons-checkout-only &
+      display: none
+
   a:last-child
     margin-left: auto
+
+    .has-buttons-cart-only &
+      display: none
 
   .is-style-offcanvas &
     column-gap: 1rem

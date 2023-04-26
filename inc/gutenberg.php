@@ -112,11 +112,22 @@ function my_disallowed_blocks($blocks) {
       'woocommerce/stock-filter',
       'woocommerce/price-filter',
       'woocommerce/attribute-filter',
-
+      
       'woocommerce/all-reviews',
       'woocommerce/reviews-by-product',
       'woocommerce/reviews-by-category',
       'woocommerce/all-products',
+      'woocommerce/product-price',
+      
+      'woocommerce/customer-account',
+      'woocommerce/filter-wrapper',
+      // 'woocommerce/active-filters',
+      // 'woocommerce/price-filters',
+      // 'woocommerce/stock-filters',
+      // 'woocommerce/attribute-filters',
+      // 'woocommerce/rating-filter',
+      'woocommerce/cart',
+      'woocommerce/checkout',
     ]);
   }
   return $disabled_blocks;

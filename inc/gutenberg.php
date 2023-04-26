@@ -121,11 +121,6 @@ function my_disallowed_blocks($blocks) {
       
       'woocommerce/customer-account',
       'woocommerce/filter-wrapper',
-      // 'woocommerce/active-filters',
-      // 'woocommerce/price-filters',
-      // 'woocommerce/stock-filters',
-      // 'woocommerce/attribute-filters',
-      // 'woocommerce/rating-filter',
       'woocommerce/cart',
       'woocommerce/checkout',
     ]);

@@ -17,33 +17,27 @@
     display: flex
     justify-content: center
     bottom: 0
+    gap: 0.5rem
+    margin-top: 0.5rem
 
   span.swiper-pagination-bullet
     display: inline-flex
     align-items: center
     justify-content: center
+    background-color: rgba(--text, .2)
     margin: 0
-    width: 1.25rem
-    height: 1.25rem
-    background: transparent
+    width: 0.75rem
+    height: 0.75rem
+    border-radius: 0.75rem
     opacity: 1
+    transition: var(--gTransition)
 
-    &::after
-      content: ""
-      display: inline-block
-      background-color: rgba(--text, .2)
-      width: 0.625rem
-      height: 0.625rem
-      border-radius: 50%
-
-    &:hover::after
+    &:hover
       background-color: rgba(--text, .4)
 
   span.swiper-pagination-bullet.swiper-pagination-bullet-active
-    background-color: rgba(--color1, .2)
-
-    &::after
-      background-color: var(--color1)
+    width: 2rem
+    background-color: var(--color1)
 
   .swiper-button-next,
   .swiper-button-prev

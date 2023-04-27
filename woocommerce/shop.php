@@ -25,9 +25,7 @@ $pagination = H::get_pagination();
     'products' => $products,
   ]); ?>
 
-  <?php get_template_part('parts/pagination', '', [
-    'pagination' => $pagination,
-  ]); ?>
+  <?php get_template_part('parts/pagination', '', $pagination); ?>
 
   <?php
     // do_action('woocommerce_after_shop_loop');

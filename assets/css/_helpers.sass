@@ -35,11 +35,11 @@ $landscape: "orientation: landscape"
 $retina: "min-resolution: 192dpi"
 
 // Media query for below or equal the size
-@function below( $size-px )
+@function below($size-px)
   @return "max-width: #{$size-px}"
 
 // Media query for above the size
-@function above( $size-px )
+@function above($size-px)
   @return "min-width: #{$size-px}"
 
 
@@ -48,15 +48,15 @@ $retina: "min-resolution: 192dpi"
 //
 // Override rgba() to allow CSS variable to have transparency
 //
-@function rgba( $r, $g, $b: false, $a: false )
-  @if type-of( $r ) == string
+@function rgba($r, $g, $b: false, $a: false)
+  @if type-of($r) == string
     @return rgbA(var($r + 'RGB'), $g)
 
-  @if type-of( $r ) == color
-    @return rgbA( red($r), green($r), blue($r), $g )
+  @if type-of($r) == color
+    @return rgbA(red($r), green($r), blue($r), $g)
 
   @if $b and $a
-    @return rgbA( $r, $g, $b, $a )
+    @return rgbA($r, $g, $b, $a)
 
 ///// MIXINS
 

@@ -3,17 +3,20 @@
 .wp-block-image
   text-align: center
 
-  .alignleft,
-  .alignright
+  &.is-style-rounded img
+    border-radius: 9999px
+
+  &.alignleft img,
+  &.alignright img
     max-width: 50%
     margin-bottom: 1.5rem
 
-  .alignleft
+  &.alignleft img
     float: left
     margin-right: 1.5rem
     text-align: left
 
-  .alignright
+  &.alignright img
     float: right
     margin-left: 1.5rem
     text-align: right
@@ -26,9 +29,6 @@
   &.alignwide
     img
       width: 100%
-
-  figcaption
-    @extend %figcaption
 
 // hover effect
 .wp-block-image > a,
@@ -66,11 +66,6 @@
   &:not(.is-cropped)
     align-items: flex-start
 
-  .blocks-gallery-caption
-    flex-basis: 100%
-    text-align: center
-    font-size: smaller
-
   @media ($above-s)
     &.columns-1
       --columns: 1
@@ -88,8 +83,6 @@
       --columns: 7
     &.columns-8
       --columns: 8
-    &.columns-
-      --columns: 5
 
   @media ($below-s)
     --columns: 3
@@ -100,13 +93,16 @@
   @media ($below-xs)
     --columns: 2
 
+.blocks-gallery-caption
+  order: 3
+
 // gallery item
 .wp-block-image
   .wp-block-gallery &
     flex-grow: 1
     position: relative
     width: calc(100% / var(--columns) - var(--gap))
-  
+
   .wp-block-gallery.is-cropped &
     a
       height: 100%
@@ -117,51 +113,10 @@
       object-fit: cover
       object-position: center center
 
-
-///// THUMBNAILS
-
-.is-style-h-thumbnails figure,
-.is-style-h-thumbnail-wide,
-.is-style-h-thumbnail-tall
-  position: relative
-  height: 0
-
-  > a,
-  > img
-    +absolute-fill
-    width: 100%
-    height: 100%
-
-  > img,
-  > a img
-    width: 100%
-    object-fit: cover
-    object-position: center center
-
-  // hide the description
-  @media ($below-s)
-    figcaption
-      font-size: 0
-  
-  strong
-    display: block
-    font-size: var(--mFontSize)
-    font-family: var(--hFontFamily)
-
-.is-style-h-thumbnail-wide
-  padding-bottom: calc(var(--contentSize) / 2)
-
-.is-style-h-thumbnail-tall
-  padding-bottom: var(--contentSize)
-  max-width: calc(var(--contentSize) / 2)
-
-// Thumbnail caption
-.wp-block-gallery figure,
-.is-style-h-thumbnail-wide,
-.is-style-h-thumbnail-tall
+// Caption
+.wp-block-gallery figure
   figcaption
     overflow-y: hidden
-    pointer-events: none
     background-image: linear-gradient( 0deg, rgba(black,.7), rgba(black,.5) 50%,transparent)
     
     position: absolute
@@ -171,18 +126,20 @@
     
     width: 100%
     max-height: 75%
-    padding: 1rem
+    padding: var(--space-2)
     border: none
-
-    font-size: var(--sFontSize)
-    text-align: left
     color: white
 
   figcaption a:hover
     opacity: .6
     color: inherit
 
-// Gallery Thumbnails
+// GALLERY Slider
+.wp-block-gallery.is-style-h-slider
+  row-gap: 0.5rem
+
+// GALLERY Thumbnails
+
 .wp-block-gallery.is-style-h-thumbnails
   display: grid
   grid-template-columns: repeat(var(--columns, 3), 1fr)
@@ -196,13 +153,43 @@
     height: 100%
     padding-bottom: 75%
 
-  .is-style-h-thumbnail-wide
+  .alignwide
     grid-column: span 2
     padding-bottom: calc(37.5% - var(--gap) / 2)
 
-  .is-style-h-thumbnail-tall
+  .alignfull
     grid-row: span 2
 
+  .blocks-gallery-caption
+    grid-column: span var(--columns, 3)
+
+.wp-block-gallery.is-style-h-thumbnails figure
+  position: relative
+  height: 100%
+  margin: 0
+
+  > a,
+  > img
+    +absolute-fill
+    width: 100%
+    height: 100%
+
+  > img,
+  > a img
+    width: 100%
+    object-fit: cover
+    object-position: center center
+
+  img
+    border-radius: var(--gRadius)
+
+  figcaption
+    border-radius: var(--gRadius)
+
+  strong
+    display: block
+    font-size: var(--mFontSize)
+    font-family: var(--hFontFamily)
 
 ///// COVER
 
@@ -212,9 +199,6 @@
   align-items: stretch
   justify-content: center
 
-  background-size: cover
-  background-position: center center
-  background-color: var(--bgColor, black)
   min-height: 400px
   padding: var(--blockGap) 0
 
@@ -238,64 +222,12 @@
   &[class*="-left"]
     --alignX: flex-start
 
-.wp-block-cover__image-background
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  
-  border: none
-  border-radius: 0
-  padding: 0
-  margin: 0
-  width: 100%
-  height: 100%
-  max-width: none
-  max-height: none
-  
-  object-fit: cover
-  object-position: center center
-  box-shadow: none
-
-
-.wp-block-cover__inner-container
-  display: flex
-  flex-direction: column
-  align-items: var(--alignX, center)
-  justify-content: var(--alignY, center)
-
-  position: relative
-  z-index: 2
-  width: var(--wideSize)
-  color: var(--textColor, var(--textInvert))
-
-  .wp-block-cover:not(.alignfull) &
-    padding-right: var(--gridRim)
-    padding-left: var(--gridRim)
-
-  // Bugged: WP 5.9 with theme.json can't change alignment for inner Cover
-  // > *
-  //   width: 100%
-  //   max-width: var(--contentSize)
-  // .alignwide
-  //   max-width: var(--wideSize)
-
-  // Temp fix: everything aligned wide
-  > *
-    width: 100%
-    max-width: var(--wideSize)
-
-
-.has-parallax
-  // only on desktop because mobile height is keep changing due to browser header reappearing
-  @media ($above-s)
-    background-attachment: fixed
-
 // Overlay
-.wp-block-cover__gradient-background
+.wp-block-cover__background
   +absolute-fill
   z-index: 2
+  width: 100%
+  height: 100%
   background-color: var(--bgColor, black)
 
   &.has-background-dim
@@ -321,10 +253,59 @@
   &.has-background-dim-100
     opacity: 1
 
+.wp-block-cover__image-background
+  +absolute-fill
+  
+  border: none
+  border-radius: 0
+  padding: 0
+  margin: 0
+  width: 100%
+  height: 100%
+  max-width: none
+  max-height: none
+  
+  background-repeat: no-repeat
+  background-size: cover
+  object-fit: cover
+  object-position: center center
+  box-shadow: none
+
+  &.is-repeated
+    background-repeat: repeat
+    background-size: auto
+
+
+.wp-block-cover__inner-container
+  display: flex
+  flex-direction: column
+  align-items: var(--alignX, center)
+  justify-content: var(--alignY, center)
+
+  position: relative
+  z-index: 2
+  width: var(--wideSize)
+  color: var(--textColor, var(--textInvert))
+
+  .wp-block-cover:not(.alignfull) &
+    padding-right: var(--gridRim)
+    padding-left: var(--gridRim)
+
+  > *
+    width: 100%
+    max-width: var(--contentSize)
+  .alignwide
+    max-width: var(--wideSize)
+
+
+.has-parallax
+  // only on desktop because mobile height is keep changing due to browser header reappearing
+  @media ($above-s)
+    background-attachment: fixed
+
 // Cover Below Header
 .wp-block-cover.is-style-h-below-header
-  margin-top: calc(var(--headerHeight) * -1)
-  padding-top: calc(var(--headerHeight))
+  margin-top: calc(var(--headerHeight) * -1) !important
 
 body.h-has-transparent-header
   .header:not(.is-stuck),
@@ -429,8 +410,6 @@ body.h-has-transparent-header
 
   audio
     width: 100%
-  figcaption
-    @extend %figcaption
 
 
 ///// FILE
@@ -465,7 +444,3 @@ body.h-has-transparent-header
 
   video
     width: 100%
-  
-
-  figcaption
-    @extend %figcaption

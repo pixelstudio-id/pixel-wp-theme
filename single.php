@@ -119,12 +119,10 @@ $related_posts = get_posts([
 </div>
 
   <footer class="related-posts / wp-block-group has-background has-text-invert-background-color alignfull">
-    <div class="wp-block-group__inner-container">
-      <h3 class="alignwide">
-        <?= __('Related Posts') ?>
-      </h3>
-      <?php get_template_part('parts/posts', '', $related_posts); ?>
-    </div>
+    <h3 class="alignwide">
+      <?= __('Related Posts') ?>
+    </h3>
+    <?php get_template_part('parts/posts', '', $related_posts); ?>
   </footer>
 </main>
 

@@ -37,7 +37,6 @@
 .swiper-slide
   flex-shrink: 0
   width: 100%
-  height: 100%
   position: relative
   transition-property: transform
 
@@ -224,7 +223,7 @@
 ///// PAGINATION
 
 .swiper-pagination
-  position: absolute
+  order: 2
   text-align: center
   transition: 300ms opacity
   transform: translate3d(0, 0, 0)
@@ -252,8 +251,9 @@
   height: 0.75rem
   display: inline-block
   border-radius: 50%
-  background: var(--textInvert)
+  background: var(--text)
   opacity: .2
+  transition: var(--gTransition)
 
   @at-root button#{&}
     border: none
@@ -270,8 +270,9 @@
 
 .swiper-pagination-bullet-active
   opacity: 1
-  background: var(--textInvert)
-  box-shadow: 0 0 0 1px var(--textInvert)
+  width: 2rem
+  border-radius: 0.75rem
+  background: var(--text)
 
 .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets

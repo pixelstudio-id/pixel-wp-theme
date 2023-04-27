@@ -5,14 +5,15 @@
 
 ///// BUTTON
 
-.wp-block-button__link
+div.editor-styles-wrapper .wp-block-button__link
   background-color: var(--color1)
   text-transform: uppercase
   font-weight: var(--hFontWeight)
-  font-size: var(--fontSize)
+  font-size: var(--sFontSize)
   letter-spacing: 0.025em
   border-radius: var(--gRadius)
 
+.wp-block-button__link
   .is-style-outline &
     border: 2px solid currentColor
     color: var(--color1)
@@ -34,111 +35,6 @@
   // <strong> in heading become thin instead
   strong
     font-weight: var(--fontWeight)
-
-///// QUOTE
-
-.wp-block-quote.has-text-align-center
-  padding-top: 1rem
-  
-  &::before
-    content: ""
-    position: absolute
-    top: 0
-    width: 100px
-    height: 3px
-    background-color: var(--text)
-    transform: translateX(-50%)
-
-.wp-block-quote.is-style-large
-  padding: 1rem 0
-  border-top: 3px solid var(--gray)
-  border-bottom: 3px solid var(--gray)
-  font-size: var(--h5Size)
-
-  &::before
-    display: none
-
-  p
-    font-size: 1em
-    font-style: normal
-
-  cite
-    text-align: right
-    font-size: var(--sFontSize)
-
-  &.has-text-align-center cite
-    text-align: center
-
-  &.has-text-align-right cite
-    text-align: left
-
-
-///// TABLE
-
-.wp-block-table
-  --tableStripe: #eef2f7
-
-  display: flex
-  flex-direction: column
-  overflow-x: auto
-  margin-top: var(--blockGap)
-  margin-bottom: var(--blockGap)
-
-  @media ($below-s)
-    font-size: var(--sFontSize)
-
-  table
-    border-collapse: collapse
-    border-spacing: 0
-    color: var(--text)
-
-  thead,
-  tfoot
-    background-color: var(--bgColor, #eef2f7)
-    color: var(--textColor, var(--text))
-    font-weight: 700
-    text-align: left
-
-  thead
-    border-bottom: 2px solid var(--text)
-  tfoot
-    border-top: 2px solid var(--text)
-  tbody
-    background-color: var(--textInvert)
-    color: var(--text)
-
-  th, td
-    padding: 0.5rem 1rem
-    border: 1px solid rgba(black, .5) !important
-
-    @media ($below-s)
-      padding: 0.25rem 0.5rem
-
-  &.is-style-h-full-color
-    tbody
-      background-color: var(--bgColor)
-      color: var(--textColor)
-
-  &.is-style-stripes
-    tbody tr:nth-child(odd)
-      background: var(--textInvert)
-    tbody tr:nth-child(even)
-      background-color: var(--tableStripe)
-
-  // hardcoded stripe color
-  .has-color-1-background-color
-    --tableStripe: #{rgba(--color1, .1)}
-
-    thead,
-    tfoot
-      color: var(--textInvert)
-
-  .has-color-2-background-color
-    --tableStripe: #{rgba(--color2, .1)}
-  .has-color-3-background-color
-    --tableStripe: #{rgba(--color3, .1)}
-    
-
 
 ///// EMBEDS
 

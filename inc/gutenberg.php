@@ -72,6 +72,12 @@ function my_disallowed_blocks($blocks) {
     'core/post-comments',
     'core/term-description',
     'core/post-navigation-link',
+    'core/read-more',
+    'core/avatar',
+    'core/post-author-name',
+    'core/post-author-biography',
+    'core/post-comments-form',
+    'core/comments',
   ];
 
   if (class_exists('Jetpack')) {
@@ -106,11 +112,17 @@ function my_disallowed_blocks($blocks) {
       'woocommerce/stock-filter',
       'woocommerce/price-filter',
       'woocommerce/attribute-filter',
-
+      
       'woocommerce/all-reviews',
       'woocommerce/reviews-by-product',
       'woocommerce/reviews-by-category',
       'woocommerce/all-products',
+      'woocommerce/product-price',
+      
+      'woocommerce/customer-account',
+      'woocommerce/filter-wrapper',
+      'woocommerce/cart',
+      'woocommerce/checkout',
     ]);
   }
   return $disabled_blocks;

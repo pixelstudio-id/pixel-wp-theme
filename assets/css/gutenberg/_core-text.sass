@@ -1,142 +1,8 @@
-///// GENERAL & ALIGNMENT
-
-main
-  letter-spacing: calc(0.01 * var(--fontSize))
-  overflow-wrap: break-word
-
-  // @todo: problematic on some pages
-  > *:first-child:not(.alignfull)
-    padding-top: var(--blockGap)
-
-    body.single-post &
-      padding-top: 0
-  
-  > *:last-child:not(.alignfull)
-    margin-bottom: var(--blockWideGap)
-
-  ul, ol
-    padding-left: 1.25rem
-  
-  a
-    text-decoration: underline
-  a:hover
-    color: var(--linkColorHover, var(--color1))
-
-main,
-.wp-block-group__inner-container
-  > *
-    margin: 0 auto
-    max-width: var(--contentSize)
-
-// Add rim to the side
-body:not(.single-post) main,
-.wp-block-group.alignfull .wp-block-group__inner-container,
-.wp-block-cover__inner-container
-  @media ($below-l)
-    padding-right: var(--gridRim)
-    padding-left: var(--gridRim)
-
-  
-main,
-.wp-block-group__inner-container,
-.wp-block-cover__inner-container,
-.wp-block-media-text__content,
-.wp-block-column
-  > * + *
-    margin-top: var(--blockGap)
-
-
-///// ALIGNMENT
-
-.alignleft,
-.has-text-align-left
-  text-align: left
-.alignright,
-.has-text-align-right
-  text-align: right
-.aligncenter,
-.has-text-align-center
-  text-align: center
-
-.alignwide
-  max-width: var(--wideSize)
-  width: 100%
-  
-  @media ($below-l)
-    max-width: 100%
-
-
-.alignfull
-  max-width: none
-  margin-top: var(--blockWideGap)
-
-  @media ($below-l)
-    margin-right: calc(-1 * var(--gridRim))
-    margin-left: calc(-1 * var(--gridRim))
-
-  &:first-child
-    margin-top: 0
-
-  + *
-    margin-top: var(--blockWideGap)
-
-  + .alignfull
-    margin-top: 0
-
-  &:last-child
-    margin-bottom: 0
-
-
-.is-vertically-aligned-top
-  align-items: flex-start
-  align-self: flex-start
-
-.is-vertically-aligned-center
-  align-items: center
-  align-self: center
-
-.is-vertically-aligned-bottom
-  align-items: flex-end
-  align-self: flex-end
-
-// @since WP 5.7.0
-.is-content-justification-left
-  --flexAlign: flex-start
-.is-content-justification-center
-  --flexAlign: center
-.is-content-justification-right
-  --flexAlign: flex-end
-.is-content-justification-space-between
-  --flexAlign: space-between
-
-[class*="is-content-justification-"]
-  justify-content: var(--flexAlign)
-
-  &.is-vertical
-    justify-content: normal
-    align-items: var(--flexAlign)
-
-.screen-reader-text
-  border: 0
-  clip: rect(1px, 1px, 1px, 1px)
-  clip-path: inset(50%)
-  height: 1px
-  margin: -1px
-  overflow: hidden
-  padding: 0
-  position: absolute !important
-  width: 1px
-  word-wrap: normal !important
-
-
 ///// PARAGRAPH
 
 p.has-background
-  padding: 1rem
+  padding: var(--space0)
   border-radius: var(--gRadius)
-
-p.is-style-h-no-spacing
-  margin-top: 0 !important
 
 .has-drop-cap:first-letter
   float: left
@@ -184,10 +50,6 @@ h1, h2, h3, h4, h5, h6
   strong
     font-weight: var(--fontWeight)
 
-  &.is-style-h-no-spacing
-    line-height: var(--lineHeight) // make line height larger
-    margin-bottom: calc(var(--blockGap) * -1)
-
 
 ///// LIST
 
@@ -201,7 +63,7 @@ ol.has-background
 .wp-block-quote
   position: relative
   padding: 0.5rem 2rem
-  border-left: 3px solid var(--text)
+  border-left: 3px solid
 
   > * + *
     margin-top: 1rem
@@ -209,11 +71,11 @@ ol.has-background
   cite
     display: block
     font-size: var(--sFontSize)
-    color: var(--gray)
+    opacity: .5
 
   &.has-text-align-right
     border-left: none
-    border-right: 3px solid var(--text)
+    border-right: 3px solid
 
   &.has-text-align-center
     padding-top: 1.5rem
@@ -228,32 +90,6 @@ ol.has-background
       height: 3px
       background-color: var(--text)
       transform: translateX(-50%)
-
-.wp-block-quote.is-style-large
-  padding-top: 1rem
-  padding-bottom: 1rem
-  margin-top: 2.5rem
-  margin-bottom: 2.5rem
-  border-left: none
-  border-right: none
-  border-top: 3px solid var(--gray)
-  border-bottom: 3px solid var(--gray)
-
-  font-size: var(--h5Size)
-
-  &::before,
-  &::after
-    display: none
-
-  cite
-    text-align: right
-    font-size: var(--sFontSize)
-
-  &.has-text-align-center cite
-    text-align: center
-
-  &.has-text-align-right cite
-    text-align: left
 
 // QUOTE Testimony
 .wp-block-quote.is-style-h-testimony
@@ -467,32 +303,19 @@ ol.has-background
     @media ($below-s)
       padding: 0.25rem 0.5rem
 
-  figcaption
-    @extend %figcaption
-
   &.is-style-h-full-color
     tbody
       background-color: var(--bgColor)
       color: var(--textColor)
 
   &.is-style-stripes
+    table
+      --tableStripe: rgba(var(--bgColorRGB), .1)
+
     tbody tr:nth-child(odd)
       background: var(--textInvert)
     tbody tr:nth-child(even)
       background-color: var(--tableStripe)
-
-  // hardcoded stripe color
-  .has-color-1-background-color
-    --tableStripe: #{rgba(--color1, .1)}
-
-    thead,
-    tfoot
-      color: var(--textInvert)
-
-  .has-color-2-background-color
-    --tableStripe: #{rgba(--color2, .1)}
-  .has-color-3-background-color
-    --tableStripe: #{rgba(--color3, .1)}
 
 
 .wp-block-table

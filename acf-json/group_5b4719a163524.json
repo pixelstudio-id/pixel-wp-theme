@@ -6,6 +6,7 @@
             "key": "field_5b4719ad850c8",
             "label": "Tab 1",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -22,6 +23,7 @@
             "key": "field_5b4719b8850c9",
             "label": "Sample Field",
             "name": "sample_field",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -36,6 +38,63 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_6447ec48af492",
+            "label": "Extra Code",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6447eb8a47d33",
+            "label": "HEAD Code",
+            "name": "head_code",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Extra code added to <code>&lt;head&gt;<\/code>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_6447ec5daf493",
+            "label": "FOOTER Code",
+            "name": "footer_code",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Extra code added before the closing <code>&lt;\/body&gt;<\/code>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -53,7 +112,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1531386329
+    "show_in_rest": 0,
+    "modified": 1682436292
 }

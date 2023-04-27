@@ -5,7 +5,7 @@ body.woocommerce-cart
     column-gap: 2rem
     row-gap: 2rem
     align-items: flex-start
-    max-width: var(--siteWidth)
+    max-width: var(--wideSize)
 
     @media ($below-s)
       column-gap: 1rem
@@ -197,7 +197,7 @@ td.actions
   grid-column: span 12
   font-size: var(--mFontSize)
   text-align: center
-  max-width: var(--blogWidth)
+  max-width: var(--contentSize)
   margin: 0 auto
 
 .return-to-shop
@@ -247,6 +247,9 @@ td.actions
 .woocommerce-remove-coupon
   font-size: var(--xsFontSize)
 
+.woocommerce-shipping-totals
+  td
+    font-size: var(--sFontSize)
 
 .woocommerce-shipping-destination
   display: inline-block

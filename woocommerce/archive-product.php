@@ -41,13 +41,11 @@ if ($display_mode === 'subcategories') {
 
 <main>
   <header class="wp-block-group alignwide / shop-header">
-    <div class="wp-block-group__inner-container">
-      <h1 class="has-text-align-center">
-        <?= $title ?>
-      </h1>
-      <div class="has-text-align-center">
-        <?= $content ?>
-      </div>
+    <h1 class="has-text-align-center">
+      <?= $title ?>
+    </h1>
+    <div class="has-text-align-center">
+      <?= $content ?>
     </div>
   </header>
 

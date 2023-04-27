@@ -29,7 +29,6 @@ function my_public_assets() {
   wp_enqueue_script('my-app', $dir . '/app.js', [], THEME_VERSION, true);
 }
 
-
 /**
  * WP Admin assets
  * @action admin_enqueue_scripts 100

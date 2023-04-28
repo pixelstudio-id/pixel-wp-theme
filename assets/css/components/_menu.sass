@@ -31,7 +31,8 @@
     height: 100%
 
     line-height: 1
-    font-weight: var(--hFontWeight)
+    font-weight: 600
+    text-transform: uppercase
     color: inherit
 
   // add border-bottom as hover indicator
@@ -169,6 +170,7 @@
     flex-wrap: wrap
     list-style-type: none
     transition: var(--gTransition)
+    margin: 0 calc(-1 * var(--space2))
 
   .menu-item
     margin-bottom: 0.5rem
@@ -177,32 +179,21 @@
   .submenu-item > a
     display: flex
     align-items: center
-    padding: 0.75rem
     line-height: 1
     color: inherit
 
-    &:hover
-      color: var(--color2)
     &:active
       transform: translateY(1px)
       transition: none
 
   .menu-item > a
-    font-weight: var(--hFontWeight)
-    font-size: var(--lFontSize)
+    padding: var(--space-1) var(--space2)
+    border-left: 3px solid transparent
+    font-size: var(--mFontSize)
     letter-spacing: 0.025em
 
-  .submenu-item > a
-    opacity: .75
-    padding: 0.75rem 1rem
-    font-size: var(--mFontSize)
-
-  .submenu-depth-2 a
-    font-size: var(--fontSize)
-
   +menu-item-is-active
-    color: var(--color2)
-    opacity: 1
+    border-left: 3px solid
 
   .menu-item-has-children > a
     position: relative
@@ -213,31 +204,39 @@
       opacity: .75
       background: url('../svg/chevron-down.svg') no-repeat center center
       background-size: 100% auto
-      transition: var(--gTransition)
       filter: invert(1)
-
-      position: relative
-      right: -1.5rem
 
       width: 0.75rem
       height: 0.75rem
-      margin-left: -0.75rem
-      // margin-right: -0.75rem
-    
-    &:hover::after
-      filter: var(--color2Filter)
-
-  .has-open-submenu > a::after
-    transform: rotate(180deg)
+      margin-left: auto
 
   .submenu
     display: none
-    border-left: 1px solid rgba(--textInvert, .1)
-    margin-left: 0.75rem
+    background-color: var(--textDark)
     list-style-type: none
 
-  .has-open-submenu > .submenu
-    display: block
+  .submenu-item > a
+    opacity: .75
+    padding: 0.75rem var(--space2)
+    border-left: 3px solid transparent
+    font-size: var(--fontSize)
+
+  .submenu-depth-2
+    background-color: var(--textDark2)
+
+  .submenu-depth-2 a
+    font-size: var(--sFontSize)
+    padding-left: var(--space4)
+ 
+  .has-open-submenu
+    overflow: hidden
+
+    > a
+      box-shadow: var(--shadow1)
+    > a::after
+      transform: rotate(180deg)
+    > .submenu
+      display: block
 
 // Centered Offcanvas
 .offcanvas.is-center
@@ -355,6 +354,9 @@
     .subheader &
       display: none
 
+    .offcanvas &
+      margin-right: 0.5rem
+
 .submenu-item.menu-item-has-icon
   > a
     display: grid
@@ -383,18 +385,13 @@
     font-size: var(--sFontSize)
     opacity: .75
 
-// with IMAGE
-.submenu-item.menu-item-has-image
+// Has Image
+.menu-item-has-image
   --bgHover: transparent
 
-  margin-bottom: 0.5rem
-
   > a
-    flex-direction: column
-    align-items: flex-start
-    padding-top: 0
-    padding-bottom: 0
-    margin: 0
+    flex-wrap: wrap
+    padding: 0
     pointer-events: none // image not clickable
     font-size: var(--sFontSize)
 
@@ -403,12 +400,22 @@
     width: auto
     transition: var(--gTransition)
 
+  .header-widgets &
+    > a
+      padding: 0
+
+  .offcanvas &
+    > a
+      padding-top: 0
+      padding-bottom: 0
+      margin: var(--space-2) 0
+
 // Empty title - when the title is just "-"
 .menu-item-empty-title
   > a
-    color: transparent
-
     .offcanvas &
+      display: none
+    @media ($below-nav)
       display: none
 
 // Has shortcode in menu item
@@ -417,3 +424,41 @@
   > a:nth-child(1),
   > a:nth-child(3)
     display: none
+
+
+// Menu BACKGROUND
+
+.menu-item-has-background
+  --textColor: inherit
+  --bgHover: rgba(0,0,0,.1)
+  --alpha: 1
+
+  background-color: var(--bgColor, transparent)
+  color: var(--textColor, inherit)
+
+  .header &
+    padding: 0.5rem
+
+  .offcanvas &
+    --alpha: 0.5
+
+  &.menu-background-black
+    --textColor: var(--textInvert)
+    --bgColor: black
+    --bgHover: rgba(255,255,255,.2)
+
+  &.menu-background-lighter
+    --bgColor: rgba(255,255,255,.1)
+  
+  &.menu-background-darker
+    --bgColor: rgba(0,0,0,.05)
+
+  &.menu-background-white
+    --bgColor: white
+
+  &.menu-background-main
+    --bgColor: rgba(var(--color1LightRGB), var(--alpha))
+    --textColor: var(--text)
+
+  &.menu-background-sub
+    --bgColor: rgba(var(--color2LightRGB), var(--alpha))

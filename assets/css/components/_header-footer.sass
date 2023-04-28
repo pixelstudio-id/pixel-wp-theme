@@ -45,70 +45,74 @@
 ///// OFFCANVAS /////
 
 .offcanvas
-  cursor: default
   position: fixed
   z-index: 200
   top: 0
   bottom: 0
   right: 0
+  left: 0
 
-  display: flex
-  align-items: center
+  cursor: pointer
   visibility: hidden
   opacity: 0
-  background: var(--color1Dark)
-  transform: translateX(100%)
+  background-color: rgba(--text, .5)
   
   width: 100%
-  max-width: 480px
+  transition: var(--gTransition)
+
+  body.has-active-offcanvas &
+    visibility: visible
+    opacity: 1
+
+.offcanvas__inner
+  cursor: default
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+
+  display: flex
+  align-items: center  
+  background: var(--text)
+  transform: translateX(100%)
+  transition: var(--gTransition)
+  
+  width: clamp(320px, 100vw - 3rem, 360px)
   box-shadow: var(--shadow3)
+  border-radius: var(--largeRadius) 0 0 var(--largeRadius)
 
   color: var(--textInvert)
 
+  body.has-active-offcanvas &
+    transform: none
+
 body.has-active-offcanvas
   overflow-y: hidden
-  cursor: pointer
-  -webkit-tap-highlight-color: rgba(white, 0)
-
-  &::before
-    content: ""
-    display: block
-    +absolute-fill
-    z-index: 190
-    background-color: rgba(--text, .5)
-
-    transition: var(--gTransition)
-
-  .offcanvas
-    visibility: visible
-    opacity: 1
-    transform: none
-    transition: var(--gTransition)
- 
 
 // Close button
 .offcanvas > a[href="#menu"]
   position: absolute
   z-index: 10
-  top: 1rem
-  right: 1rem
+  top: var(--space-2)
+  right: var(--space0)
 
   display: flex
   align-items: center
   justify-content: center
+  background-color: var(--text)
 
   width: 2rem
   height: 2rem
-  padding: 0.5rem
-  border: 1px solid
+  border: none
   border-radius: var(--gRadius)
+  padding: 0.5rem
   font-size: 0
 
   path
     fill: var(--textInvert)
 
   &:hover
-    background-color: rgba(--textInvert, .2)
+    background-color: var(--color1)
   &:active
     border-top-width: 2px
     border-bottom-width: 1px

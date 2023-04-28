@@ -75,12 +75,21 @@ const offcanvas = {
   },
 
   /**
-   * Close offcanvas when clicking outside it
+   * Close offcanvas when clicking outside the inner wrapper
    */
   closeOffcanvas() {
-    document.addEventListener('click', () => {
-      document.querySelector('body').classList.remove('has-active-offcanvas');
-    });
+    const $offcanvas = document.querySelector('.offcanvas');
+    const $inner = document.querySelector('.offcanvas__inner');
+
+    if ($offcanvas) {
+      $offcanvas.addEventListener('click', () => {
+        document.querySelector('body').classList.remove('has-active-offcanvas');
+      });
+
+      $inner.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
   },
 
   /**

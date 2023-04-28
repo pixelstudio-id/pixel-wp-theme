@@ -167,7 +167,7 @@ a.comment-edit-link::before
   
   label
     cursor: pointer
-    margin-bottom: 0.5rem
+    margin-bottom: 0.25rem
     color: var(--gray)
     font-weight: 700
     font-size: var(--xsFontSize)
@@ -199,7 +199,7 @@ a.comment-edit-link::before
 .comment-form-author,
 .comment-form-email
   transition: var(--gTransition)
-  padding: 0.5rem
+  padding: 0.25rem 0.5rem
   border: 2px solid rgba(--text, .1)
   border-radius: var(--gRadius)
 
@@ -220,14 +220,14 @@ a.comment-edit-link::before
   @media ($below-xs)
     width: 100%
 
-.comment-form-url
+p.comment-form-url
   display: none
 
-p.comment-form-cookies-consent
+p.comment-form-cookies-consent,
+p.h-comment-notification-consent
   flex-direction: row
 
   input
-    margin-top: 1px
     margin-right: 0.5rem
 
   label

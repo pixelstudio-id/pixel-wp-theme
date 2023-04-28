@@ -9,7 +9,7 @@
 >
   <span
     aria-hidden="true"
-    class="has-color-1-light-background-color wp-block-cover__gradient-background"
+    class="wp-block-cover__background has-color-1-light-background-color"
   ></span>
   <div class="wp-block-cover__inner-container">
     <?php if ($title): ?>

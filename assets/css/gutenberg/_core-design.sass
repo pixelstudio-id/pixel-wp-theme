@@ -176,10 +176,6 @@
   
 .wp-block-group
   position: relative
-
-  &.alignfull
-    padding-left: 0 !important
-    padding-right: 0 !important
   
   &:not(.has-background)
     margin-top: var(--space3)
@@ -200,10 +196,18 @@
   &:last-child
     margin-bottom: 0
 
+.wp-block-group.alignfull[style*="padding-left"]
+  padding-left: var(--gridRim) !important
+.wp-block-group.alignfull[style*="padding-right"]
+  padding-right: var(--gridRim) !important
+
 // Group Alignment
 .wp-block-group.is-layout-constrained
   &[class*="is-content-justification-"]
     display: flex
+    flex-direction: column
+    align-items: var(--flexAlign)
+    justify-content: initial
     
     > *
       margin-right: 0

@@ -7,6 +7,7 @@
 
   .offcanvas &
     flex: 1
+
   .offcanvas.is-center &
     display: flex
     justify-content: center
@@ -64,7 +65,6 @@
 
   header[data-columns="3"] &
     --headerGridTemplate: 1fr auto 1fr
-    
 
   footer &
     display: flex
@@ -81,11 +81,11 @@
 
     overflow-y: auto
     max-height: 100vh
-    padding: 0
+    height: 100%
+    padding-top: var(--space4)
     list-style-type: none
 
     -webkit-overflow-scrolling: touch
-
 
 .widget-column
   display: flex
@@ -125,13 +125,11 @@
   .offcanvas &
     flex-direction: column
     width: 100%
-    padding: 2rem
-
+    padding: var(--space2)
+  
     &:last-child:not(:first-child)
       margin-top: auto
-      background-color: rgba(black, .05)
-      border-top: 1px solid rgba(black, .1)
-
+      background-color: rgba(black, .1)
 
 ///// WIDGET: Text
 

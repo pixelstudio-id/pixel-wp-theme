@@ -94,17 +94,20 @@
 ///// MEGA MENU in Offcanvas
 
 .offcanvas
+  .mega-menu
+    background-color: var(--textDark)
+    padding: 0
+    padding-top: var(--space-1)
+
   .mega-menu,
   .mega-menu ul
     list-style-type: none
-    border-left: 1px solid rgba(--textInvert, .1)
-    margin-left: 0.75rem
 
   .mega-menu__column
     > a
       display: inline-block
       opacity: .75
-      padding: 0.5rem 0 0.5rem 0.75rem
+      padding: 0.5rem var(--space2)
 
       letter-spacing: 0.05em
       text-transform: uppercase
@@ -118,7 +121,6 @@
   .menu-item-empty-title > a
     display: none
 
-
   // mega menu is initially hidden
   .menu-item-has-mega-menu:not(.is-open) .mega-menu
     display: none
@@ -126,37 +128,6 @@
   // show arrow to indicate it can be opened
   .menu-item.menu-item-has-mega-menu > a::after
     display: inline-block
+
   .menu-item-has-mega-menu.is-open > a::after
     transform: rotate(180deg)
-
-
-///// Menu BACKGROUND - only works in mega menu
-
-.mega-menu .menu-item-has-background
-  --textColor: inherit
-  --bgHover: rgba(0,0,0,.1)
-
-  background-color: var(--bgColor, transparent)
-  padding: 0.5rem
-  color: var(--textColor, inherit)
-
-  &.menu-background-black
-    --textColor: var(--textInvert)
-    --bgColor: black
-    --bgHover: rgba(255,255,255,.2)
-
-  &.menu-background-lighter
-    --bgColor: rgba(255,255,255,.1)
-  
-  &.menu-background-darker
-    --bgColor: rgba(0,0,0,.05)
-
-  &.menu-background-white
-    --bgColor: white
-
-  &.menu-background-main
-    --bgColor: var(--color1Light)
-    --textColor: var(--text)
-
-  &.menu-background-sub
-    --bgColor: var(--color2Light)

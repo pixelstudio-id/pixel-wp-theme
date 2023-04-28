@@ -17,113 +17,90 @@ $related_posts = get_posts([
 <?php get_header(); ?>
 
 <main role="main">
-<header
-  class="post-hero / wp-block-cover alignfull"
-  style="min-height:250px;"
->
+<header class="post-hero | wp-block-cover alignfull" style="min-height:350px;">
   <span
     aria-hidden="true"
-    class="has-color-1-light-background-color wp-block-cover__gradient-background"
+    class="wp-block-cover__background has-color-1-background-color has-background-dim"
   ></span>
+
+  <?php if (has_post_thumbnail()): ?>
+    <img
+      class="wp-block-cover__image-background"
+      loading="lazy"
+      src="<?= get_the_post_thumbnail_url(null, 'large'); ?>"
+      alt="<?= get_the_title(); ?>"
+    >
+  <?php endif; ?>
+
   <div class="wp-block-cover__inner-container">
 
     <section class="wp-block-columns alignwide">
       <div class="wp-block-column">
-        <h1 class="has-color has-text-color">
+        <h1 class="has-color has-text-invert-color has-text-align-center">
           <?php the_title(); ?>
         </h1>
 
-        <div class="post-meta / alignwide">
-          <span class="meta-categories">
+        <ul class="post-meta | is-style-h-inline">
+          <li>
+            By <?php the_author(); ?>
+          </li>
+
+          <li>
+            <?= get_the_date() ?>
+          </li>
+
+          <li>
             <?php foreach (get_the_category() as $term): ?>
               <a href="<?= get_category_link($term) ?>">
                 <?= $term->name ?>
               </a>
             <?php endforeach; ?>
-          </span>
-
-          <span class="meta-author">
-            By <?php the_author(); ?>
-          </span>
-
-          <time class="meta-date">
-            <i></i>
-            <?= get_the_date() ?>
-          </time>
+          </li>
 
           <?php if (get_comments_number() !== '0'): ?>
-            <span class="meta-comments">
-              <i></i>
+            <li>
               <a href="#comments">
                 <?= sprintf(__('%d Comments'), get_comments_number()) ?>
               </a>
-            </span>
+            </li>
           <?php endif; ?>
 
           <?php if (has_tag()): ?>
-            <span class="meta-tags">
-              <i></i>
+            <li>
               <?php foreach (get_the_tags() as $tag): ?>
                 <a href="<?= get_tag_link($tag) ?>">
                   <?= $tag->name ?>
                 </a>
               <?php endforeach; ?>
-            </span>
+            </li>
           <?php endif; ?>
-        </div>
-
+        </ul>
       </div>
-      
-      <?php if (has_post_thumbnail()): ?>
-      <div class="wp-block-column" style="flex-basis:35%">
-        <picture class="featured-image | wp-block-image">
-          <source
-            srcset="<?= get_the_post_thumbnail_url(null, 'medium'); ?>"
-            media="(max-width: 480px)"
-          >
-          <?php the_post_thumbnail('large'); ?>
-        </picture>
-
-        <div class="wp-block-spacer is-style-h-negative" style="margin-bottom:-50px"></div>
-      </div>
-      <?php endif; ?>
     </section>
 
   </div>
 </header>
 
-<div class="post-columns / wp-block-columns alignwide">
-  <article class="wp-block-column" style="flex-basis:66.66%">
+<?php the_content(); ?>
 
-    <?php the_content(); ?>
+<?php if (function_exists('sharing_display')) {
+  do_shortcode('[h-jetpack-sharing]');
+} ?>
 
-    <?php if (function_exists('sharing_display')) {
-      do_shortcode('[h-jetpack-sharing]');
-    } ?>
+<?php get_template_part('parts/author', ''); ?>
 
-    <?php get_template_part('parts/author', ''); ?>
+<nav class="post-nav">
+  <?php previous_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
+  <?php next_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
+</nav>
 
-    <nav class="post-nav">
-      <?php previous_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
-      <?php next_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
-    </nav>
-  </article>
+<footer class="related-posts / wp-block-group has-background has-text-invert-background-color alignfull">
+  <h3 class="alignwide">
+    <?= __('Related Posts') ?>
+  </h3>
+  <?php get_template_part('parts/posts', '', $related_posts); ?>
+</footer>
 
-  <?php if (is_active_sidebar('sidebar')): ?>
-    <aside class="sidebar / wp-block-column" style="flex-basis:33.33%">
-      <div class="sidebar-inner">
-        <?php dynamic_sidebar('sidebar'); ?>
-      </div>
-    </aside>
-  <?php endif; ?>
-</div>
-
-  <footer class="related-posts / wp-block-group has-background has-text-invert-background-color alignfull">
-    <h3 class="alignwide">
-      <?= __('Related Posts') ?>
-    </h3>
-    <?php get_template_part('parts/posts', '', $related_posts); ?>
-  </footer>
 </main>
 
 <?php

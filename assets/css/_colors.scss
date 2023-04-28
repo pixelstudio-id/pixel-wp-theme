@@ -1,6 +1,6 @@
 // This file is using .scss format to make it easier to write Maps & List
 $colors: (
-  ( hex: #2c3e50, var: '--text',       slug: 'text-base' ),
+  ( hex: #252427, var: '--text',       slug: 'text-base' ),
   ( hex: #ffffff, var: '--textInvert', slug: 'text-invert' ),
 
   ( hex: #888888, var: '--gray',       slug: 'gray' ),
@@ -22,7 +22,7 @@ $colors: (
 // Use this for the Filter value https://codepen.io/hrsetyono/pen/BaxyJQv - Useful to change the color of a PNG 
 // If you don't use PNG icon, feel free to remove the filter
 $filters: (
-  'text-base': invert(18%) sepia(12%) saturate(1870%) hue-rotate(169deg) brightness(94%) contrast(83%),
+  'text-base': invert(14%) sepia(5%) saturate(482%) hue-rotate(219deg) brightness(95%) contrast(97%),
   'text-invert': invert(100%) sepia(10%) saturate(7462%) hue-rotate(173deg) brightness(117%) contrast(108%),
 
   'gray': invert(60%) sepia(0%) saturate(0%) hue-rotate(151deg) brightness(90%) contrast(88%),
@@ -113,6 +113,9 @@ $filters: (
 
   --colorAlert      : #e74c3c;
   --colorAlertLight : #f8cdc9;
+
+  --textDark: #1E1E1F;
+  --textDark2: #141415;
 
   // Backward compatibility for old color names
   --main: var(--color1);

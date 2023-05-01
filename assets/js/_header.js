@@ -115,7 +115,7 @@ const offcanvas = {
         e.preventDefault();
 
         const $wrapper = e.currentTarget.parentElement;
-        $wrapper.classList.toggle('has-open-submenu');
+        $wrapper.classList.toggle('is-open');
       });
     });
   },

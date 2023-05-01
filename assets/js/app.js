@@ -1,5 +1,4 @@
 import myDarkMode from './_dark-mode';
-import myMegaMenu from './_mega-menu';
 import { stickyHeader, offcanvas } from './_header';
 import swiper from './_swiper';
 
@@ -33,7 +32,6 @@ const myApp = {
 
 function onReady() {
   myApp.init();
-  myMegaMenu.init();
   myDarkMode.init();
   // myAnimation.init();
 

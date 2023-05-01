@@ -33,51 +33,45 @@ $related_posts = get_posts([
   <?php endif; ?>
 
   <div class="wp-block-cover__inner-container">
+    <h1 class="has-color has-text-invert-color has-text-align-center">
+      <?php the_title(); ?>
+    </h1>
 
-    <section class="wp-block-columns alignwide">
-      <div class="wp-block-column">
-        <h1 class="has-color has-text-invert-color has-text-align-center">
-          <?php the_title(); ?>
-        </h1>
+    <ul class="post-meta | is-style-h-inline">
+      <li>
+        By <?php the_author(); ?>
+      </li>
 
-        <ul class="post-meta | is-style-h-inline">
-          <li>
-            By <?php the_author(); ?>
-          </li>
+      <li>
+        <?= get_the_date() ?>
+      </li>
 
-          <li>
-            <?= get_the_date() ?>
-          </li>
+      <li>
+        <?php foreach (get_the_category() as $term): ?>
+          <a href="<?= get_category_link($term) ?>">
+            <?= $term->name ?>
+          </a>
+        <?php endforeach; ?>
+      </li>
 
-          <li>
-            <?php foreach (get_the_category() as $term): ?>
-              <a href="<?= get_category_link($term) ?>">
-                <?= $term->name ?>
-              </a>
-            <?php endforeach; ?>
-          </li>
+      <?php if (get_comments_number() !== '0'): ?>
+        <li>
+          <a href="#comments">
+            <?= sprintf(__('%d Comments'), get_comments_number()) ?>
+          </a>
+        </li>
+      <?php endif; ?>
 
-          <?php if (get_comments_number() !== '0'): ?>
-            <li>
-              <a href="#comments">
-                <?= sprintf(__('%d Comments'), get_comments_number()) ?>
-              </a>
-            </li>
-          <?php endif; ?>
-
-          <?php if (has_tag()): ?>
-            <li>
-              <?php foreach (get_the_tags() as $tag): ?>
-                <a href="<?= get_tag_link($tag) ?>">
-                  <?= $tag->name ?>
-                </a>
-              <?php endforeach; ?>
-            </li>
-          <?php endif; ?>
-        </ul>
-      </div>
-    </section>
-
+      <?php if (has_tag()): ?>
+        <li>
+          <?php foreach (get_the_tags() as $tag): ?>
+            <a href="<?= get_tag_link($tag) ?>">
+              <?= $tag->name ?>
+            </a>
+          <?php endforeach; ?>
+        </li>
+      <?php endif; ?>
+    </ul>
   </div>
 </header>
 

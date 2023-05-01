@@ -172,28 +172,33 @@
     transition: var(--gTransition)
     margin: 0 calc(-1 * var(--space2))
 
-  .menu-item
-    margin-bottom: 0.5rem
-
-  .menu-item > a,
-  .submenu-item > a
+  a
     display: flex
     align-items: center
+    position: relative
     line-height: 1
     color: inherit
 
     &:active
       transform: translateY(1px)
       transition: none
+  
+  a::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    width: 3px
+    background-color: var(--borderColor)
 
   .menu-item > a
-    padding: var(--space-1) var(--space2)
-    border-left: 3px solid transparent
+    padding: var(--space0) var(--space2)
     font-size: var(--mFontSize)
     letter-spacing: 0.025em
 
   +menu-item-is-active
-    border-left: 3px solid
+    --borderColor: var(--textInvert)
 
   .menu-item-has-children > a
     position: relative
@@ -218,7 +223,6 @@
   .submenu-item > a
     opacity: .75
     padding: 0.75rem var(--space2)
-    border-left: 3px solid transparent
     font-size: var(--fontSize)
 
   .submenu-depth-2
@@ -228,7 +232,7 @@
     font-size: var(--sFontSize)
     padding-left: var(--space4)
  
-  .has-open-submenu
+  .is-open
     overflow: hidden
 
     > a
@@ -238,29 +242,6 @@
     > .submenu
       display: block
 
-// Centered Offcanvas
-.offcanvas.is-center
-  .menu
-    text-align: center
-
-  .menu-item > a,
-  .submenu-item > a
-    display: flex
-    align-items: center
-    justify-content: center
-
-  .menu-item-has-children > a
-    &::after
-      position: relative
-      right: -1.5rem
-
-      width: 0.75rem
-      height: 0.75rem
-      margin-left: -0.75rem
-
-  .submenu
-    border: none
-  
 ///// MENU in FOOTER
 
 .footer-widgets
@@ -371,6 +352,8 @@
   .offcanvas &
     a
       align-items: center
+      padding-top: var(--space-2)
+      padding-bottom: var(--space-2)
     img
       grid-row: span 1
     dt
@@ -381,28 +364,29 @@
 .submenu-item
   // if has description
   dd
+    opacity: .75
     font-weight: var(--fontWeight)
     font-size: var(--sFontSize)
-    opacity: .75
+    line-height: 1.4
 
 // Has Image
 .menu-item-has-image
-  --bgHover: transparent
-
   > a
     flex-wrap: wrap
-    padding: 0
-    pointer-events: none // image not clickable
     font-size: var(--sFontSize)
+
+  > a:hover img
+    opacity: .75
+
+  // if no link
+  > a[href="#"]
+    padding: 0 !important
+    pointer-events: none
 
   img
     margin-bottom: 0.5rem
     width: auto
     transition: var(--gTransition)
-
-  .header-widgets &
-    > a
-      padding: 0
 
   .offcanvas &
     > a

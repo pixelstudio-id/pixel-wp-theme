@@ -138,6 +138,7 @@
   &.has-background
     padding: var(--blockGap)
     background-color: var(--bgColor)
+    border-radius: var(--gRadius)
 
   @media ($below-s)
     flex-wrap: wrap
@@ -252,7 +253,7 @@
   clear: both
 
   &.is-style-wide
-    width: var(--wideSize)
+    width: clamp(120px, var(--wideSize), 100%)
 
   &.is-style-dots
     border: 0

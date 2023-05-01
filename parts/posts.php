@@ -8,13 +8,15 @@
     <?php setup_postdata($post); ?>
 
     <li>
-      <?php if (has_post_thumbnail()): ?>
-        <div class="wp-block-latest-posts__featured-image">
-          <a href="<?php the_permalink(); ?>">
+      <div class="wp-block-latest-posts__featured-image">
+        <a href="<?php the_permalink(); ?>">
+          <?php if (has_post_thumbnail()): ?>
             <?php the_post_thumbnail('medium'); ?>
-          </a>
-        </div>
-      <?php endif; ?>
+          <?php else: ?>
+            <img loading="lazy" src="<?= get_template_directory_uri(); ?>/assets/images/post-default-thumb.jpg">
+          <?php endif; ?>
+        </a>
+      </div>
 
       <a href="<?php the_permalink(); ?>">
         <?php the_title(); ?>

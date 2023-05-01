@@ -7,7 +7,7 @@ export default {
    * Toggle listener for mega menu in offcanvas
    */
   offcanvasMegaMenu() {
-    const $itemLinks = document.querySelectorAll('.offcanvas .menu-item-has-mega-menu > a');
+    const $itemLinks = document.querySelectorAll('.offcanvas .mega-menu-wrapper > a');
     $itemLinks.forEach(($link) => {
       $link.addEventListener('click', (e) => {
         e.preventDefault();

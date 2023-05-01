@@ -200,7 +200,8 @@
   justify-content: center
 
   min-height: 400px
-  padding: var(--blockGap) 0
+  padding-top: var(--blockGap)
+  padding-bottom: var(--blockGap)
 
   &:not(.alignfull)
     border-radius: var(--gRadius)
@@ -274,6 +275,11 @@
   &.is-repeated
     background-repeat: repeat
     background-size: auto
+
+  // If fixed background
+  &[style*="--hMobileMediaURL"]
+    @media ($below-s)
+      background-image: var(--hMobileMediaURL) !important
 
 
 .wp-block-cover__inner-container

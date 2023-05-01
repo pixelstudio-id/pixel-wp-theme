@@ -27,7 +27,6 @@ if (class_exists('WooCommerce')) {
 // Initial setup
 my_before_setup_theme();
 add_action('after_setup_theme', 'my_after_setup_theme');
-add_action('widgets_init', 'my_widgets_init');
 
 
 /////
@@ -46,6 +45,7 @@ function my_before_setup_theme() {
  * @action after_setup_theme
  */
 function my_after_setup_theme() {
+  add_theme_support('menus');
   add_theme_support('custom-logo');
   add_theme_support('title-tag');
   add_theme_support('html5', [
@@ -78,18 +78,15 @@ function my_after_setup_theme() {
 }
 
 
-
-/**
- * @action widgets_init
- */
-function my_widgets_init() {
-  register_sidebar([
-    'name' => 'Sidebar',
-    'id' => 'sidebar',
-    'description' => 'Appear besides post',
-    'before_widget' => '<div id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</div>',
-    'before_title'  => '<h3 class="widgettitle">',
-    'after_title'   => '</h3>',
-  ]);
-}
+// add_action('widgets_init', 'my_widgets_init');
+// function my_widgets_init() {
+//   register_sidebar([
+//     'name' => 'Sidebar',
+//     'id' => 'sidebar',
+//     'description' => 'Appear besides post',
+//     'before_widget' => '<div id="%1$s" class="widget %2$s">',
+//     'after_widget'  => '</div>',
+//     'before_title'  => '<h3 class="widgettitle">',
+//     'after_title'   => '</h3>',
+//   ]);
+// }

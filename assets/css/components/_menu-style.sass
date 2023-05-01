@@ -1,5 +1,3 @@
-///// MEGA MENU in Header + Subheader
-
 .header-widgets
   // Parent wrapper
   .has-2-columns
@@ -17,16 +15,24 @@
     @media ($below-l)
       --width: 75vw
 
-  .has-4-columns
+  .has-4-columns,
+  .has-5-columns,
+  .has-6-columns
     --width: var(--wideSize)
-    --columns: 4
     position: static // relative to grid instead of parent item
 
     @media ($below-l)
       --width: calc(100vw - var(--gridGap))
 
-  // MEGA MENU
-  .mega-menu
+  .has-4-columns
+    --columns: 4
+  .has-5-columns
+    --columns: 5
+  .has-6-columns
+    --columns: 6
+
+  .mega-menu,
+  .horizontal-menu
     display: flex
     flex-wrap: wrap
     overflow-y: auto
@@ -47,27 +53,33 @@
     box-shadow: var(--shadow1)
     list-style-type: none
 
+  [class*="-menu-wrapper"] ul
+    list-style-type: none
+
+    // open mega menu on hover / focus
+  [class*="-menu-wrapper"]:hover > ul
+    visibility: visible
+    opacity: 1
+    transition: var(--gTransition)
+  [class*="-menu-wrapper"]:focus-within > ul
+    visibility: visible
+    opacity: 1
+    transition: var(--gTransition)
+
   // Alignment
-  .is-align-left .mega-menu
+  .is-align-left ul
     left: 0
     right: auto
     transform: none
 
-  .is-align-right .mega-menu
+  .is-align-right ul
     left: auto 
     right: 0
     transform: none
 
-  // open mega menu on hover / focus
-  .menu-item-has-mega-menu:hover .mega-menu
-    visibility: visible
-    opacity: 1
-    transition: var(--gTransition)
-  .menu-item-has-mega-menu:focus-within .mega-menu
-    visibility: visible
-    opacity: 1
-    transition: var(--gTransition)
+///// MEGA MENU
 
+.header-widgets
   .mega-menu__column
     flex-grow: 1
     width: calc(100% / var(--columns, 2))
@@ -86,25 +98,16 @@
     > a > dd
       display: none
 
-  .mega-menu ul
-    list-style-type: none
-    padding: 0
-
-
-///// MEGA MENU in Offcanvas
-
 .offcanvas
-  .mega-menu,
-  .mega-menu ul
-    list-style-type: none
-    border-left: 1px solid rgba(--textInvert, .1)
-    margin-left: 0.75rem
+  .mega-menu
+    background-color: var(--textDark)
+    padding: var(--space-1) 0
 
   .mega-menu__column
     > a
       display: inline-block
       opacity: .75
-      padding: 0.5rem 0 0.5rem 0.75rem
+      padding: 0.5rem var(--space2)
 
       letter-spacing: 0.05em
       text-transform: uppercase
@@ -118,45 +121,33 @@
   .menu-item-empty-title > a
     display: none
 
-
-  // mega menu is initially hidden
-  .menu-item-has-mega-menu:not(.is-open) .mega-menu
+  .mega-menu-wrapper:not(.is-open) .mega-menu
     display: none
 
-  // show arrow to indicate it can be opened
-  .menu-item.menu-item-has-mega-menu > a::after
-    display: inline-block
-  .menu-item-has-mega-menu.is-open > a::after
+  .mega-menu-wrapper.is-open > a::after
     transform: rotate(180deg)
 
+///// HORIZONTAL Menu
 
-///// Menu BACKGROUND - only works in mega menu
+.header-widgets
+  .horizontal-menu
+    padding: var(--space-1)
 
-.mega-menu .menu-item-has-background
-  --textColor: inherit
-  --bgHover: rgba(0,0,0,.1)
+  .horizontal-menu li
+    flex-grow: 1
+    width: calc(100% / var(--columns, 2))
+    border-radius: 0
 
-  background-color: var(--bgColor, transparent)
-  padding: 0.5rem
-  color: var(--textColor, inherit)
+  .horizontal-menu a
+    padding: 0.75rem
 
-  &.menu-background-black
-    --textColor: var(--textInvert)
-    --bgColor: black
-    --bgHover: rgba(255,255,255,.2)
+.offcanvas
+  .horizontal-menu
+    background-color: var(--textDark)
+    padding: var(--space-1) 0
 
-  &.menu-background-lighter
-    --bgColor: rgba(255,255,255,.1)
-  
-  &.menu-background-darker
-    --bgColor: rgba(0,0,0,.05)
+  .horizontal-menu-wrapper:not(.is-open) .horizontal-menu
+    display: none
 
-  &.menu-background-white
-    --bgColor: white
-
-  &.menu-background-main
-    --bgColor: var(--color1Light)
-    --textColor: var(--text)
-
-  &.menu-background-sub
-    --bgColor: var(--color2Light)
+  .horizontal-menu-wrapper.is-open > a::after
+    transform: rotate(180deg)

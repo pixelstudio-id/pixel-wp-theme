@@ -26,10 +26,10 @@ ul.wp-block-latest-posts
 
   a
     display: block
-    text-decoration: underline
-
+    text-decoration: none
   a:hover
     color: var(--linkColorHover)
+    text-decoration: underline
 
   li > a
     font-family: var(--hFontFamily)
@@ -73,7 +73,10 @@ ul.wp-block-latest-posts
 .wp-block-latest-posts__post-date
   display: inline-block
   color: var(--textDim)
-  font-size: var(--sFontSize)
+  font-weight: 600
+  font-size: var(--xsFontSize)
+  opacity: .5
+  text-transform: uppercase
 
 .wp-block-latest-posts__post-author
   margin-right: 0.5rem
@@ -81,6 +84,9 @@ ul.wp-block-latest-posts
 .wp-block-latest-posts__featured-image
   margin-bottom: 0.5rem
   max-width: var(--postsImageWidth, 100%)
+
+  img
+    box-shadow: var(--shadow0)
 
   a:hover
     opacity: .75
@@ -110,6 +116,10 @@ ul.wp-block-latest-posts
       width: 100%
       max-height: 150px
       object-fit: cover
+
+  // underline the title when hovering the image
+  &:hover + a
+    text-decoration: underline
 
 .wp-block-latest-posts__post-excerpt
   font-size: var(--sFontSize)

@@ -1,0 +1,283 @@
+{
+    "key": "group_62dccbc34b3e8",
+    "title": "Menu Item",
+    "fields": [
+        {
+            "key": "field_62e3ca7737ea9",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<span class=\"dashicons dashicons-warning\"><\/span> First children under Mega Menu become a \"Heading\". It doesn't have URL and Description",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_644b1b1649a9c",
+            "label": "Dropdown Style",
+            "name": "dropdown_style",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "mega-menu": "Mega Menu",
+                "horizontal": "Horizontal"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_644c996c42c90",
+            "label": "Dropdown Columns",
+            "name": "dropdown_columns",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_644b1b1649a9c",
+                        "operator": "==",
+                        "value": "mega-menu"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_644b1b1649a9c",
+                        "operator": "==",
+                        "value": "horizontal"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2,
+            "min": 2,
+            "max": 6,
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_62f5c35a93792",
+            "label": "Dropdown Alignment",
+            "name": "dropdown_alignment",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_644b1b1649a9c",
+                        "operator": "==",
+                        "value": "mega-menu"
+                    },
+                    {
+                        "field": "field_644c996c42c90",
+                        "operator": "<",
+                        "value": "4"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_644b1b1649a9c",
+                        "operator": "==",
+                        "value": "horizontal"
+                    },
+                    {
+                        "field": "field_644c996c42c90",
+                        "operator": "<",
+                        "value": "4"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "center": "Center",
+                "right": "Right"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_62dd53fa63c37",
+            "label": "Style",
+            "name": "style",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "has-icon": "Has Icon",
+                "has-image": "Has Image",
+                "has-background": "Has Background"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_62f2680f48380",
+            "label": "Icon (max 100x100)",
+            "name": "icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "<i class=\"dashicons dashicons-warning\"><\/i> This icon is only visible in Footer and mobile screen",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62dd53fa63c37",
+                        "operator": "==",
+                        "value": "has-icon"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": 100,
+            "max_height": 100,
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "thumbnail"
+        },
+        {
+            "key": "field_62dcd8e12a22a",
+            "label": "Image",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62dd53fa63c37",
+                        "operator": "==",
+                        "value": "has-image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_62de02e509bb7",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62dd53fa63c37",
+                        "operator": "==",
+                        "value": "has-background"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "lighter": "Lighter",
+                "darker": "Darker",
+                "white": "White",
+                "black": "Black",
+                "main": "Main Color",
+                "sub": "Sub Color"
+            },
+            "default_value": false,
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1682742182
+}

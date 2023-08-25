@@ -6,16 +6,26 @@ $post = $post;
 $thumbnail_url = get_the_post_thumbnail_url($post, 'thumbnail');
 $total_sales = get_post_meta($post->ID, 'total_sales', true);
 
-// Args to be passed to Related Products template
-$related_args = [
-  'catalog_columns' => get_option('woocommerce_catalog_columns'),
-  'products' => get_posts([
+// RELATED PRODUCTS
+$related_ids = $product->get_upsell_ids();
+$related_args = [];
+
+if ($related_ids) {
+  $related_args = [
     'post_type' => 'product',
-    'post__in' => wc_get_related_products($post->ID, $catalog_columns),
+    'post__in' => $related_ids,
     'orderby' => 'post__in',
-  ]),
-  'extra_classes' => 'is-style-my-slider',
-];
+  ];
+} else {
+  $related_args = [
+    'post_type' => 'product',
+    'posts_per_page' => 3,
+    'orderby' => 'rand',
+  ];
+}
+
+$products_query = new WP_Query($related_args);
+$products = $products_query->get_posts();
 
 ///// ?>
 
@@ -74,7 +84,10 @@ $related_args = [
     <h3 class="alignwide">
       <?= __('Related Products') ?>
     </h3>
-    <?php get_template_part('woocommerce/parts/products', '', $related_args); ?>
+    <?php get_template_part('woocommerce/parts/products', '', [
+      'products' => $products,
+      'catalog_columns' => 3,
+    ]); ?>
   </section>
 
   <?php // Mobile bottom bar containing "Add to Cart" button ?>

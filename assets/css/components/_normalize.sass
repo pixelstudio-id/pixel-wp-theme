@@ -110,15 +110,12 @@ sub, sup
   position: relative
   font-size: 75%
   line-height: 0 // Prevent `sub` and `sup` elements from affecting the line height
-  margin-right: 0.25rem
   vertical-align: baseline
 sup
-  top: -0.125em
-  vertical-align: text-top
+  top: -0.25em
   align-self: flex-start
 sub
-  bottom: 0.125em
-  vertical-align: text-bottom
+  bottom: 0.25em
   align-self: flex-end
 
 blockquote cite
@@ -148,7 +145,7 @@ abbr[title]
 dfn
   font-style: italic
 mark
-  background: #ff0
+  background: var(--grayLight)
   color: #000
 q
   quotes: "\201C" "\201D" "\2018" "\2019"

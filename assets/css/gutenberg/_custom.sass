@@ -1,16 +1,15 @@
 ///// EDJE ICON
 
-.wp-block-h-icon
+.wp-block-px-icon
   --iconSize: 60px
   --iconPadding: 1rem
   --iconGap: 1rem
   --iconBg: var(--bgColor, rgba(0,0,0,.1))
 
-  --textColor: inherit
-
   display: flex
   align-items: flex-start
-  color: var(--textColor)
+  background-color: transparent
+  color: var(--textColor, inherit)
   border-radius: var(--gRadius)
 
   &.is-style-boxed
@@ -18,8 +17,8 @@
     --iconSize: 28px
     --iconBg: transparent
 
-    padding: 1.25rem
-    background-color: var(--bgColor)
+    padding: var(--space1)
+    background-color: var(--bgColor, var(--grayLight))
     box-shadow: var(--shadow0)
 
   &.use-image
@@ -36,10 +35,10 @@
   &.has-icon-position-top
     flex-wrap: wrap
 
-  &.has-text-align-center
+  &.aligncenter
     justify-content: center
 
-  &.has-text-align-right
+  &.alignleft
     justify-content: flex-end
 
   &.has-no-description
@@ -49,7 +48,7 @@
     --iconGap: 0.75rem
 
 // if has link
-a.wp-block-h-icon
+a.wp-block-px-icon
   text-decoration: none
   will-change: transform
 
@@ -67,7 +66,7 @@ a.wp-block-h-icon
     transition: none
 
 
-.wp-block-h-icon__figure
+.wp-block-px-icon__figure
   display: flex
   align-items: center
   justify-content: center
@@ -100,7 +99,7 @@ a.wp-block-h-icon
     max-height: 100%
 
 
-.wp-block-h-icon__content
+.wp-block-px-icon__content
   flex: 1
   width: 100%
 
@@ -113,13 +112,8 @@ a.wp-block-h-icon
     font-size: var(--h5Size)
     line-height: var(--hLineHeight)
 
-    .is-style-boxed &
-      font-weight: 500
-      font-family: var(--fontFamily)
-      font-size: var(--h5Size)
-
-      @media ($below-m)
-        font-size: var(--h6Size)
+    @media ($below-m)
+      font-size: var(--h6Size)
 
   dd
     margin-top: 0.75rem
@@ -128,36 +122,57 @@ a.wp-block-h-icon
 
   
 
-///// EDJE FAQ
+///// PIXEL FAQ
 
-.wp-block-h-faq
-  --bgColor: #e5e5e5
-  --textColor: var(--text, #191e23)
-
-  border: 2px solid var(--bgColor)
-  border-radius: var(--gRadius)
-
-.wp-block-h-faq__question
+.wp-block-px-faq
   position: relative
-  cursor: pointer
-  padding: 0.75rem 1rem 0.75rem 2rem
-  margin: -1px
-  background-color: var(--bgColor)
-
-  font-size: var(--h6Size)
-  font-family: var(--hFontFamily)
-  color: var(--textColor)
-  line-height: 1.25
-  outline: none
-  list-style: none
-
   transition: var(--gTransition)
 
+  &.is-style-default,
+  &:not([class*="is-style-"])
+    border: 1px solid rgbA(var(--borderColor, var(--textRGB)), .3)
+    background-color: transparent
+    color: inherit
+
+    &:not(.has-background)
+      --borderColor: var(--textColorRGB)
+      border-left: none
+      border-right: none
+    &.has-background
+      --borderColor: var(--bgColorRGB)
+
+    + details.is-style-default,
+    + details:not([class*="is-style-"])
+      border-top-color: transparent
+      margin-top: -1px
+
+  &.is-style-boxed
+    border: 1px solid rgba(black, .1)
+    border-radius: 4px
+    box-shadow: var(--shadowThin)
+
+    &:hover
+      transform: translateY(-1px)
+    &[open]
+      transform: none
+
   &:hover
-    opacity: .8
-  &:active
-    transition: none
-    box-shadow: var(--shadow0)
+    border-color: rgbA(var(--borderColor, var(--textRGB)), 1) !important
+
+.wp-block-px-faq__question
+  display: flex
+  align-items: center
+  cursor: pointer
+  padding: 1rem 0
+
+  details.is-style-default &,
+  details:not([class*="is-style-"]) &
+    background-color: var(--bgColor, transparent)
+    color: var(--textColor, inherit)
+
+  details.has-background &,
+  details.is-style-boxed &
+    padding: 1rem
 
   &::-webkit-details-marker
     display: none
@@ -165,27 +180,31 @@ a.wp-block-h-icon
     display: none
     font-size: 0
 
-  &::before
+  &::after
     content: "+"
-    position: absolute
-    left: 0.75rem
     display: inline-block
-    margin-right: 0.75rem
-    font-family: var(--codeFontFamily)
+    font-family: monospace
+    font-size: var(--mFontSize)
+    margin-left: auto
 
     [open] &
       content: "-"
-  
-  [open] &
-    opacity: 1
 
+.wp-block-px-faq__answer
+  padding: 0 0 1rem
+  font-size: 0.875rem
 
-.wp-block-h-faq__answer
-  padding: 1rem 1.5rem
+  details.is-style-default.has-background &,
+  details.has-background:not([class*="is-style-"]) &
+    padding: 1rem
 
+  details.is-style-boxed &
+    padding: 0 1rem 1rem
+
+  p
+    margin: 0
   p + p
     margin-top: 1rem
-
   
 ///// Jetpack Contact Form
 

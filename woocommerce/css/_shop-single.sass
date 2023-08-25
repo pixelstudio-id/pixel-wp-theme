@@ -81,7 +81,9 @@ div.woocommerce-product-gallery
     transform: none
     transition: none
 
-
+// fix if image is transparent
+img.zoomImg
+  background-color: var(--siteBg)
 
 ///// SUMMARY
 
@@ -378,9 +380,10 @@ div.woocommerce-product-rating
   &[aria-controls="tab-reviews"]
     --iconSvg: url('../images/comment-alt.svg')
   
-  &.active
-    background-color: var(--textInvert)
-    color: var(--text)
+  &.active a
+    --iconFilter: var(--textInvertFilter)
+    background-color: var(--color1)
+    color: var(--textInvert)
     box-shadow: var(--shadowThin)
 
 // Custom mobile tab

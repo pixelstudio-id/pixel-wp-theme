@@ -6,7 +6,7 @@ ul.wp-block-latest-posts
 
 .wp-block-latest-posts
   display: grid
-  grid-template-columns: repeat(var(--postsColumns, 1), 1fr)
+  grid-template-columns: repeat(var(--postsColumns, 3), 1fr)
   column-gap: var(--postsGap, 1.5rem)
   row-gap: var(--postsGap, 1.5rem)
 
@@ -87,6 +87,9 @@ ul.wp-block-latest-posts
 
   img
     box-shadow: var(--shadow0)
+    width: 100%
+    max-height: 150px
+    object-fit: cover
 
   a:hover
     opacity: .75
@@ -112,10 +115,9 @@ ul.wp-block-latest-posts
   .is-grid &
     --postsMaxWidth: none
 
-    img
-      width: 100%
-      max-height: 150px
-      object-fit: cover
+  // underline the title when hovering the image
+  &:hover + a
+    text-decoration: underline
 
   // underline the title when hovering the image
   &:hover + a
@@ -293,6 +295,9 @@ $social-colors: ( facebook: #1977f2, instagram: #f00075, linkedin: #0577b5, skyp
     .has-large-icon-size &,
     .has-huge-icon-size &
       width: 100%
+
+    .wp-social-link-custom &
+      height: 85%
 
   path
     fill: var(--iconColor, var(--brandColor))

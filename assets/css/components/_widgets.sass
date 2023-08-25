@@ -104,10 +104,9 @@
     width: var(--columnSize)
     padding: 0 var(--footerGap)
 
-    &:not([style])
-      flex: 1
-
     @media ($above-s)
+      &:not([style])
+        flex: 1
       &:last-child:not(:first-child)
         align-items: flex-end
 
@@ -117,6 +116,11 @@
 
       + .widget-column
         margin-top: var(--blockGap)
+
+  .footer-mid &
+    @media ($below-s)
+      &:first-child
+        flex-basis: 100%
 
   .footer-top &,
   .footer-bottom &

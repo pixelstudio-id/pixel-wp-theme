@@ -8,16 +8,19 @@ $title = $term->name;
 $content = wpautop($term->description);
 $pagination = H::get_pagination();
 
+$categories = null;
+$products = [];
+
 // if display products
 if ($display_mode === 'both' || $display_mode === 'products') {
-  $args['products'] = $wp_query->get_posts();
+  $products = $wp_query->get_posts();
 }
 
 // if display categories
 if ($display_mode === 'both' || $display_mode === 'subcategories') {
   $raw_cats = woocommerce_get_product_subcategories($term->term_id);
 
-  $args['categories'] = array_map(function($c) {
+  $categories = array_map(function($c) {
     // get thumbnail image
     $thumb_id = get_term_meta($c->term_id, 'thumbnail_id', true);
     $image = wp_get_attachment_image_src($thumb_id, 'medium');
@@ -40,12 +43,22 @@ if ($display_mode === 'subcategories') {
 <?php get_header(); ?>
 
 <main>
-  <header class="wp-block-group alignwide / shop-header">
-    <h1 class="has-text-align-center">
-      <?= $title ?>
-    </h1>
-    <div class="has-text-align-center">
-      <?= $content ?>
+  <header
+    class="wp-block-cover alignfull"
+    style="min-height:200px;"
+  >
+    <span
+      aria-hidden="true"
+      class="wp-block-cover__background has-color-1-light-background-color"
+    ></span>
+    <div class="wp-block-cover__inner-container">
+      <h1 class="has-color has-text-color has-text-align-center">
+        <?= $title ?>
+      </h1>
+
+      <?php if ($content): ?>
+        <?= H::markdown($content) ?>
+      <?php endif; ?>
     </div>
   </header>
 
@@ -53,10 +66,8 @@ if ($display_mode === 'subcategories') {
     get_template_part('woocommerce/parts/categories', '', $args);
   } ?>
 
-  <?php if ($products) {
-    get_template_part('woocommerce/parts/products', '', $args);
-    get_template_part('parts/pagination', '', $args);
-  } ?>
+  <?php get_template_part('woocommerce/parts/products', '', ['products' => $products]); ?>
+  <?php get_template_part('parts/pagination', '', $pagination); ?>
 </main>
 
 <?php get_footer(); ?>

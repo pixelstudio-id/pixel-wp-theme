@@ -9,7 +9,7 @@ main
 
   // @todo: problematic on some pages
   > *:first-child:not(.alignfull)
-    padding-top: var(--blockGap)
+    margin-top: var(--blockGap)
 
     body.single-post &
       padding-top: 0
@@ -33,7 +33,7 @@ main,
 
 // Add rim to the side
 main,
-.wp-block-group,
+.wp-block-group.alignfull,
 .wp-block-cover__inner-container
   @media ($below-l)
     padding-right: var(--gridRim)

@@ -138,6 +138,24 @@
 .wp-block-gallery.is-style-h-slider
   row-gap: 0.5rem
 
+  // Initially hide the second slide before loading
+  &.columns-default,
+  &.columns-3
+    > .wp-block-image:nth-child(n+4)
+      display: none
+  &.columns-2
+    > .wp-block-image:nth-child(n+3)
+      display: none
+  &.columns-4
+    > .wp-block-image:nth-child(n+5)
+      display: none
+  &.columns-5
+    > .wp-block-image:nth-child(n+6)
+      display: none
+  &.columns-6
+    > .wp-block-image:nth-child(n+7)
+      display: none
+
 // GALLERY Thumbnails
 
 .wp-block-gallery.is-style-h-thumbnails
@@ -205,6 +223,7 @@
 
   &:not(.alignfull)
     border-radius: var(--gRadius)
+    overflow: hidden
 
 
 .has-custom-content-position
@@ -230,6 +249,9 @@
   width: 100%
   height: 100%
   background-color: var(--bgColor, black)
+
+  &.has-background-gradient
+    background-color: transparent
 
   &.has-background-dim
     opacity: .5
@@ -291,7 +313,7 @@
   position: relative
   z-index: 2
   width: var(--wideSize)
-  color: var(--textColor, var(--textInvert))
+  color: var(--textColor)
 
   .wp-block-cover:not(.alignfull) &
     padding-right: var(--gridRim)
@@ -324,7 +346,7 @@ body.h-has-transparent-header
       filter: var(--textInvertFilter)
 
 // Cover Mobile
-.wp-block-cover[style*="--hMobileHeight"]
+.wp-block-cover.h-has-mobile-image
   @media ($below-s)
     min-height: var(--hMobileHeight) !important
 

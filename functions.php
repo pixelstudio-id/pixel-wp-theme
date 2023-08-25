@@ -55,8 +55,8 @@ function my_after_setup_theme() {
 
   // Pixel Library Support
   add_theme_support('h-mega-menu');
-  add_theme_support('h-faq-block-v2');
-  add_theme_support('h-icon-block');
+  add_theme_support('px-faq-block');
+  add_theme_support('px-icon-block');
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website
   add_theme_support('h-dark-mode'); // Enable this and uncomment the CSS & JS if you want dark mode
 

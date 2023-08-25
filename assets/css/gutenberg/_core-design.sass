@@ -50,6 +50,7 @@
 
   text-decoration: none
   text-transform: uppercase
+  text-align: center
   font-weight: 700
   font-size: var(--sFontSize)
   letter-spacing: 0.05em
@@ -115,7 +116,7 @@
       background-color: transparent
 
 // @since WP 5.9
-[class*="wp-block-button__width-"]
+.wp-block-button.has-custom-width
   a
     justify-content: center
 
@@ -219,7 +220,7 @@
   display: flex
   flex-wrap: wrap
   column-gap: var(--blockGap)
-  row-gap: var(--blockGap)
+  row-gap: calc(var(--blockGap) / 2)
 
   &.is-nowrap
     flex-wrap: nowrap

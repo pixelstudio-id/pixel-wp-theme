@@ -153,3 +153,27 @@ $filters: (
     --filterColor: #{$filter};
   }
 }
+
+///// GRADIENTS
+
+$gradients: (
+  'text',
+  'textInvert',
+  'color1',
+  'color1Light',
+  'color2',
+  'color2Light'
+);
+
+[class*='-gradient-background'] {
+  background-image: var(--bgGradient);
+}
+
+@each $g in $gradients {
+  .has-#{$g}-to-top-gradient-background {
+    --bgGradient: linear-gradient(to top, var(--#{$g}), transparent);
+  }
+  .has-#{$g}-to-bottom-gradient-background {
+    --bgGradient: linear-gradient(to bottom, var(--#{$g}), transparent);
+  }
+}

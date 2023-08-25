@@ -1,8 +1,10 @@
 <?php
 global $wp_query;
 
+$products_query = new WP_Query($wp_query->query_vars);
+$products = $products_query->get_posts();
+
 $page = get_post(get_option('woocommerce_shop_page_id'));
-$products = $wp_query->get_posts();
 $pagination = H::get_pagination();
 
 ///// ?>

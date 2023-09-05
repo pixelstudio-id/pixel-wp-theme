@@ -58,7 +58,6 @@ function my_after_setup_theme() {
   add_theme_support('px-faq-block');
   add_theme_support('px-icon-block');
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website
-  add_theme_support('h-dark-mode'); // Enable this and uncomment the CSS & JS if you want dark mode
 
   // Gutenberg support
   add_theme_support('block-template-parts');

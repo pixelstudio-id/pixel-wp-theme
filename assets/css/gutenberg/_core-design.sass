@@ -26,7 +26,7 @@
 // General Button
 .wp-block-button
   &.is-style-outline,
-  &.is-style-h-transparent
+  &.is-style-px-transparent
     --textColor: currentColor
 
   .wp-block-cover &
@@ -105,15 +105,16 @@
     background-color: transparent
     color: var(--textColor)
 
-  .is-style-h-transparent &
+.wp-block-button.is-style-px-transparent
+  --bgColor: rgba(0,0,0,.1)
+
+  a
     border: none
-    background-color: transparent
     text-transform: uppercase
     font-weight: 700
     color: var(--textColor)
-
-    &:hover
-      background-color: transparent
+  a:not(:hover)
+    background-color: transparent
 
 // @since WP 5.9
 .wp-block-button.has-custom-width
@@ -164,21 +165,19 @@
       flex-basis: calc(50% - var(--blockGap) / 2) !important
       
 
-.wp-block-columns.is-style-h-no-gap
+.wp-block-columns.is-style-px-no-gap
   column-gap: 0
 
   .wp-block-column
     border-radius: 0
 
-.wp-block-columns.is-style-h-wide-gap
+.wp-block-columns.is-style-px-wide-gap
   column-gap: var(--blockWideGap)
 
 
 ////// GROUP
   
 .wp-block-group
-  position: relative
-  
   &:not(.has-background)
     margin-top: var(--space3)
     margin-bottom: var(--space3)
@@ -229,6 +228,29 @@
     width: auto
     margin: 0
 
+  &[class*="px-has-columns-"]
+    display: grid
+    grid-template-columns: repeat(var(--columns, 2), 1fr)
+    row-gap: var(--blockGap)
+
+  &.px-has-columns-2
+    --columns: 2
+    @media ($below-s)
+      --columns: 1
+
+  &.px-has-columns-3
+    --columns: 3
+    @media ($below-s)
+      --columns: 1
+
+  &.px-has-columns-4
+    --columns: 4
+
+    @media ($below-s)
+      --columns: 2
+    @media ($below-xs)
+      --columns: 1
+
 ///// SPACER
 
 .wp-block-spacer
@@ -238,7 +260,7 @@
   + *
     margin-top: 0
 
-.wp-block-cover + .wp-block-spacer.is-style-h-negative + *
+.wp-block-cover + .wp-block-spacer.is-style-px-negative + *
   position: relative
   z-index: 2
 

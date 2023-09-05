@@ -21,13 +21,6 @@ div.editor-styles-wrapper .wp-block-button__link
     &:not(:hover)
       background-color: transparent !important
 
-  .is-style-h-transparent &
-    border: none
-    color: var(--textColor, var(--text))
-
-    &:not(:hover)
-      background-color: transparent !important
-
 
 ///// HEADING
 
@@ -43,8 +36,8 @@ div.editor-styles-wrapper .wp-block-button__link
   > div:nth-child(n+2)
     display: none
 
-.wp-block-image.is-style-h-thumbnail-wide,
-.wp-block-image.is-style-h-thumbnail-tall
+.wp-block-image.is-style-px-thumbnail-wide,
+.wp-block-image.is-style-px-thumbnail-tall
   position: relative
   height: 0
 
@@ -93,8 +86,8 @@ div.editor-styles-wrapper .wp-block-button__link
 
 
 .editor-styles-wrapper
-  .wp-block-image.is-style-h-thumbnail-wide
+  .wp-block-image.is-style-px-thumbnail-wide
     padding-bottom: calc(var(--contentSize) / 2)
-  .wp-block-image.is-style-h-thumbnail-tall
+  .wp-block-image.is-style-px-thumbnail-tall
     padding-bottom: var(--contentSize)
     max-width: calc(var(--contentSize) / 2)

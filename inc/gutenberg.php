@@ -4,7 +4,7 @@ if (is_admin()) {
   my_custom_block_styles();
   my_custom_block_patterns();
 
-  add_filter('h_disallowed_blocks', 'my_disallowed_blocks');
+  add_filter('px_disallowed_blocks', 'my_disallowed_blocks');
 }
 
 

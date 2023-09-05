@@ -135,7 +135,7 @@
     color: inherit
 
 // GALLERY Slider
-.wp-block-gallery.is-style-h-slider
+.wp-block-gallery.is-style-px-slider
   row-gap: 0.5rem
 
   // Initially hide the second slide before loading
@@ -158,7 +158,7 @@
 
 // GALLERY Thumbnails
 
-.wp-block-gallery.is-style-h-thumbnails
+.wp-block-gallery.is-style-px-thumbnails
   display: grid
   grid-template-columns: repeat(var(--columns, 3), 1fr)
 
@@ -181,7 +181,7 @@
   .blocks-gallery-caption
     grid-column: span var(--columns, 3)
 
-.wp-block-gallery.is-style-h-thumbnails figure
+.wp-block-gallery.is-style-px-thumbnails figure
   position: relative
   height: 100%
   margin: 0
@@ -332,10 +332,10 @@
     background-attachment: fixed
 
 // Cover Below Header
-.wp-block-cover.is-style-h-below-header
+.wp-block-cover.is-style-px-below-header
   margin-top: calc(var(--headerHeight) * -1) !important
 
-body.h-has-transparent-header
+body.px-has-transparent-header
   .header:not(.is-stuck),
   .header-mobile:not(.is-stuck)
     background-color: transparent
@@ -346,7 +346,7 @@ body.h-has-transparent-header
       filter: var(--textInvertFilter)
 
 // Cover Mobile
-.wp-block-cover.h-has-mobile-image
+.wp-block-cover.px-has-mobile-image
   @media ($below-s)
     min-height: var(--hMobileHeight) !important
 
@@ -371,11 +371,11 @@ body.h-has-transparent-header
   &:not([class*="is-vertically-aligned-"])
     align-items: center
 
-  &.is-style-h-larger-image
+  &.is-style-px-larger-image
     --columnMedia: 3fr
     --columnContent: 2fr
 
-  &.is-style-h-smaller-image
+  &.is-style-px-smaller-image
     --columnMedia: 2fr
     --columnContent: 3fr 
 

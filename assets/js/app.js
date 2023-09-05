@@ -1,4 +1,3 @@
-import myDarkMode from './_dark-mode';
 import { stickyHeader, offcanvas } from './_header';
 import swiper from './_swiper';
 
@@ -12,7 +11,7 @@ const myApp = {
   },
 
   gallerySlider() {
-    const $sliders = document.querySelectorAll('.wp-block-gallery.is-style-h-slider');
+    const $sliders = document.querySelectorAll('.wp-block-gallery.is-style-px-slider');
 
     $sliders.forEach(($slider) => {
       const matchColumns = $slider.getAttribute('class').match(/columns-(\d)/);
@@ -32,7 +31,6 @@ const myApp = {
 
 function onReady() {
   myApp.init();
-  myDarkMode.init();
   // myAnimation.init();
 
   stickyHeader.init();

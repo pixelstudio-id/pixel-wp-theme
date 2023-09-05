@@ -58,8 +58,8 @@ ol.has-background
   padding: 1rem 1.5rem
   padding-left: 2.5rem
 
-.is-style-h-inline,
-.is-style-h-inline
+.is-style-px-inline,
+.is-style-px-inline
   display: flex
   flex-wrap: wrap
   column-gap: var(--space1)
@@ -101,7 +101,7 @@ ol.has-background
       transform: translateX(-50%)
 
 // QUOTE Testimony
-.wp-block-quote.is-style-h-testimony
+.wp-block-quote.is-style-px-testimony
   position: relative
   border: none
   padding: var(--blockGap)
@@ -125,6 +125,8 @@ ol.has-background
   cite
     font-style: normal
     color: var(--text)
+    opacity: 1
+    line-height: 1.5
 
     strong
       display: block
@@ -135,11 +137,30 @@ ol.has-background
       object-position: center center
       max-width: 2.5rem
       max-height: 2.5rem
-      margin-right: 0.5rem
+      margin-right: var(--space-2)
       border-radius: 50%
 
+  &.has-text-align-right
+    padding: var(--blockGap)
+    padding-left: var(--blockWideGap)
+
+    &::before
+      right: auto
+      left: var(--blockGap)
+
+    cite img
+      float: right
+      margin-right: 0
+      margin-left: var(--space-2)
+  
+  &.has-text-align-center
+    cite img
+      float: none
+      margin: 0
+      margin-bottom: var(--space-2)
+
 // QUOTE Timeline
-.wp-block-quote.is-style-h-timeline
+.wp-block-quote.is-style-px-timeline
   --gap: 2rem
   --x: 50%
   --x2: 100%
@@ -227,7 +248,7 @@ ol.has-background
       bottom: 0
 
   @media ($above-s)
-    + .is-style-h-timeline
+    + .is-style-px-timeline
       margin-top: 0
 
     &.has-text-align-right
@@ -312,7 +333,7 @@ ol.has-background
     @media ($below-s)
       padding: 0.25rem 0.5rem
 
-  &.is-style-h-full-color
+  &.is-style-px-full-color
     tbody
       background-color: var(--bgColor)
       color: var(--textColor)

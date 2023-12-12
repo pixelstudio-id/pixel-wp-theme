@@ -3,7 +3,6 @@ global $wp_query;
 
 $title = 'Blog';
 $posts = $wp_query->get_posts();
-$pagination = H::get_pagination();
 
 ///// ?>
 

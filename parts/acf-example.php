@@ -1,10 +1,11 @@
 <?php
-  $align = $args['align'] ?? '';
-  $className = $args['className'] ?? '';
-  $anchor = $args['anchor'] ?? '';
-  $title = $args['title'] ?? '';
-  $content = $args['content'] ?? '';
-?>
+$align = $args['align'] ?? '';
+$className = $args['className'] ?? '';
+$anchor = $args['anchor'] ?? '';
+$title = $args['title'] ?? '';
+$content = $args['content'] ?? '';
+
+// ?>
 
 <section
   class="acf-block-sample <?= "{$align} {$className}" ?>"

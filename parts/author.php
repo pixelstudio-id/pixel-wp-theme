@@ -1,7 +1,8 @@
 <?php
-  $author_id = get_the_author_meta('ID');
-  $tsf = get_the_author_meta('autodescription-user-settings');
-?>
+$author_id = get_the_author_meta('ID');
+$tsf = get_the_author_meta('autodescription-user-settings');
+
+// ?>
 
 <address class="post-author">
   <figure class="author-avatar">

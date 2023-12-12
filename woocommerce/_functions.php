@@ -32,7 +32,9 @@ function my_shop_init() {
     'woocommerce_gallery_thumbnail',
     'shop_catalog',
     'shop_single',
-    'shop_thumbnail'
+    'shop_thumbnail',
+    'variation_swatches_image_size',
+    'variation_swatches_tooltip_size'
   ];
 
   foreach ($wc_image_sizes as $s) {

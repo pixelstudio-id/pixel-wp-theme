@@ -1,7 +1,8 @@
 <?php
-  $title = $args['title'] ?? 'Blog';
-  $description = $args['description'] ?? '';
-?>
+$title = $args['title'] ?? 'Blog';
+$description = $args['description'] ?? '';
+
+// ?>
 
 <div
   class="wp-block-cover alignfull"

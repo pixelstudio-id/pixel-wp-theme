@@ -5,7 +5,6 @@ $query = get_queried_object();
 $title = $query->name;
 $description = $query->description;
 $posts = $wp_query->get_posts();
-$pagination = H::get_pagination();
 
 ///// ?>
 

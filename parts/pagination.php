@@ -1,11 +1,12 @@
 <?php
-  $pagination = $args ?? null;
-  $current_page = get_query_var('paged') ? (string) get_query_var('paged') : '1';
-?>
+$pagination = $args['pagination'] ?? H::get_pagination();
+$current_page = get_query_var('paged') ? (string) get_query_var('paged') : '1';
+
+// ?>
 
 <?php if ($pagination && $pagination['total'] > 1): ?>
   <nav class="pagination">
-    <?php if (isset($pagination['prev']['link'])): ?>
+    <?php if (isset($pagination['prev'])): ?>
       <a href="<?= $pagination['prev']['link'] ?>">
     <?php else: ?>
       <a>
@@ -34,7 +35,7 @@
       <?php endforeach; ?>
     </select>
     
-    <?php if (isset($pagination['next']['link'])): ?>
+    <?php if (isset($pagination['next'])): ?>
       <a href="<?= $pagination['next']['link'] ?>">
     <?php else: ?>
       <a>

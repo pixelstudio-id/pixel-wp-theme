@@ -23,12 +23,14 @@ p.has-background
 
 .has-large-font-size
   font-size: var(--lFontSize)
+  line-height: var(--hLineHeight)
 
 .has-huge-font-size
   font-size: var(--xlFontSize)
   line-height: var(--hLineHeight)
 
-
+p.is-style-h-no-spacing
+  margin-bottom: calc(var(--blockGap) * -1)
 
 ///// HEADING
 
@@ -50,6 +52,9 @@ h1, h2, h3, h4, h5, h6
   strong
     font-weight: var(--fontWeight)
 
+  &.is-style-h-no-spacing
+    line-height: var(--lineHeight) // make line height larger
+    margin-bottom: calc(var(--blockGap) * -1)
 
 ///// LIST
 
@@ -310,6 +315,8 @@ ol.has-background
     border-collapse: collapse
     border-spacing: 0
     color: var(--text)
+  &.has-fixed-layout table
+    table-layout: fixed
 
   thead,
   tfoot
@@ -368,3 +375,18 @@ ol.has-background
   white-space: pre-wrap
   font-family: var(--fontFamily)
   font-size: var(--fontSize)
+
+///// CODE & PREFORMATTED
+
+.wp-block-code,
+.wp-block-preformatted
+  white-space: normal
+
+.wp-block-code
+  background-color: rgba(black, .05)
+  padding: 1rem
+  border: 1px solid rgba(black, .1)
+  border-radius: var(--gRadius)
+
+  code
+    padding: 0 0.5rem

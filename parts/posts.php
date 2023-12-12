@@ -1,6 +1,8 @@
 <?php
-  $posts = $args;
-?>
+global $wp_query;
+$posts = $args['posts'] ?? $wp_query->get_posts();
+
+// ?>
 
 <?php if (count($posts) > 0): ?>
   <ul class="wp-block-latest-posts wp-block-latest-posts__list is-grid columns-3 has-dates has-author alignwide">

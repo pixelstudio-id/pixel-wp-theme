@@ -29,9 +29,6 @@
   &.is-style-px-transparent
     --textColor: currentColor
 
-  .wp-block-cover &
-    --textColor: var(--textInvert)
-
 .button,
 [type="submit"],
 [type="reset"],
@@ -158,12 +155,9 @@
     border-radius: var(--gRadius)
 
   @media ($below-s)
-    flex-basis: 100% !important
-    width: 100%
-
-    .is-not-stacked-on-mobile &
-      flex-basis: calc(50% - var(--blockGap) / 2) !important
-      
+    .wp-block-columns:not(.is-not-stacked-on-mobile) &
+      flex-basis: 100% !important
+      width: 100%  
 
 .wp-block-columns.is-style-px-no-gap
   column-gap: 0

@@ -108,6 +108,7 @@
       &:not([style])
         flex: 1
       &:last-child:not(:first-child)
+        --flexAlign: flex-end
         align-items: flex-end
 
     @media ($below-s)
@@ -296,45 +297,57 @@
   
 ///// WIDGET: Search
 
-// FORM
-.search-form
-  display: flex
-  
+.widget_search
+  .search-form
+    display: flex
+    position: relative
+    
   label
     display: flex
     flex: 1
 
+  .search-field
+    padding-top: 0.25rem
+    padding-bottom: 0.25rem
 
-// INPUT
-.search-field
-  padding-top: 0.25rem
-  padding-bottom: 0.25rem
+    background-color: transparent
+    border: 1px solid transparent
+    border-radius: var(--gRadius) 0 0 var(--gRadius)
+    color: inherit
 
-  border-radius: var(--gRadius) 0 0 var(--gRadius)
+    .sidebar &
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
 
-  .sidebar &
-    padding-top: 0.5rem
-    padding-bottom: 0.5rem
+  .search-submit
+    display: flex
+    align-items: center
+    position: absolute
+    top: 50%
+    right: 0
+    transform: translateY(-50%)
 
+    padding: 1rem
+    width: 2rem
+    height: 2rem
+    background: url('../svg/search.svg') no-repeat center center
+    background-size: auto 0.75rem
 
-// SUBMIT BUTTON
-input.search-submit
-  display: flex
-  align-items: center
-  padding: 0.25em 1em
-  background: var(--color1) url('../svg/search.svg') no-repeat center center
-  background-size: auto 65%
-
-  color: transparent
-  letter-spacing: -1em
-  border-radius: 0 var(--gRadius) var(--gRadius) 0
-
-  &:hover
     color: transparent
-  
-  .sidebar &
-    padding: 0.25em 1.25em
-    background-size: auto 50%
+    letter-spacing: -1em
+    border-radius: 50%
+
+    &:hover
+      color: transparent
+      background-color: rgba(--color1, .5)
+      transform: translateY(-50%)
+    &:active
+      background-color: rgba(--color1, .75)
+      transform: translateY(-50%)
+    
+    .sidebar &
+      padding: 0.25em 1.25em
+      background-size: auto 50%
 
 
 ///// WIDGET: Toggle Offcanvas

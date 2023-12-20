@@ -11,12 +11,10 @@ $related_posts = get_posts([
   // }, get_the_category()),
 ]);
 
+the_post();
+get_header();
 ///// ?>
 
-<?php the_post(); ?>
-<?php get_header(); ?>
-
-<main role="main">
 <header class="post-hero | wp-block-cover alignfull" style="min-height:350px;">
   <span
     aria-hidden="true"
@@ -37,7 +35,7 @@ $related_posts = get_posts([
       <?php the_title(); ?>
     </h1>
 
-    <ul class="post-meta | is-style-h-inline">
+    <ul class="post-meta | is-style-px-inline">
       <li>
         By <?php the_author(); ?>
       </li>
@@ -92,7 +90,7 @@ $related_posts = get_posts([
   <h3 class="alignwide">
     <?= __('Related Posts') ?>
   </h3>
-  <?php get_template_part('parts/posts', '', $related_posts); ?>
+  <?php get_template_part('parts/posts', '', ['posts' => $related_posts]); ?>
 </footer>
 
 </main>
@@ -103,4 +101,5 @@ $related_posts = get_posts([
   }
 ?>
 
-<?php get_footer(); ?>
+<?php /////
+get_footer();

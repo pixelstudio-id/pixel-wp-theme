@@ -179,6 +179,46 @@ ul.wp-block-latest-posts
     clip: auto !important
 
 
+///// SEARCH
+
+.wp-block-search__label
+  margin-bottom: 0.25rem
+  font-weight: 700
+  font-size: var(--sFontSize)
+
+.wp-block-search__inside-wrapper 
+  display: flex
+  column-gap: var(--space-1)
+  max-width: var(--contentSize)
+  
+  input
+    flex: 1
+  button
+    background-color: var(--text)
+  
+.wp-block-search__button-inside
+  .wp-block-search__inside-wrapper
+    column-gap: 0
+    border: 1px solid
+    border-radius: var(--gRadius)
+    padding: var(--space-3)
+    background-color: var(--textInvert)
+
+    &:focus-within
+      outline: auto
+
+  input
+    border: none
+    background-color: transparent
+  input:focus
+    outline: none
+  button
+    padding: 0 var(--space-3)
+  svg
+    width: 1.75rem
+    height: 1.75rem
+
+
 ///// SOCIAL LINKS
 
 // BRAND COLORS

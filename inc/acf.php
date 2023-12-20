@@ -1,10 +1,25 @@
 <?php
 
+add_action('after_setup_theme', 'my_acf_setup', 100);
+
 // ACF Blocks
 add_action('acf/init', 'my_acf_create_blocks');
 add_filter('acf/format_value/name=sample', 'my_acf_format_sample', 10, 3);
 
 add_action('acf/input/admin_footer', 'my_acf_change_color_palette');
+
+/**
+ * @action after_setup_theme
+ */
+function my_acf_setup() {
+  if (!function_exists('acf_add_options_page')) { return; }
+
+  acf_add_options_sub_page([
+    'page_title' => 'Theme Options',
+    'parent_slug' => 'themes.php',
+    'autoload' => true, // load all at once
+  ]);
+}
 
 /**
  * Create ACF gutenberg blocks

@@ -46,7 +46,7 @@ function my_disallowed_blocks($blocks) {
     // widget
     'core/calendar',
     'core/tag-cloud',
-    'core/search',
+    // 'core/search',
     'core/latest-comments',
     'core/rss',
     'core/archives',
@@ -77,6 +77,10 @@ function my_disallowed_blocks($blocks) {
     'core/post-author-name',
     'core/post-author-biography',
     'core/post-comments-form',
+    'core/post-comment',
+    'core/post-comments-count',
+    'core/post-comments-link',
+    'core/template-part',
     'core/comments',
   ];
 

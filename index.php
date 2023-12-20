@@ -1,17 +1,12 @@
 <?php
-global $wp_query;
-
 $title = 'Blog';
-$posts = $wp_query->get_posts();
 
+get_header();
 ///// ?>
 
-<?php get_header(); ?>
+<?php get_template_part('parts/blog-header', '', [ 'title' => $title ]); ?>
+<?php get_template_part('parts/posts'); ?>
+<?php get_template_part('parts/pagination'); ?>
 
-<main role="main">
-  <?php get_template_part('parts/blog-header', '', [ 'title' => $title ]); ?>
-  <?php get_template_part('parts/posts', '', $posts); ?>
-  <?php get_template_part('parts/pagination', '', $pagination); ?>
-</main>
-
-<?php get_footer(); ?>
+<?php /////
+get_footer();

@@ -1,3 +1,4 @@
+  </main>
   <footer class="main-footer">
     <?php dynamic_sidebar('footer-top'); ?>
     <?php dynamic_sidebar('footer-mid'); ?>

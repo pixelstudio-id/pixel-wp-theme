@@ -6,6 +6,8 @@ require_once $inc . '/_helpers.php';
 // Abort if required plugins is inactive
 if (!Helper::has_required_plugins()) { return; }
 
+define('MY_DIST', get_template_directory_uri() . '/_dist');
+
 // Modules
 require_once $inc . '/enqueue.php';
 require_once $inc . '/gutenberg.php';
@@ -60,22 +62,9 @@ function my_after_setup_theme() {
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website
 
   // Gutenberg support
-  add_theme_support('block-template-parts');
   add_theme_support('responsive-embeds');
   remove_theme_support('core-block-patterns');
-  
-  /**
-   * ACF Options page
-   */
-  if (function_exists('acf_add_options_page')) {
-    acf_add_options_sub_page([
-  		'page_title' => 'Theme Options',
-  		'parent_slug' => 'themes.php',
-      'autoload' => true, // load all at once
-    ]);
-  }
 }
-
 
 // add_action('widgets_init', 'my_widgets_init');
 // function my_widgets_init() {

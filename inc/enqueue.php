@@ -13,10 +13,8 @@ add_action('enqueue_block_editor_assets', 'my_editor_assets', 100);
  * @action wp_enqueue_scripts 100
  */
 function my_public_assets() {
-  $dir = get_template_directory_uri() . '/_dist';
-
-  wp_enqueue_style('my-app', $dir . '/app.css', [], THEME_VERSION);
-  wp_enqueue_style('my-gutenberg', $dir . '/gutenberg.css', [], THEME_VERSION);
+  wp_enqueue_style('my-app', MY_DIST . '/app.css', [], THEME_VERSION);
+  wp_enqueue_style('my-gutenberg', MY_DIST . '/gutenberg.css', [], THEME_VERSION);
 
   // wp_enqueue_script('h-scroll'); // enable if using Animation
 
@@ -26,7 +24,7 @@ function my_public_assets() {
   wp_dequeue_style('global-styles');
 
   // Javascript
-  wp_enqueue_script('my-app', $dir . '/app.js', [], THEME_VERSION, true);
+  wp_enqueue_script('my-app', MY_DIST . '/app.js', [], THEME_VERSION, true);
 }
 
 /**
@@ -34,12 +32,10 @@ function my_public_assets() {
  * @action admin_enqueue_scripts 100
  */
 function my_admin_assets() {
-  $dir = get_template_directory_uri() . '/_dist';
-
   wp_dequeue_style('global-styles-css-custom-properties');
 
-  wp_enqueue_script('my-admin', $dir . '/my-admin.js', [], THEME_VERSION , true);
-  wp_enqueue_style('my-admin', $dir . '/my-admin.css', [], THEME_VERSION);
+  wp_enqueue_script('my-admin', MY_DIST . '/my-admin.js', [], THEME_VERSION , true);
+  wp_enqueue_style('my-admin', MY_DIST . '/my-admin.css', [], THEME_VERSION);
 }
 
 
@@ -49,9 +45,7 @@ function my_admin_assets() {
  */ 
 function my_editor_assets() {
   if (!is_admin()) { return; }
-  
-  $dir = get_template_directory_uri() . '/_dist';
 
-  wp_enqueue_script('my-editor', $dir . '/my-editor.js', [ 'wp-blocks', 'wp-dom' ] , THEME_VERSION, true);
-  wp_enqueue_style('my-editor', $dir . '/my-editor.css', [ 'wp-edit-blocks' ], THEME_VERSION);
+  wp_enqueue_script('my-editor', MY_DIST . '/my-editor.js', [ 'wp-blocks', 'wp-dom' ] , THEME_VERSION, true);
+  wp_enqueue_style('my-editor', MY_DIST . '/my-editor.css', [ 'wp-edit-blocks' ], THEME_VERSION);
 }

@@ -38,36 +38,34 @@ if ($display_mode === 'subcategories') {
   wc_set_loop_prop('total', 0);
 }
 
+get_header();
 ///// ?>
 
-<?php get_header(); ?>
+<header
+  class="wp-block-cover alignfull"
+  style="min-height:200px;"
+>
+  <span
+    aria-hidden="true"
+    class="wp-block-cover__background has-color-1-light-background-color"
+  ></span>
+  <div class="wp-block-cover__inner-container">
+    <h1 class="has-color has-text-color has-text-align-center">
+      <?= $title ?>
+    </h1>
 
-<main>
-  <header
-    class="wp-block-cover alignfull"
-    style="min-height:200px;"
-  >
-    <span
-      aria-hidden="true"
-      class="wp-block-cover__background has-color-1-light-background-color"
-    ></span>
-    <div class="wp-block-cover__inner-container">
-      <h1 class="has-color has-text-color has-text-align-center">
-        <?= $title ?>
-      </h1>
+    <?php if ($content): ?>
+      <?= H::markdown($content) ?>
+    <?php endif; ?>
+  </div>
+</header>
 
-      <?php if ($content): ?>
-        <?= H::markdown($content) ?>
-      <?php endif; ?>
-    </div>
-  </header>
+<?php if ($categories) {
+  get_template_part('woocommerce/parts/categories', '', $args);
+} ?>
 
-  <?php if ($categories) {
-    get_template_part('woocommerce/parts/categories', '', $args);
-  } ?>
+<?php get_template_part('woocommerce/parts/products', '', ['products' => $products]); ?>
+<?php get_template_part('parts/pagination', '', $pagination); ?>
 
-  <?php get_template_part('woocommerce/parts/products', '', ['products' => $products]); ?>
-  <?php get_template_part('parts/pagination', '', $pagination); ?>
-</main>
-
-<?php get_footer(); ?>
+<?php /////
+get_footer();

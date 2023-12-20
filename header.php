@@ -26,3 +26,5 @@
       <?php dynamic_sidebar('offcanvas'); ?>
     </div>
   </aside>
+
+  <main role="main">

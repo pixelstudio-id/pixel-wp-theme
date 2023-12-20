@@ -1,15 +1,16 @@
 ///// BUTTONS
 
 .wp-block-buttons
-  --gap: 1rem
+  --_gap: 1rem
   --bgColor: var(--color1)
   --textColor: var(--textInvert)
 
   display: flex
   align-items: center
+  justify-content: var(--flexAlign, none)
   flex-wrap: wrap
-  column-gap: var(--gap)
-  row-gap: var(--gap)
+  column-gap: var(--_gap)
+  row-gap: var(--_gap)
 
   &.aligncenter
     justify-content: center

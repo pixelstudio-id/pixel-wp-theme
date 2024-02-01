@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<main role="main">
-  <?php the_content(); ?>
-</main>
+<?php the_content(); ?>
 
 <?php get_footer(); ?>

@@ -58,6 +58,9 @@ function my_shop_theme_supports() {
   add_theme_support('wc-product-gallery-zoom');
   add_theme_support('wc-product-gallery-lightbox');
   add_theme_support('wc-product-gallery-slider');
+
+  // enable gutenberg editor in Product
+  add_theme_support('px-product-gutenberg');
 }
 
 

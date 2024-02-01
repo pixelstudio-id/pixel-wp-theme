@@ -93,8 +93,6 @@ get_header();
   <?php get_template_part('parts/posts', '', ['posts' => $related_posts]); ?>
 </footer>
 
-</main>
-
 <?php
   if (comments_open() || get_comments_number()) {
     comments_template();

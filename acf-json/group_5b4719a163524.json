@@ -38,63 +38,6 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
-        },
-        {
-            "key": "field_6447ec48af492",
-            "label": "Extra Code",
-            "name": "",
-            "aria-label": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_6447eb8a47d33",
-            "label": "HEAD Code",
-            "name": "head_code",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "Extra code added to <code>&lt;head&gt;<\/code>",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_6447ec5daf493",
-            "label": "FOOTER Code",
-            "name": "footer_code",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "Extra code added before the closing <code>&lt;\/body&gt;<\/code>",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
         }
     ],
     "location": [
@@ -102,7 +45,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-theme-options"
+                "value": "theme-options"
             }
         ]
     ],
@@ -115,5 +58,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1682436292
+    "modified": 1706976613
 }

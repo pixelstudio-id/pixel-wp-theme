@@ -1,0 +1,93 @@
+// This styling is applied to Gutenberg editor
+@import "../helpers"
+@import "../colors"
+@import "../vars"
+
+///// BUTTON
+
+div.editor-styles-wrapper .wp-block-button__link
+  background-color: var(--color1)
+  text-transform: uppercase
+  font-weight: var(--hFontWeight)
+  font-size: var(--sFontSize)
+  letter-spacing: 0.025em
+  border-radius: var(--gRadius)
+
+.wp-block-button__link
+  .is-style-outline &
+    border: 2px solid currentColor
+    color: var(--color1)
+
+    &:not(:hover)
+      background-color: transparent !important
+
+
+///// HEADING
+
+[data-type="core/heading"]
+  // <strong> in heading become thin instead
+  strong
+    font-weight: var(--fontWeight)
+
+///// EMBEDS
+
+// Hide all except Embed, Youtube, and Twitter
+.block-editor-inserter__panel-content [aria-label="Embeds"]
+  > div:nth-child(n+2)
+    display: none
+
+.wp-block-image.is-style-px-thumbnail-wide,
+.wp-block-image.is-style-px-thumbnail-tall
+  position: relative
+  height: 0
+
+  .components-resizable-box__side-handle
+    display: none
+
+  > div
+    position: static !important
+
+  > div > img
+    +absolute-fill
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center center
+
+  figcaption
+    display: block
+    overflow-y: hidden
+    background-image: linear-gradient( 0deg, rgba(black,.7), rgba(black,.5) 50%,transparent)
+    grid-column: none
+
+    position: absolute
+    z-index: 2
+    left: 0
+    bottom: 0
+    right: 0
+    
+    width: 100%
+    max-height: 75%
+    padding: 1rem
+    margin: 0
+    border: none
+
+    font-size: var(--sFontSize)
+    text-align: left
+    color: white
+    
+    @media ($below-s)
+      font-size: 0 // hide the description
+  
+  strong
+    display: block
+    font-size: var(--mFontSize)
+    font-family: var(--hFontFamily)
+
+
+.editor-styles-wrapper
+  .wp-block-image.is-style-px-thumbnail-wide
+    padding-bottom: calc(var(--contentSize) / 2)
+  .wp-block-image.is-style-px-thumbnail-tall
+    padding-bottom: var(--contentSize)
+    max-width: calc(var(--contentSize) / 2)

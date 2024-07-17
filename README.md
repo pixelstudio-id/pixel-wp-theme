@@ -6,8 +6,9 @@ Stylesheet is compiled with **Node Sass**. Visit that link to know how to compil
 
 **REQUIREMENTS**
 
-- PHP 7.3 or 7.4
-- WordPress 5.9
+- PHP 8.2 (at least 7.4)
+- WordPress 6.4 (at least 6.2)
+- Node 20.15.1
 
 **TABLE OF CONTENTS**
 
@@ -63,6 +64,10 @@ This is our workflow for starting a new project:
 1. Open `webpack.config.js` and change the variable `localDomain` to fit your localhost domain.
 1. Run `npm run dev` to watch the Sass files and launch Browser Sync that refreshes the CSS everytime you save.
 1. Before pushing to live, run `npm run prod` to minify all CSS and JS.
+
+## Vue Integration
+
+In PixelStudio, we often uses Vue for interactive elements. Read [this guide](https://github.com/pixelstudio-id/pixel-wp-library/wiki/Creating-a-Vue-Component) on our wiki for how to set it up.
 
 ## Used In
 

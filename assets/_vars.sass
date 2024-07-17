@@ -1,0 +1,122 @@
+\:root
+  // TEXT -----
+  --fontFamily : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  --fontWeight : 400
+  --lineHeight : 1.65
+  --letterSpacing  : 0
+
+  --hFontFamily    : "Noto Serif", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", "Times","Source Serif Pro", serif
+  --hFontStyle     : normal
+  --hFontWeight    : 700
+  --hLineHeight    : 1.25
+  --hLetterSpacing : 0.025em
+  --hTextTransform : initial
+  --hColor         : inherit
+
+  // https://utopia.fyi/type/calculator?c=360,16,1.125,1120,18,1.2,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  --xsFontSize : clamp(0.74rem, calc(0.81rem + -0.11vw), 0.79rem)
+  --sFontSize  : clamp(0.89rem, calc(0.89rem + -0.01vw), 0.89rem)
+  --fontSize   : clamp(1.00rem, calc(0.97rem + 0.13vw), 1.06rem)
+  --mFontSize  : clamp(1.13rem, calc(1.05rem + 0.32vw), 1.28rem)
+  --lFontSize  : clamp(1.27rem, calc(1.14rem + 0.56vw), 1.53rem)
+  --xlFontSize : clamp(1.42rem, calc(1.23rem + 0.87vw), 1.84rem)
+
+  --h6Size : var(--fontSize)
+  --h5Size : var(--mFontSize)
+  --h4Size : var(--lFontSize)
+  --h3Size : var(--xlFontSize)
+  --h2Size : clamp(1.60rem, calc(1.32rem + 1.27vw), 2.20rem)
+  --h1Size : clamp(1.80rem, calc(1.40rem + 1.77vw), 2.64rem)
+
+  // PREFORMATTED -----
+  --codeFontFamily : SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace
+  --codeFontSize   : var(--sFontSize)
+
+  // SHADOW -----
+  --shadow0: 0 0.5px 2px rgba(0,0,0, .18), 0 1.5px 6px rgba(0,0,0, .08)
+  --shadow1: 0 1.5px 4px rgba(0,0,0, .24), 0 1.5px 6px rgba(0,0,0, .12)
+  --shadow2: 0 3px 12px rgba(0,0,0, .23), 0 3px 12px rgba(0,0,0, .16)
+  --shadow3: 0 6px 12px rgba(0,0,0, .23), 0 10px 40px rgba(0,0,0, .19)
+  --shadow4: 0 10px 20px rgba(0,0,0, .19), 0 6px 6px rgba(0,0,0, .23)
+
+  --shadowThin: 0 10px 30px rgba(0,0,0, .08)
+  --shadowThin2: 0 10px 30px rgba(0,0,0, .12)
+
+  // LINK -----
+  --linkColor      : inherit
+  --linkColorHover : var(--color1)
+
+  // LAYOUT -----
+  --contentSize : 650px
+  --wideSize : #{ $size-large }
+
+  // https://utopia.fyi/space/calculator?c=360,16,1.125,1120,17,1.2,5,2,&s=0.75|0.5|0.25,1.25|1.5|2|2.5|3|4,s-l&g=s,l,xl,12
+  --space-3: clamp(0.25rem, calc(0.25rem + 0.00vw), 0.25rem)
+  --space-2: clamp(0.50rem, calc(0.47rem + 0.13vw), 0.56rem)
+  --space-1: clamp(0.75rem, calc(0.72rem + 0.13vw), 0.81rem)
+  --space0: clamp(1.00rem, calc(0.97rem + 0.13vw), 1.06rem)
+  --space1: clamp(1.25rem, calc(1.22rem + 0.13vw), 1.31rem)
+  --space2: clamp(1.50rem, calc(1.44rem + 0.26vw), 1.63rem)
+  --space3: clamp(2.00rem, calc(1.94rem + 0.26vw), 2.13rem)
+  --space4: clamp(2.50rem, calc(2.41rem + 0.39vw), 2.69rem)
+  --space5: clamp(3.00rem, calc(2.91rem + 0.39vw), 3.19rem)
+  --space6: clamp(4.00rem, calc(3.88rem + 0.53vw), 4.25rem)
+
+  --gridGap   : var(--space1)
+  --gridRim   : var(--space0)
+  --tileGap   : var(--space1)
+  
+  --blockGap  : var(--space1)
+  --blockWideGap : var(--space4)
+
+  // GLOBAL -----
+  --gRadius: 4px
+  --largeRadius: 8px
+  --gTransition: all .25s ease-in-out
+
+  --adminBarHeight : 0px
+  --headerHeight   : 78px
+
+  @media ($below-s)
+    --headerHeight: 57px
+
+  @media ($below-xs)
+    --headerHeight: 52px
+
+body.admin-bar
+  --adminBarHeight : 32px
+
+  @media ($below-adminbar)
+    --adminBarHeight : 0px
+
+// WORDPRESS VARIABLE
+\:root
+  // for use in frontend
+  --wp--preset--spacing--space-1: var(--space1)
+  --wp--preset--spacing--space-2: var(--space2)
+  --wp--preset--spacing--space-3: var(--space3)
+  --wp--preset--spacing--space-4: var(--space4)
+  --wp--preset--spacing--space-5: var(--space5)
+  --wp--preset--spacing--space-6: var(--space6)
+
+  // for use in wp-admin because it doesn't add the extra dash
+  --wp--preset--spacing--negative1: var(--negative1)
+  --wp--preset--spacing--space1: var(--space1)
+  --wp--preset--spacing--space2: var(--space2)
+  --wp--preset--spacing--space3: var(--space3)
+  --wp--preset--spacing--space4: var(--space4)
+  --wp--preset--spacing--space5: var(--space5)
+  --wp--preset--spacing--space6: var(--space6)
+
+
+///// FONT FACES
+
+@font-face
+  src: url('../_fonts/notoserif-regular.woff2')
+  font-family: 'Noto Serif'
+  font-weight: 400
+
+@font-face
+  src: url('../_fonts/notoserif-bold.woff2')
+  font-family: 'Noto Serif'
+  font-weight: 700

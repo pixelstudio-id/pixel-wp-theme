@@ -6,7 +6,10 @@ require_once $inc . '/_helpers.php';
 // Abort if required plugins is inactive
 if (!Helper::has_required_plugins()) { return; }
 
-define('MY_DIST', get_template_directory_uri() . '/_dist');
+$THEME = wp_get_theme();
+define('MY_VERSION', $THEME->get('Version'));
+define('MY_DIST', get_stylesheet_directory_uri() . '/_dist');
+define('MY_IMAGES', get_stylesheet_directory_uri() . '/images');
 
 // Modules
 require_once $inc . '/enqueue.php';
@@ -47,9 +50,11 @@ function my_before_setup_theme() {
  * @action after_setup_theme
  */
 function my_after_setup_theme() {
+  add_theme_support('post-thumbnails');
   add_theme_support('menus');
   add_theme_support('custom-logo');
   add_theme_support('title-tag');
+  add_theme_support('post-thumbnails');
   add_theme_support('html5', [
     'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'navigation-widgets', 'style', 'script'
   ]);
@@ -60,10 +65,15 @@ function my_after_setup_theme() {
   add_theme_support('px-faq-block');
   add_theme_support('px-icon-block');
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website
+  add_theme_support('h-widgets');
 
   // Gutenberg support
   add_theme_support('responsive-embeds');
   remove_theme_support('core-block-patterns');
+
+  // Nav
+  register_nav_menu('main-menu', 'Main Menu');
+  register_nav_menu('footer-menu', 'Footer Menu');
 }
 
 // add_action('widgets_init', 'my_widgets_init');

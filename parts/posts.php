@@ -15,7 +15,7 @@ $posts = $args['posts'] ?? $wp_query->get_posts();
           <?php if (has_post_thumbnail()): ?>
             <?php the_post_thumbnail('medium'); ?>
           <?php else: ?>
-            <img loading="lazy" src="<?= get_template_directory_uri(); ?>/assets/images/post-default-thumb.jpg">
+            <img loading="lazy" src="<?= get_template_directory_uri(); ?>/images/post-default-thumb.jpg">
           <?php endif; ?>
         </a>
       </div>

@@ -1,4 +1,4 @@
-import swiper from '../../assets/js/_swiper';
+import { initSwiper } from '../../assets/plugins/_swiper';
 import '../css/shop.sass';
 
 const myCart = {
@@ -44,7 +44,7 @@ const mySlider = {
       $wrapper.classList.add('swiper-wrapper');
 
       // TODO: .wc-block-grid__products should be the swiper-wrapper, not create new one
-      swiper($slider, {
+      initSwiper($slider, {
         slideClass: 'wc-block-grid__product',
         loop: true,
         slidesPerView: 2,

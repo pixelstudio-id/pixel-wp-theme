@@ -34,5 +34,15 @@
         "enforceForRenamedProperties": false
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@lib", "./_lib"]
+        ],
+        "extensions": [".js",".jsx", ".vue"]
+      }
+    }
   }
 }

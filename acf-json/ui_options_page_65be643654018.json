@@ -1,0 +1,22 @@
+{
+    "key": "ui_options_page_65be643654018",
+    "title": "Head & Footer Code",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Head & Footer Code",
+    "menu_slug": "head-footer-code",
+    "parent_slug": "options-general.php",
+    "advanced_configuration": 0,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1706976446
+}

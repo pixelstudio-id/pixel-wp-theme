@@ -1,9 +1,7 @@
   </main>
-  <footer class="main-footer">
-    <?php dynamic_sidebar('footer-top'); ?>
-    <?php dynamic_sidebar('footer-mid'); ?>
-    <?php dynamic_sidebar('footer-bottom'); ?>
-  </footer>
+
+  <?php get_template_part('parts/footer/template') ?>
+
 </div> <?php // #main-container?>
 
 <?php wp_footer(); ?>

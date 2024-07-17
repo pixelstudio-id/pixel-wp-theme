@@ -1,0 +1,290 @@
+@import "../parts-helpers"
+
+.header
+  @media ($below-nav)
+    display: none
+
+.header-mobile
+  @media ($above-nav)
+    display: none
+
+.header,
+.header-mobile
+  --_color: var(--text)
+  --_colorFilter: var(--textFilter)
+  --_hoverColor: var(--color1)
+  --_hoverColorFilter: var(--color1Filter)
+
+  position: sticky
+  top: var(--adminBarHeight)
+  z-index: 100
+  height: var(--headerHeight)
+
+  background-color: var(--siteBgColor)
+  transition: var(--gTransition)
+  font-size: var(--sFontSize)
+  color: var(--_color)
+
+  body.px-has-transparent-header &
+    --_color: var(--textInvert)
+    --_colorFilter: var(--textInvertFilter)
+    --_hoverColor: var(--color2)
+    --_hoverColorFilter: var(--color2Filter)
+
+  &.is-stuck
+    box-shadow: var(--shadow1)
+
+.header-mobile
+  padding-top: 0.5rem
+  padding-bottom: 0.5rem
+
+.header-items
+  display: grid
+  grid-template-columns: 1fr auto 1fr
+  align-items: center
+  position: relative
+  width: 100%
+  max-width: var(--wideSize)
+  margin: 0 auto
+
+  list-style-type: none
+
+  @media ($below-l)
+    padding: 0 var(--gridRim)
+
+  .header-mobile &
+    grid-template-columns: auto auto
+
+  > li
+    display: flex
+  > li:last-child
+    justify-content: flex-end
+
+///// LOGO
+
+.wp-block-site-logo
+  display: flex
+  flex-direction: column
+
+  img
+    width: auto
+    height: 40px
+    transition: var(--gTransition)
+    will-change: transform
+
+    @media ($below-xs)
+      height: 30px
+
+  &:hover
+    img
+      opacity: .75
+      transform: translateY(-2px)
+
+  // tagline
+  span
+    font-size: var(--sFontSize)
+    color: var(--text)
+
+.wp-block-site-logo__alt
+  + img
+    display: none
+
+  body.px-has-transparent-header &
+    display: none
+    + img
+      display: block
+
+  header.is-stuck &
+    + img
+      display: none
+
+///// TOGGLE
+
+.toggle-offcanvas
+  --_color: var(--text)
+
+  display: flex
+  align-items: center
+  padding: 0.5rem
+  border: 1px solid
+  border-bottom-width: 2px
+  color: var(--_color)
+
+  border-radius: var(--gRadius)
+
+  .offcanvas &
+    --_color: var(--textInvert)
+    position: absolute
+    z-index: 2
+    top: 0.5rem
+    right: var(--gridRim)
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: var(--shadow0)
+  &:active
+    transform: none
+    transition: none
+    box-shadow: none
+
+  &::after
+    content: ""
+    display: inline-block
+    background: url('./svg/bars.svg') no-repeat center center
+    background-size: contain
+    width: 1rem
+    height: 1rem
+
+    .offcanvas &
+      background-image: url('./svg/xmark.svg')
+      filter: var(--textInvertFilter)
+
+  span
+    margin-right: 0.25rem
+    line-height: 1
+    text-transform: uppercase
+    font-weight: 700
+    font-size: var(--sFontSize)
+    letter-spacing: 0.05em
+
+    @media ($below-xs)
+      display: none
+
+  // when transparent
+  body.px-has-transparent-header &
+    --toggleColor: var(--textInvert)
+
+///// HEADER MENU
+
+.header-menu
+  display: flex
+  flex-wrap: wrap
+  list-style-type: none
+  transition: var(--gTransition)
+
+  .menu-item
+    position: relative
+
+  .menu-item > a
+    position: relative
+    display: flex
+    align-items: center
+    padding: 2rem 0.75rem
+    height: 100%
+
+    line-height: 1
+    font-weight: 600
+    text-transform: uppercase
+    color: inherit
+
+  // add border-bottom as hover indicator
+  .menu-item > a::before 
+    content: ""
+    display: block
+    visibility: hidden
+    opacity: 0
+    transition: var(--gTransition)
+
+    position: absolute
+    bottom: 0
+    left: 10px
+    right: 10px
+    height: 3px
+    background-color: var(--text)
+
+    body.px-has-transparent-header &
+      background-color: var(--textInvert)
+
+  .menu-item:hover > a::before
+    visibility: visible
+    opacity: 1
+
+  .current-menu-item > a,
+  .current-page-ancestor > a,
+  .current-menu-ancestor > a,
+  .current-menu-parent > a,
+  .current_page_parent > a
+    &::before
+      visibility: visible
+      opacity: 1
+
+  .menu-item-has-children > a::after
+    content: ""
+    display: inline-block
+    margin-left: 0.5rem
+    width: 0.75rem
+    height: 0.75rem
+    background: url('./svg/chevron-down.svg') no-repeat center center
+    background-size: 100% auto
+    opacity: .75
+
+  // Arrow is to the right on 2nd submenu
+  .submenu .menu-item-has-children > a::after
+    position: absolute
+    top: 50%
+    right: 0.25rem
+    background-image: url('./svg/chevron-right.svg')
+    background-size: auto 100%
+    margin: 0
+    transform: translateY(-50%)
+
+  .submenu
+    visibility: hidden
+    opacity: 0
+    background-color: var(--textInvert)
+
+    width: 260px
+    padding: 0.5rem
+    border-radius: var(--gRadius)
+
+    list-style-type: none
+    box-shadow: var(--shadow1)
+
+  .submenu-depth-1
+    position: absolute
+    z-index: 10
+    top: 100%
+    left: 50%
+    transform: translateX(-50%)
+
+  .submenu-depth-2
+    position: absolute
+    top: 0
+    right: 0
+    left: auto
+    transform: translateX(100%)
+
+  // open submenu on hover / focus
+  .menu-item:hover .submenu-depth-1,
+  .submenu-item:hover .submenu-depth-2
+    visibility: visible
+    opacity: 1
+    transition: var(--gTransition)
+  .menu-item:focus-within .submenu-depth-1,
+  .submenu-item:focus-within .submenu-depth-2
+    visibility: visible
+    opacity: 1
+    transition: var(--gTransition)
+
+  .submenu-item
+    position: relative
+    
+    > a
+      display: flex
+      flex-direction: column
+      padding: 0.375rem 0.5rem
+      border-radius: var(--gRadius)
+      font-weight: 600
+    
+    // --bgHover is added by mega-menu class
+    > a:hover
+      background-color: var(--bgHover, #{rgba(--text, .1)})
+
+    > a:active
+      transition: none
+      transform: translateY(1px)
+
+///// BUTTON
+
+.offcanvas .wp-block-button a
+  justify-content: center

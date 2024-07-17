@@ -1,0 +1,87 @@
+@import "../parts-helpers"
+
+.subheader
+  position: relative
+  z-index: 99
+  padding-top: 0.25rem
+  padding-bottom: 0.25rem
+  background-color: var(--text)
+
+  font-size: var(--sFontSize)
+  color: var(--textInvert)
+  transition: var(--gTransition)
+
+.subheader-items
+  display: grid
+  grid-template-columns: 1fr 1fr
+  align-items: center
+  position: relative
+  width: 100%
+  max-width: var(--wideSize)
+  margin: 0 auto
+
+  list-style-type: none
+
+  @media ($below-l)
+    padding: 0 var(--gridRim)
+
+  .header-mobile &
+    grid-template-columns: auto auto
+
+  > li
+    display: flex
+  > li:last-child
+    justify-content: flex-end
+
+/////
+
+.search-form
+  display: inline-flex
+  position: relative
+    
+  label
+    display: flex
+    flex: 1
+
+  .search-field
+    padding-top: 0.25rem
+    padding-bottom: 0.25rem
+
+    background-color: transparent
+    border: 1px solid transparent
+    border-radius: var(--gRadius) 0 0 var(--gRadius)
+    color: inherit
+
+    .sidebar &
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
+
+  .search-submit
+    display: flex
+    align-items: center
+    position: absolute
+    top: 50%
+    right: 0
+    transform: translateY(-50%)
+
+    padding: 1rem
+    width: 2rem
+    height: 2rem
+    background: url('./svg/search.svg') no-repeat center center
+    background-size: auto 0.75rem
+
+    color: transparent
+    letter-spacing: -1em
+    border-radius: 50%
+
+    &:hover
+      color: transparent
+      background-color: rgba(--color1, .5)
+      transform: translateY(-50%)
+    &:active
+      background-color: rgba(--color1, .75)
+      transform: translateY(-50%)
+    
+    .sidebar &
+      padding: 0.25em 1.25em
+      background-size: auto 50%

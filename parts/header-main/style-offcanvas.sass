@@ -1,0 +1,145 @@
+@import "../parts-helpers"
+
+.offcanvas
+  position: fixed
+  z-index: 200
+  top: 0
+  bottom: 0
+  right: 0
+  left: 0
+
+  cursor: pointer
+  visibility: hidden
+  opacity: 0
+  background-color: rgba(--text, .5)
+  backdrop-filter: blur(10px)
+  
+  width: 100%
+  transition: var(--gTransition)
+
+  body.has-active-offcanvas &
+    visibility: visible
+    opacity: 1
+
+.offcanvas__inner
+  cursor: default
+
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+
+  display: flex
+  flex-direction: column
+  background: var(--text)
+  overflow-y: auto
+  overflow-x: hidden
+  transform: translateX(100%)
+  transition: var(--gTransition)
+
+  max-height: 100vh
+  height: 100%
+  width: clamp(320px, 100vw - 3rem, 360px)
+  box-shadow: var(--shadow3)
+  border-radius: var(--largeRadius) 0 0 var(--largeRadius)
+  padding-top: 2rem
+
+  list-style-type: none
+  color: var(--textInvert)
+  -webkit-overflow-scrolling: touch
+
+  body.has-active-offcanvas &
+    transform: none
+
+  > li
+    padding: 1rem
+  > li:last-child
+    margin-top: auto
+
+
+body.has-active-offcanvas
+  overflow-y: hidden
+
+///// OFFCANVAS MENU
+
+.offcanvas-menu
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  list-style-type: none
+  transition: var(--gTransition)
+  margin: 0 calc(-1 * var(--space2))
+
+  a
+    display: flex
+    align-items: center
+    position: relative
+    line-height: 1
+    color: inherit
+
+    &:active
+      transform: translateY(1px)
+      transition: none
+  
+  a::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    width: 3px
+    background-color: var(--borderColor)
+
+  .menu-item > a
+    padding: var(--space0) var(--space2)
+    font-size: var(--mFontSize)
+    letter-spacing: 0.025em
+
+  .current-menu-item > a,
+  .current-page-ancestor > a,
+  .current-menu-ancestor > a,
+  .current-menu-parent > a,
+  .current_page_parent > a
+    --borderColor: var(--textInvert)
+
+  .menu-item-has-children > a
+    position: relative
+  
+    &::after
+      content: ""
+      display: inline-block
+      opacity: .75
+      background: url('./svg/chevron-down.svg') no-repeat center center
+      background-size: 100% auto
+      filter: invert(1)
+
+      width: 0.75rem
+      height: 0.75rem
+      margin-left: auto
+
+  .submenu
+    display: none
+    background-color: var(--textDark)
+    list-style-type: none
+
+  .submenu-item > a
+    opacity: .75
+    padding: 0.75rem var(--space2)
+    font-size: var(--fontSize)
+
+  .submenu-depth-2
+    background-color: var(--textDark2)
+
+  .submenu-depth-2 a
+    font-size: var(--sFontSize)
+    padding-left: var(--space4)
+ 
+  .is-open
+    overflow: hidden
+
+    > a
+      box-shadow: var(--shadow1)
+    > a::after
+      transform: rotate(180deg)
+    > .submenu
+      display: block

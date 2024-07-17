@@ -1,40 +1,21 @@
-/*
-If you need Vue, add this in your dependencies:
-
-  "vue": "^2.6.12",
-  "vue-router": "^3.4.3"
-
-And add this in devDependencies:
-
-  "@vue/test-utils": "^1.1.0",
-  "babel-jest": "^26.3.0",
-  "jest": "^26.4.2",
-  "puppeteer": "^5.3.1",
-  "vue-jest": "^3.0.7",
-  "vue-loader": "^15.9.3",
-  "vue-style-loader": "^4.1.2",
-  "vue-template-compiler": "^2.6.12"
-
-Then uncomment all commented lines below
-*/
-
 // const { VueLoaderPlugin } = require('vue-loader');
 const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const path = require('path');
 
-const cssPath = './assets/css';
-const jsPath = './assets/js';
+const assets = './assets';
 const shopPath = './woocommerce';
 const outputPath = '_dist';
-
 const localDomain = 'http://lab.test/';
+
 const entryPoints = {
-  app: `${jsPath}/app.js`,
-  gutenberg: `${cssPath}/gutenberg.sass`,
-  'my-editor': `${jsPath}/my-editor.js`,
-  'my-admin': `${jsPath}/my-admin.js`,
+  main: `${assets}/main/main.js`,
+  gutenberg: `${assets}/gutenberg/gutenberg.js`,
+  editor: `${assets}/editor/editor.js`,
+  admin: `${assets}/admin/admin.js`,
+  plugins: `${assets}/plugins/plugins.js`,
+  parts: './parts/parts.js',
 
   shop: `${shopPath}/js/shop.js`,
   'shop-editor': `${shopPath}/css/shop-editor.sass`,
@@ -44,6 +25,7 @@ const entryPoints = {
 module.exports = {
   entry: entryPoints,
   output: {
+    publicPath: '',
     path: path.resolve(__dirname, outputPath),
     filename: '[name].js',
   },

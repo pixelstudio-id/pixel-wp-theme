@@ -1,0 +1,90 @@
+@use "sass:math"
+
+[data-grid]
+  display: -ms-grid
+  display: grid
+  grid-template-columns: repeat(12, minmax(0, 1fr))
+  grid-column-gap: var(--gridGap)
+  grid-row-gap: var(--gridGap)
+
+  max-width: calc( var(--wideSize) + var(--gridRim) * 2 )
+  padding: 0 var(--gridRim)
+  margin: 0 auto
+  width: 100%
+
+  [data-grid]
+    padding: 0
+
+[data-column]
+  --grid: 12
+  --width: 100%
+  grid-column: span var(--grid)
+
+[data-grid="centered"]
+  display: block
+
+  [data-column]
+    width: var(--width)
+    margin-right: auto
+    margin-left: auto
+
+
+// Column
+@for $i from 1 through 12
+  [data-column^="#{$i}"]
+    --grid: #{$i}
+    --width: #{ percentage(math.div($i, 12)) }
+
+// Tablet and mobile size
+@media ($below-s)
+  [data-column]
+    --grid: 12
+    --width: 100%
+
+  @for $i from 1 through 12
+    [data-column$="-#{$i}"]
+      --grid: #{$i}
+      --width: #{ percentage(math.div($i, 12)) }
+
+// Only tablet size
+@media ($above-xs) and ($below-s)
+  @for $i from 1 through 12
+    [data-column*="-#{$i}-"]
+      --grid: #{$i}
+      --width: #{ percentage(math.div($i, 12)) }
+
+
+///// TILE
+
+[data-tiles]
+  --tiles: 3
+  display: -ms-grid
+  display: grid
+  grid-template-columns: repeat( var(--tiles), minmax(0,1fr) )
+  grid-column-gap: var(--tileGap)
+  grid-row-gap: var(--tileGap)
+  list-style-type: none
+
+  > *
+    grid-column: span 1
+
+
+// Large tile
+@for $i from 1 through 10
+  [data-tiles^="#{$i}"]
+    --tiles: #{$i}
+
+// Small and XSmall tile
+@media ($below-s)
+  [data-tiles]
+    --tiles: 1
+
+  @for $i from 1 through 5
+    [data-tiles$="-#{$i}"]
+      --tiles: #{$i}
+
+// Small only tile
+@media ($above-xs) and ($below-s)
+  @for $i from 1 through 5
+    [data-tiles*="-#{$i}-"]
+      --tiles: #{$i}

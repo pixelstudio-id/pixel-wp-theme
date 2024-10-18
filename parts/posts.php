@@ -1,6 +1,8 @@
 <?php
-global $wp_query;
-$posts = $args['posts'] ?? $wp_query->get_posts();
+global $posts;
+if (isset($args['posts'])) {
+  $posts = $args['posts'];
+}
 
 // ?>
 

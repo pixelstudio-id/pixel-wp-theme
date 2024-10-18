@@ -9,7 +9,6 @@
     "swiper": "^8.3.2"
   },
   "devDependencies": {
-    "@wordpress/icons": "^10.3.0",
     "@wordpress/scripts": "^27.9.0",
     "browser-sync": "^2.29.1",
     "browser-sync-webpack-plugin": "^2.2.2",

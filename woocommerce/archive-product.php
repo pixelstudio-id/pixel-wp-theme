@@ -13,7 +13,8 @@ $products = [];
 
 // if display products
 if ($display_mode === 'both' || $display_mode === 'products') {
-  $products = $wp_query->get_posts();
+  $products_query = new WP_Query($wp_query->query_vars);
+  $products = $products_query->get_posts();
 }
 
 // if display categories

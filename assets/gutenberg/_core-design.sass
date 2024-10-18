@@ -14,13 +14,10 @@
 
   &.aligncenter
     justify-content: center
-
   &.alignright
     justify-content: flex-end
-
   &.alignleft
     justify-content: flex-start
-
   &.is-vertical
     flex-direction: column
 
@@ -174,16 +171,16 @@
   
 .wp-block-group
   &:not(.has-background)
-    margin-top: var(--space3)
-    margin-bottom: var(--space3)
+    margin-top: 2rem
+    margin-bottom: 2rem
 
   &.has-background.alignfull
-    padding-top: var(--space3)
-    padding-bottom: var(--space3)
+    padding-top: 2rem
+    padding-bottom: 2rem
     border-radius: 0
 
   &.has-background:not(.alignfull)
-    padding: var(--space1)
+    padding: 1.25rem
     border-radius: var(--gRadius)
 
   &:first-child
@@ -264,7 +261,7 @@
 .wp-block-separator
   display: block
   border-top: 2px solid var(--bgColor, var(--gray))
-  margin: var(--space4) auto
+  margin: 2.5rem auto
   padding: 0
   width: 120px
   line-height: 1
@@ -282,7 +279,7 @@
 
     &::before
       content: "···"
-      padding-left: var(--space3)
+      padding-left: 2rem
       font-family: var(--codeFontFamily)
       font-size: var(--lFontSize)
       letter-spacing: 1.5rem

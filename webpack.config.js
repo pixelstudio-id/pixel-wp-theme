@@ -83,4 +83,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      '@lib': path.resolve(__dirname, '_lib/'),
+    },
+  },
 };

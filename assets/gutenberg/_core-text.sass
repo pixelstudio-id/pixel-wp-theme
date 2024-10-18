@@ -1,7 +1,7 @@
 ///// PARAGRAPH
 
 p.has-background
-  padding: var(--space0)
+  padding: 1rem
   border-radius: var(--gRadius)
 
 .has-drop-cap:first-letter
@@ -37,6 +37,7 @@ p.is-style-h-no-spacing
 h1, h2, h3, h4, h5, h6
   &.has-background
     padding: 1rem 2rem
+    border-radius: var(--gRadius)
 
     @media ($below-s)
       padding: 0.5rem 1rem
@@ -67,8 +68,8 @@ ol.has-background
 .is-style-px-inline
   display: flex
   flex-wrap: wrap
-  column-gap: var(--space1)
-  row-gap: var(--space1)
+  column-gap: 1.25rem
+  row-gap: 1.25rem
   list-style-type: none
   padding: 0
   
@@ -142,7 +143,7 @@ ol.has-background
       object-position: center center
       max-width: 2.5rem
       max-height: 2.5rem
-      margin-right: var(--space-2)
+      margin-right: 0.5rem
       border-radius: 50%
 
   &.has-text-align-right
@@ -156,13 +157,13 @@ ol.has-background
     cite img
       float: right
       margin-right: 0
-      margin-left: var(--space-2)
+      margin-left: 0.5rem
   
   &.has-text-align-center
     cite img
       float: none
       margin: 0
-      margin-bottom: var(--space-2)
+      margin-bottom: 0.5rem
 
 // QUOTE Timeline
 .wp-block-quote.is-style-px-timeline

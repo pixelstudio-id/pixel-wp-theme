@@ -109,7 +109,7 @@
       "padding": true,
 			"margin": true,
       "spacingScale": {
-				"steps": 0
+				"steps": 1
 			},
 			"spacingSizes": [
 				{

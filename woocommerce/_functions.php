@@ -1,13 +1,16 @@
 <?php
 add_action('init', 'my_shop_init');
 add_action('after_setup_theme', 'my_shop_theme_supports');
+
 add_action('wp_enqueue_scripts', 'my_frontend_shop_assets', 101);
 add_action('admin_enqueue_scripts', 'my_admin_shop_assets', 100);
 add_action('enqueue_block_editor_assets', 'my_editor_shop_assets', 100);
-my_shop_block_styles();
+
 
 // disable built-in WooCommerce CSS
 add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+// disable image resize
+add_filter('woocommerce_resize_images', '__return_false');
 
 if (is_admin()) {
   add_action('add_meta_boxes' , 'my_modify_shop_excerpt_metabox', 40);
@@ -50,9 +53,10 @@ function my_shop_init() {
 function my_shop_theme_supports() {
   add_theme_support('woocommerce', [
     'product_grid' => [
-      'default_columns' => 4
+      'default_columns' => 4,
+      'default_rows' => 5,
     ],
-    'single_image_width' => 480,
+    'thumbnail_image_width' => 0,
   ]);
 
   add_theme_support('wc-product-gallery-zoom');
@@ -96,9 +100,9 @@ function my_admin_shop_assets() {
  */ 
 function my_editor_shop_assets() {
   if (!is_admin()) { return; }
-  
-  // wp_enqueue_script( 'my-shop-editor', MY_DIST . '/shop-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true );
-  wp_enqueue_style('my-shop-editor', MY_DIST . '/shop-editor.css', ['wp-edit-blocks'], MY_VERSION);
+
+  // wp_enqueue_script( 'my-shop-editor', $dist . '/shop-editor.js', [ 'wp-blocks', 'wp-dom' ] , THEME_VERSION, true );
+  wp_enqueue_style( 'my-shop-editor', MY_DIST . '/shop-editor.css', [ 'wp-edit-blocks' ], THEME_VERSION );
 
   wp_deregister_style('wc-block-vendors-style');
   wp_deregister_style('wc-block-style');
@@ -108,26 +112,7 @@ function my_editor_shop_assets() {
   wp_deregister_style('wc-blocks-editor'); 
 }
 
-/**
- * Custom Styles for WooCommerce's blocks
- */
-function my_shop_block_styles() {
-  // slider style
-  $slider_blocks = [
-    'woocommerce/product-best-sellers',
-    'woocommerce/handpicked-products',
-    'woocommerce/product-category',
-    'woocommerce/product-new',
-    'woocommerce/product-on-sale',
-    'woocommerce/product-top-rated',
-    'woocommerce/products-by-attribute',
-    'woocommerce/product-tag'
-  ];
 
-  foreach ($slider_blocks as $b) {
-    register_block_style($b, ['name' => 'my-slider', 'label' => 'Slider']);
-  }
-}
 
 /**
  * Override the WooCommerce excerpt box with plain textarea

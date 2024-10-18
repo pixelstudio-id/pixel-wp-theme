@@ -6,20 +6,32 @@
   &.is-style-rounded img
     border-radius: 9999px
 
-  &.alignleft img,
-  &.alignright img
-    max-width: 50%
+  &.alignleft,
+  &.alignright
+    position: relative
+    z-index: 2
     margin-bottom: 1.5rem
-
-  &.alignleft img
+    max-width: 50%
+    figcaption
+      display: block
+      margin-top: 0.25rem
+      text-align: inherit
+  &.alignleft
     float: left
-    margin-right: 1.5rem
+    padding-right: 1.5rem
     text-align: left
-
-  &.alignright img
+  &.alignright
     float: right
-    margin-left: 1.5rem
+    padding-left: 1.5rem
     text-align: right
+
+  &.alignfull
+    width: 100%
+    max-width: none
+
+    img
+      width: 100%
+      border-radius: 0
 
   &.alignfull
     img
@@ -233,13 +245,10 @@
 
   &[class*="is-position-top-"]
     --alignY: flex-start
-
   &[class*="is-position-bottom-"]
     --alignY: flex-end
-
   &[class*="-right"]
     --alignX: flex-end
-
   &[class*="-left"]
     --alignX: flex-start
 
@@ -380,7 +389,6 @@ body.px-has-transparent-header
     &.is-stacked-on-mobile
       --columnsMedia: 1fr
       --columnsContent: 1fr
-
       grid-template-columns: minmax(0, 1fr)
 
 
@@ -420,7 +428,10 @@ body.px-has-transparent-header
 
     @media ($below-xs)
       --contentPadding: 0 1rem 1rem 1rem
-    
+  
+  @media ($below-xs)
+    .is-stacked-on-mobile &
+      order: 2
 
 ///// AUDIO
 

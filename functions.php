@@ -11,6 +11,7 @@ define('MY_VERSION', $THEME->get('Version'));
 define('MY_DIST', get_stylesheet_directory_uri() . '/_dist');
 define('MY_IMAGES', get_stylesheet_directory_uri() . '/images');
 
+
 // Modules
 require_once $inc . '/enqueue.php';
 require_once $inc . '/gutenberg.php';
@@ -19,13 +20,14 @@ require_once $inc . '/acf.php';
 if (is_admin()) {
   require_once $inc . '/admin.php';
 } else {
-  // require_once $inc . '/api.php';
+  // require_once $inc . '/api.php'; // @todo - uncomment this if you're using API
   require_once $inc . '/frontend.php';
 }
 
 
 if (class_exists('WooCommerce')) {
   require_once __DIR__ . '/woocommerce/_functions.php';
+  require_once __DIR__ . '/woocommerce/_functions-gutenberg.php';
 }
 
 

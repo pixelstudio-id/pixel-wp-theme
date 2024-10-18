@@ -1,4 +1,4 @@
-@import "../parts-helpers"
+@import "@lib/helpers"
 
 .offcanvas
   position: fixed
@@ -68,7 +68,7 @@ body.has-active-offcanvas
   flex-wrap: wrap
   list-style-type: none
   transition: var(--gTransition)
-  margin: 0 calc(-1 * var(--space2))
+  margin: 0 calc(-1 * 1.5rem)
 
   a
     display: flex
@@ -91,7 +91,7 @@ body.has-active-offcanvas
     background-color: var(--borderColor)
 
   .menu-item > a
-    padding: var(--space0) var(--space2)
+    padding: 1rem 1.5rem
     font-size: var(--mFontSize)
     letter-spacing: 0.025em
 
@@ -124,7 +124,7 @@ body.has-active-offcanvas
 
   .submenu-item > a
     opacity: .75
-    padding: 0.75rem var(--space2)
+    padding: 0.75rem 1.5rem
     font-size: var(--fontSize)
 
   .submenu-depth-2
@@ -132,7 +132,7 @@ body.has-active-offcanvas
 
   .submenu-depth-2 a
     font-size: var(--sFontSize)
-    padding-left: var(--space4)
+    padding-left: 2.5rem
  
   .is-open
     overflow: hidden

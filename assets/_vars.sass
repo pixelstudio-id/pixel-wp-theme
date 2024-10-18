@@ -13,20 +13,19 @@
   --hTextTransform : initial
   --hColor         : inherit
 
-  // https://utopia.fyi/type/calculator?c=360,16,1.125,1120,18,1.2,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
-  --xsFontSize : clamp(0.74rem, calc(0.81rem + -0.11vw), 0.79rem)
-  --sFontSize  : clamp(0.89rem, calc(0.89rem + -0.01vw), 0.89rem)
-  --fontSize   : clamp(1.00rem, calc(0.97rem + 0.13vw), 1.06rem)
-  --mFontSize  : clamp(1.13rem, calc(1.05rem + 0.32vw), 1.28rem)
-  --lFontSize  : clamp(1.27rem, calc(1.14rem + 0.56vw), 1.53rem)
-  --xlFontSize : clamp(1.42rem, calc(1.23rem + 0.87vw), 1.84rem)
+  --xsFontSize : 0.75rem
+  --sFontSize  : 0.875rem
+  --fontSize   : 16px
+  --mFontSize  : 1.25rem
+  --lFontSize  : 1.5rem
+  --xlFontSize : 2rem
 
   --h6Size : var(--fontSize)
   --h5Size : var(--mFontSize)
   --h4Size : var(--lFontSize)
   --h3Size : var(--xlFontSize)
-  --h2Size : clamp(1.60rem, calc(1.32rem + 1.27vw), 2.20rem)
-  --h1Size : clamp(1.80rem, calc(1.40rem + 1.77vw), 2.64rem)
+  --h2Size : 2.25rem
+  --h1Size : 2.5rem
 
   // PREFORMATTED -----
   --codeFontFamily : SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace
@@ -50,24 +49,12 @@
   --contentSize : 650px
   --wideSize : #{ $size-large }
 
-  // https://utopia.fyi/space/calculator?c=360,16,1.125,1120,17,1.2,5,2,&s=0.75|0.5|0.25,1.25|1.5|2|2.5|3|4,s-l&g=s,l,xl,12
-  --space-3: clamp(0.25rem, calc(0.25rem + 0.00vw), 0.25rem)
-  --space-2: clamp(0.50rem, calc(0.47rem + 0.13vw), 0.56rem)
-  --space-1: clamp(0.75rem, calc(0.72rem + 0.13vw), 0.81rem)
-  --space0: clamp(1.00rem, calc(0.97rem + 0.13vw), 1.06rem)
-  --space1: clamp(1.25rem, calc(1.22rem + 0.13vw), 1.31rem)
-  --space2: clamp(1.50rem, calc(1.44rem + 0.26vw), 1.63rem)
-  --space3: clamp(2.00rem, calc(1.94rem + 0.26vw), 2.13rem)
-  --space4: clamp(2.50rem, calc(2.41rem + 0.39vw), 2.69rem)
-  --space5: clamp(3.00rem, calc(2.91rem + 0.39vw), 3.19rem)
-  --space6: clamp(4.00rem, calc(3.88rem + 0.53vw), 4.25rem)
-
-  --gridGap   : var(--space1)
-  --gridRim   : var(--space0)
-  --tileGap   : var(--space1)
+  --gridGap   : 1.25rem
+  --gridRim   : 1rem
+  --tileGap   : 1.25rem
   
-  --blockGap  : var(--space1)
-  --blockWideGap : var(--space4)
+  --blockGap  : 1.25rem
+  --blockWideGap : 2.5rem
 
   // GLOBAL -----
   --gRadius: 4px
@@ -89,8 +76,18 @@ body.admin-bar
   @media ($below-adminbar)
     --adminBarHeight : 0px
 
-// WORDPRESS VARIABLE
+// GUTENBERG PADDING/MARGIN
 \:root
+  --space-2: 0.25rem
+  --space-1: 0.5rem
+  --space0: 0.75rem
+  --space1: 1rem
+  --space2: 1.5rem
+  --space3: 2rem
+  --space4: 2.5rem
+  --space5: 3rem
+  --space6: 4rem
+
   // for use in frontend
   --wp--preset--spacing--space-1: var(--space1)
   --wp--preset--spacing--space-2: var(--space2)

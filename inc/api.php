@@ -1,46 +1,66 @@
 <?php
-/**
- * Codes related to WP API
- */
+define('MY_NAMESPACE', 'my/v1');
 
+add_action('wp_enqueue_scripts', 'my_localize_api_vars');
 add_action('rest_api_init', 'my_init_api');
-// my_dump_auth_values();
 
 /**
- * Call this function to quickly get the X-WP-Nonce and Cookie header value for testing in Postman
+ * @action wp_enqueue_scripts
  */
-function my_dump_auth_values() {
-  var_dump(wp_create_nonce('wp_rest'));
-  
-  foreach ($_COOKIE as $key => $value) {
-    $is_login_cookie = preg_match('/^wordpress_logged_in_/', $key);
-
-    if ($is_login_cookie) {
-      var_dump($key . '=' . $value);
-      break;
-    }
-  }
+function my_localize_api_vars() {
+  wp_localize_script('my-main', 'myApiSettings', [
+    'nonce' => wp_create_nonce('wp_rest'),
+    'root' => esc_url_raw(rest_url()) . MY_NAMESPACE,
+  ]);
 }
 
 /**
  * @action rest_api_init
  */
 function my_init_api() {
-  $namespace = 'h/v1';
-
   // sample-get/:id
-  register_rest_route($namespace, '/sample-get/(?P<id>\d+)', [
+  register_rest_route(MY_NAMESPACE, '/sample-get/(?P<id>\d+)', [
     'methods' => 'GET',
     'permission_callback' => '__return_true',
     'callback' => '_my_api_sample_get'
   ]);
 
   // sample-post/:id
-  register_rest_route($namespace, '/sample-post/(?P<id>\d+)', [
+  register_rest_route(MY_NAMESPACE, '/sample-post/(?P<id>\d+)', [
     'methods' => 'POST',
     'permission_callback' => '__return_true',
     'callback' => '_my_api_sample_post'
   ]);
+
+  register_rest_route(MY_NAMESPACE, '/token', [
+    'methods' => 'GET',
+    'permission_callback' => '__return_true',
+    'callback' => '_my_api_get_token'
+  ]);
+}
+
+/**
+ * Get header tokens for testing in Postman
+ * 
+ * @route GET /token
+ */
+function _my_api_get_token() {
+  $nonce = wp_create_nonce('wp_rest');
+  $cookie = '';
+
+  foreach ($_COOKIE as $key => $value) {
+    $is_login_cookie = preg_match('/^wordpress_logged_in_/', $key);
+
+    if ($is_login_cookie) {
+      $cookie = "{$key}={$value}";
+      break;
+    }
+  }
+
+  return [
+    'X-WP-Nonce' => $nonce,
+    'Cookie' => $cookie,
+  ];
 }
 
 /**

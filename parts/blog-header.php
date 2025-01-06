@@ -5,7 +5,7 @@ $description = $args['description'] ?? '';
 // ?>
 
 <div
-  class="wp-block-cover alignfull"
+  class="wp-block-cover alignfull has-custom-content-position"
   style="min-height:200px;"
 >
   <span
@@ -15,7 +15,7 @@ $description = $args['description'] ?? '';
   <div class="wp-block-cover__inner-container">
     <?php if ($title): ?>
       <h1 class="has-color has-text-color has-text-align-center">
-        <?= $title ?>
+        <?= esc_html($title) ?>
       </h1>
     <?php endif; ?>
 

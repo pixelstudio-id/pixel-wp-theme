@@ -1,4 +1,4 @@
-import './editor.sass';
+import './gutenberg-editor.sass';
 
 const { wp } = window;
 

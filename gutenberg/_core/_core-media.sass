@@ -11,19 +11,25 @@
     position: relative
     z-index: 2
     margin-bottom: 1.5rem
-    max-width: 50%
+    max-width: calc(var(--contentSize) / 2)
+
     figcaption
       display: block
       margin-top: 0.25rem
       text-align: inherit
+    img
+      width: 100%
+
   &.alignleft
     float: left
     padding-right: 1.5rem
     text-align: left
+    margin-left: calc((100% - var(--contentSize)) / 2)
   &.alignright
     float: right
     padding-left: 1.5rem
     text-align: right
+    margin-right: calc((100% - var(--contentSize)) / 2)
 
   &.alignfull
     width: 100%
@@ -113,7 +119,7 @@
   .wp-block-gallery &
     flex-grow: 1
     position: relative
-    width: calc(100% / var(--columns) - var(--gap))
+    width: calc(100% / var(--columns) - (var(--gap) * (var(--columns) - 1) / var(--columns)))
 
   .wp-block-gallery.is-cropped &
     a
@@ -138,7 +144,7 @@
     
     width: 100%
     max-height: 75%
-    padding: var(--space-2)
+    padding: 0.25rem
     border: none
     color: white
 
@@ -227,7 +233,7 @@
   position: relative
   display: flex
   align-items: stretch
-  justify-content: center
+  justify-content: var(--alignX) // @todo - is this correct? need testing
 
   min-height: 400px
   padding-top: var(--blockGap)
@@ -286,7 +292,8 @@
   &.has-background-dim-100
     opacity: 1
 
-.wp-block-cover__image-background
+.wp-block-cover__image-background,
+.wp-block-cover__video-background
   +absolute-fill
   
   border: none
@@ -319,6 +326,8 @@
   z-index: 2
   width: var(--wideSize)
   color: var(--textColor)
+  margin-right: auto
+  margin-left: auto
 
   .wp-block-cover:not(.alignfull) &
     padding-right: var(--gridRim)

@@ -7,12 +7,12 @@ $colors: (
   ( hex: #5C5C5C, var: '--grayDark',   slug: 'gray-dark' ),
   ( hex: #E0E0E0, var: '--grayLight',  slug: 'gray-light' ),
 
-  ( hex: #5C6BC0, var: '--color1',      slug: 'color-1',),
   ( hex: #283167, var: '--color1Dark',  slug: 'color-1-dark' ),
+  ( hex: #5C6BC0, var: '--color1',      slug: 'color-1',),
   ( hex: #D3D7EE, var: '--color1Light', slug: 'color-1-light' ),
 
-  ( hex: #2ecc71, var: '--color2',      slug: 'color-2' ),
   ( hex: #26A65B, var: '--color2Dark',  slug: 'color-2-dark' ),
+  ( hex: #2ecc71, var: '--color2',      slug: 'color-2' ),
   ( hex: #def7e8, var: '--color2Light', slug: 'color-2-light' ),
 
   ( hex: #e74c3c, var: '--color3',      slug: 'color-3' ),
@@ -117,15 +117,25 @@ $filters: (
   --textDark: #1E1E1F;
   --textDark2: #141415;
 
-  // Backward compatibility for old color names
-  --main: var(--color1);
-  --mainDark: var(--color1Dark);
-  --mainLight: var(--color1Light);
-  --sub: var(--color2);
-  --subDark: var(--color2Dark);
-  --subLight: var(--color2Light);
-  --extra: var(--color3);
-  --extraLight: var(--color3Light);
+  // Compatibility for newer/older color names
+  $altNames: (
+    --main: --color1,
+    --mainLight: --color1Light,
+    --mainDark: --color1Dark,
+
+    --sub: --color2,
+    --subLight: --color2Light,
+    --subDark: --color2Dark,
+
+    --black: --text,
+    --white: --textInvert,
+  );
+
+  @each $altName, $name in $altNames {
+    #{$altName}: var(#{$name});
+    #{$altName}RGB: var(#{$name}RGB);
+    #{$altName}Filter: var(#{$name}Filter);
+  }
 }
 
 ///// GUTENBERG COLOR CLASSES

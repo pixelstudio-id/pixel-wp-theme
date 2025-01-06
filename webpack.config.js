@@ -11,11 +11,11 @@ const localDomain = 'http://lab.test/';
 
 const entryPoints = {
   main: `${assets}/main/main.js`,
-  gutenberg: `${assets}/gutenberg/gutenberg.js`,
-  editor: `${assets}/editor/editor.js`,
   admin: `${assets}/admin/admin.js`,
   plugins: `${assets}/plugins/plugins.js`,
   parts: './parts/parts.js',
+  gutenberg: './gutenberg/gutenberg.js',
+  'gutenberg-editor': './gutenberg/gutenberg-editor.js',
 
   shop: `${shopPath}/js/shop.js`,
   'shop-editor': `${shopPath}/css/shop-editor.sass`,

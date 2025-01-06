@@ -10,7 +10,8 @@ add_action('rest_api_init', 'my_init_api');
 function my_localize_api_vars() {
   wp_localize_script('my-main', 'myApiSettings', [
     'nonce' => wp_create_nonce('wp_rest'),
-    'root' => esc_url_raw(rest_url()) . MY_NAMESPACE,
+    'myUrl' => esc_url_raw(rest_url()) . MY_NAMESPACE,
+    'wpUrl' => esc_url_raw(rest_url()) . 'wp/v2',
   ]);
 }
 

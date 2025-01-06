@@ -7,7 +7,7 @@ $current_page = get_query_var('paged') ? (string) get_query_var('paged') : '1';
 <?php if ($pagination && $pagination['total'] > 1): ?>
   <nav class="pagination">
     <?php if ($pagination['prev']): ?>
-      <a href="<?= $pagination['prev']['link'] ?>">
+      <a href="<?= esc_url($pagination['prev']['link']) ?>">
     <?php else: ?>
       <a>
     <?php endif; ?>
@@ -20,7 +20,7 @@ $current_page = get_query_var('paged') ? (string) get_query_var('paged') : '1';
     >
       <?php foreach ($pagination['pages'] as $page): ?>
         <?php if (isset($page['link'])): ?>
-          <option value="<?= $page['link'] ?>">
+          <option value="<?= esc_attr($page['link']) ?>">
             <?= sprintf(__('Page %s'), $page['title']) ?>
           </option>
         <?php elseif ($page['title'] === $current_page): ?>
@@ -36,7 +36,7 @@ $current_page = get_query_var('paged') ? (string) get_query_var('paged') : '1';
     </select>
     
     <?php if ($pagination['next']): ?>
-      <a href="<?= $pagination['next']['link'] ?>">
+      <a href="<?= esc_url($pagination['next']['link']) ?>">
     <?php else: ?>
       <a>
     <?php endif; ?>

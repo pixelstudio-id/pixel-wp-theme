@@ -12,6 +12,23 @@ $related_posts = get_posts([
 ]);
 
 the_post();
+
+$terms = get_the_category();
+if ($terms) {
+  $terms = array_map(function($t) {
+    $t->_link = get_category_link($t);
+    return $t;
+  }, $terms);
+}
+
+$tags = get_the_tags();
+if ($tags) {
+  $tags = array_map(function($t) {
+    $t->_link = get_tag_link($t);
+    return $t;
+  }, $tags);
+}
+
 get_header();
 ///// ?>
 
@@ -25,8 +42,8 @@ get_header();
     <img
       class="wp-block-cover__image-background"
       loading="lazy"
-      src="<?= get_the_post_thumbnail_url(null, 'large'); ?>"
-      alt="<?= get_the_title(); ?>"
+      src="<?= esc_url(get_the_post_thumbnail_url(null, 'large')) ?>"
+      alt="<?= esc_attr(get_the_title()) ?>"
     >
   <?php endif; ?>
 
@@ -44,13 +61,15 @@ get_header();
         <?= get_the_date() ?>
       </li>
 
+      <?php if ($terms): ?>
       <li>
-        <?php foreach (get_the_category() as $term): ?>
-          <a href="<?= get_category_link($term) ?>">
-            <?= $term->name ?>
+        <?php foreach ($terms as $term): ?>
+          <a href="<?= esc_url($term->_link) ?>">
+            <?= esc_html($term->name) ?>
           </a>
         <?php endforeach; ?>
       </li>
+      <?php endif; ?>
 
       <?php if (get_comments_number() !== '0'): ?>
         <li>
@@ -60,11 +79,11 @@ get_header();
         </li>
       <?php endif; ?>
 
-      <?php if (has_tag()): ?>
+      <?php if ($tags): ?>
         <li>
-          <?php foreach (get_the_tags() as $tag): ?>
-            <a href="<?= get_tag_link($tag) ?>">
-              <?= $tag->name ?>
+          <?php foreach ($tags as $tag): ?>
+            <a href="<?= esc_url($tag->_link) ?>">
+              <?= esc_html($tag->name) ?>
             </a>
           <?php endforeach; ?>
         </li>

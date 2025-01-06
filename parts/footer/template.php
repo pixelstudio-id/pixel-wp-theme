@@ -17,14 +17,14 @@ $footer_menu = wp_nav_menu([
     <ul class="footer-items">
       <li>
         <div class="wp-block-site-logo">
-          <a href="<?= get_home_url(); ?>" class="custom-logo-link" rel="home">
-            <img loading="lazy" src="<?= $logo_src ?>">
+          <a href="<?= get_home_url() ?>" class="custom-logo-link" rel="home">
+            <img loading="lazy" src="<?= esc_attr($logo_src) ?>">
           </a>
         </div>
-        <?= H::markdown($footer_text) ?>
+        <?= wp_kses_post(H::markdown($footer_text)) ?>
       </li>
       <li>
-        <?= $footer_menu ?>
+        <?= wp_kses_post($footer_menu) ?>
       </li>
       <li>
         Address

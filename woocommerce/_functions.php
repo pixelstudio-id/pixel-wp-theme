@@ -4,7 +4,6 @@ add_action('after_setup_theme', 'my_shop_theme_supports');
 
 add_action('wp_enqueue_scripts', 'my_frontend_shop_assets', 101);
 add_action('admin_enqueue_scripts', 'my_admin_shop_assets', 100);
-add_action('enqueue_block_editor_assets', 'my_editor_shop_assets', 100);
 
 
 // disable built-in WooCommerce CSS
@@ -93,25 +92,6 @@ function my_frontend_shop_assets() {
 function my_admin_shop_assets() {
   wp_enqueue_style('my-shop-admin', MY_DIST . '/shop-admin.css', [], MY_VERSION);
 }
-
-/**
- * Gutenberg editor assets
- * @action enqueue_block_editor_assets 100
- */ 
-function my_editor_shop_assets() {
-  if (!is_admin()) { return; }
-
-  // wp_enqueue_script( 'my-shop-editor', $dist . '/shop-editor.js', [ 'wp-blocks', 'wp-dom' ] , THEME_VERSION, true );
-  wp_enqueue_style( 'my-shop-editor', MY_DIST . '/shop-editor.css', [ 'wp-edit-blocks' ], THEME_VERSION );
-
-  wp_deregister_style('wc-block-vendors-style');
-  wp_deregister_style('wc-block-style');
-  wp_deregister_style('wc-block-editor');
-  wp_deregister_style('wc-blocks-vendors-style');
-  wp_deregister_style('wc-blocks-style');  
-  wp_deregister_style('wc-blocks-editor'); 
-}
-
 
 
 /**

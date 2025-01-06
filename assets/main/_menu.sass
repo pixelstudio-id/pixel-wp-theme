@@ -64,7 +64,7 @@
 
 ///// MEGA MENU
 
-.header-widgets
+.header-items
   .mega-menu
     display: flex
     flex-wrap: wrap
@@ -90,11 +90,11 @@
     list-style-type: none
 
   // open mega menu on hover / focus
-  .mega-menu:hover > ul
+  .mega-menu-wrapper:hover > ul
     visibility: visible
     opacity: 1
     transition: var(--gTransition)
-  .mega-menu:focus-within > ul
+  .mega-menu-wrapper:focus-within > ul
     visibility: visible
     opacity: 1
     transition: var(--gTransition)

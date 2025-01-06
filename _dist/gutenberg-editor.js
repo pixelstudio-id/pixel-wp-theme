@@ -9,24 +9,24 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./gutenberg/gutenberg.js":
-/*!********************************!*\
-  !*** ./gutenberg/gutenberg.js ***!
-  \********************************/
+/***/ "./gutenberg/gutenberg-editor.js":
+/*!***************************************!*\
+  !*** ./gutenberg/gutenberg-editor.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gutenberg_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gutenberg.sass */ \"./gutenberg/gutenberg.sass\");\n/* harmony import */ var _gutenberg_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_gutenberg_sass__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\n\n//# sourceURL=webpack://pixel-wp-theme/./gutenberg/gutenberg.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gutenberg_editor_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gutenberg-editor.sass */ \"./gutenberg/gutenberg-editor.sass\");\n/* harmony import */ var _gutenberg_editor_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_gutenberg_editor_sass__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nconst { wp } = window;\r\n\r\nwp.domReady(() => {\r\n  // do something\r\n});\r\n\n\n//# sourceURL=webpack://pixel-wp-theme/./gutenberg/gutenberg-editor.js?");
 
 /***/ }),
 
-/***/ "./gutenberg/gutenberg.sass":
-/*!**********************************!*\
-  !*** ./gutenberg/gutenberg.sass ***!
-  \**********************************/
+/***/ "./gutenberg/gutenberg-editor.sass":
+/*!*****************************************!*\
+  !*** ./gutenberg/gutenberg-editor.sass ***!
+  \*****************************************/
 /***/ (() => {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack://pixel-wp-theme/./gutenberg/gutenberg.sass?");
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack://pixel-wp-theme/./gutenberg/gutenberg-editor.sass?");
 
 /***/ })
 
@@ -102,7 +102,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack://pixel-w
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./gutenberg/gutenberg.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./gutenberg/gutenberg-editor.js");
 /******/ 	
 /******/ })()
 ;

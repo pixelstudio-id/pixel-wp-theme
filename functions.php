@@ -14,8 +14,8 @@ define('MY_IMAGES', get_stylesheet_directory_uri() . '/images');
 
 // Modules
 require_once $inc . '/enqueue.php';
-require_once $inc . '/gutenberg.php';
 require_once $inc . '/acf.php';
+require_once __DIR__ . '/gutenberg/index.php';
 
 if (is_admin()) {
   require_once $inc . '/admin.php';

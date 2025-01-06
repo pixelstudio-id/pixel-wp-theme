@@ -268,7 +268,9 @@
   clear: both
 
   &.is-style-wide
-    width: clamp(120px, var(--wideSize), 100%)
+    width: var(--contentSize)
+  &.is-style-wide.alignwide
+    width: var(--wideSize)
 
   &.is-style-dots
     border: 0

@@ -19,7 +19,7 @@ export class MyFetch {
   }
 
   /**
-   *
+   * Do a GET request
    */
   async get(apiPath) {
     try {
@@ -117,13 +117,13 @@ export class MyFetch {
 
 // Initiate the method
 const headers = {};
-const { nonce, root } = window.myApiSettings;
+const { nonce, myUrl, wpUrl } = window.myApiSettings;
 if (nonce) {
   headers['X-WP-Nonce'] = nonce;
 }
 
 const myFetch = new MyFetch();
-const wpFetch = new MyFetch(root, headers);
+const wpFetch = new MyFetch(myUrl, headers);
 
 export default MyFetch;
 export { myFetch, wpFetch };

@@ -1,32 +1,48 @@
 <?php
 
 if (is_admin()) {
-  my_custom_block_styles();
-  my_custom_block_patterns();
+  add_action('admin_enqueue_scripts', 'my_admin_gutenberg_assets', 100);
+  add_action('enqueue_block_editor_assets', 'my_editor_assets', 100);
 
   add_filter('px_disallowed_blocks', 'my_disallowed_blocks');
+  // add_filter('px_blocks_disabled_tab', 'my_blocks_disabled_tab');
+} else {
+  add_action('wp_enqueue_scripts', 'my_public_gutenberg_assets', 99);
 }
 
 
 /**
- * Register custom block style
+ * Front-end CSS and JS
+ * @action wp_enqueue_scripts 100
  */
-function my_custom_block_styles() {
-  // register_block_style('core/table', [ 'name' => 'sample', 'label' => 'Sample Style' ]);
+function my_public_gutenberg_assets() {
+  wp_enqueue_style('my-gutenberg', MY_DIST . '/gutenberg.css', [], MY_VERSION);
+  wp_enqueue_script('my-gutenberg', MY_DIST . '/gutenberg.js', [], MY_VERSION, true);
+
+  // Disable gutenberg default styling
+  wp_dequeue_style('wp-block-library');
+  wp_dequeue_style('wp-block-library-theme');
+  wp_dequeue_style('global-styles');
 }
 
 /**
- * Create custom patterns
- * 
- * How to format: Create the block in editor, copy it, paste it in https://codebeautify.org/javascript-escape-unescape
+ * WP Admin assets
+ * @action admin_enqueue_scripts 100
  */
-function my_custom_block_patterns() {
-  // register_block_pattern('my/name', [
-  //   'title' => 'Name',
-  //   'categories' => [ 'text' ],
-  //   'description' => '',
-  //   'content' => "",
-  // ];
+function my_admin_gutenberg_assets() {
+  wp_dequeue_style('global-styles-css-custom-properties');
+}
+
+
+/**
+ * Gutenberg editor assets
+ * @action enqueue_block_editor_assets 100
+ */ 
+function my_editor_assets() {
+  if (!is_admin()) { return; }
+
+  wp_enqueue_script('my-editor', MY_DIST . '/gutenberg-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
+  wp_enqueue_style('my-editor', MY_DIST . '/gutenberg-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
 }
 
 /**
@@ -130,4 +146,14 @@ function my_disallowed_blocks($blocks) {
     ]);
   }
   return $disabled_blocks;
+}
+
+/**
+ * @filter px_blocks_disabled_tab
+ */
+function my_blocks_disabled_tab($blocks) {
+  $blocks = array_merge($blocks, [
+    'core/file',
+  ]);
+  return $blocks;
 }

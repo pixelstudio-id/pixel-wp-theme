@@ -25,13 +25,13 @@ $menu_offcanvas = wp_nav_menu([
   <ul class="header-items">
     <li>
       <div class="wp-block-site-logo">
-        <a href="<?= get_home_url(); ?>" class="custom-logo-link" rel="home">
-          <img loading="lazy" src="<?= $logo_src ?>">
+        <a href="<?= get_home_url() ?>" class="custom-logo-link" rel="home">
+          <img loading="lazy" src="<?= esc_attr($logo_src) ?>">
         </a>
       </div>
     </li>
     <li>
-      <?= $menu ?>
+      <?= wp_kses_post($menu) ?>
     </li>
     <li>
       <div class="wp-block-button">
@@ -48,8 +48,8 @@ $menu_offcanvas = wp_nav_menu([
   <ul class="header-items">
     <li>
       <div class="wp-block-site-logo">
-        <a href="<?= get_home_url(); ?>" class="custom-logo-link" rel="home">
-          <img loading="lazy" src="<?= $logo_src ?>">
+        <a href="<?= get_home_url() ?>" class="custom-logo-link" rel="home">
+          <img loading="lazy" src="<?= esc_attr($logo_src) ?>">
         </a>
       </div>
     </li>
@@ -69,7 +69,7 @@ $menu_offcanvas = wp_nav_menu([
 
   <ul class="offcanvas__inner">
     <li>
-      <?= $menu_offcanvas ?>
+      <?= wp_kses_post($menu_offcanvas) ?>
     </li>
     <li>
       <div class="wp-block-button">

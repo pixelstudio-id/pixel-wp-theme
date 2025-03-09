@@ -1,0 +1,57 @@
+@import "@lib/helpers"
+
+.pagination
+  display: flex
+  justify-content: center
+  margin-top: var(--blockWideGap)
+  margin-bottom: var(--blockWideGap)
+
+  color: var(--text)
+  font-size: var(--sFontSize)
+
+  a,
+  select
+    display: flex
+    align-items: center
+    cursor: pointer
+
+    background-color: transparent
+    border: 2px solid var(--text)
+    border-radius: 0
+    width: auto
+
+    color: var(--text)
+    -webkit-appearance: none
+    appearance: none
+    will-change: transform
+
+    &:hover
+      background-color: rgba(--text, .1)
+      transform: translateY(-1px)
+      box-shadow: var(--shadow1)
+    &:active
+      transition: none
+      transform: none
+      box-shadow: var(--shadow0)
+
+  select
+    padding-right: 1rem
+    padding-left: 1rem
+    border-radius: var(--gRadius)
+    font-weight: var(--hFontWeight)
+    text-transform: uppercase
+
+  a
+    padding-right: 0.25rem
+    padding-left: 0.25rem
+    border: none
+  svg
+    height: 1rem
+
+  path
+    fill: var(--text)
+
+  // no href
+  a:not([href])
+    visibility: hidden
+    opacity: 0

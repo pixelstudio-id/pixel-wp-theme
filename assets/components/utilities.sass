@@ -1,0 +1,20 @@
+// This contains highly-reusable classes
+@import "@lib/helpers"
+
+.hidden,
+.is-hidden
+  display: none !important
+
+///// VISIBILITY
+
+@media ($above-s)
+  [data-visible]:not([data-visible~="desktop"])
+    display: none !important
+
+@media ($above-xs) and ($below-s)
+  [data-visible]:not([data-visible~="tablet"])
+    display: none !important
+
+@media ($below-xs)
+  [data-visible]:not([data-visible~="mobile"])
+    display: none !important

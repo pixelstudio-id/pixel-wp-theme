@@ -2,10 +2,19 @@
 
 add_shortcode('current-year', 'shortcode_current_year');
 add_filter('excerpt_length', 'my_custom_excerpt_length', 999);
+add_action('pre_get_posts', 'my_exclude_pages_from_search');
 
 add_filter('previous_post_link', 'my_adjacent_post_link', 10, 5);
 add_filter('next_post_link', 'my_adjacent_post_link', 10, 5);
 
+/**
+ * @action pre_get_posts
+ */
+function my_exclude_pages_from_search($query) {
+  if ($query->is_search() && $query->is_main_query()) {
+    $query->set('post_type', 'post');
+  }
+}
 
 
 /**

@@ -1,0 +1,24 @@
+@import "@lib/helpers"
+
+.wp-block-gallery.is-style-px-slider
+  @media ($below-s)
+    margin-left: calc(-1 * var(--gridRim))
+    margin-right: calc(-1 * var(--gridRim))
+    width: calc(100% + var(--gridRim) + var(--gridRim))
+    max-width: none
+    
+    &::part(wrapper)
+      padding-left: var(--gridRim)
+      padding-right: var(--gridRim)
+
+  img
+    height: 100%
+    object-fit: cover
+    object-position: center center
+
+  &::part(wrapper)
+    display: flex
+    align-items: stretch
+    
+  &.is-cropped .wp-block-image
+    height: auto

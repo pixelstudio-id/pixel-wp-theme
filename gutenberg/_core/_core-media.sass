@@ -102,14 +102,25 @@
     &.columns-8
       --columns: 8
 
-  @media ($below-s)
+  @media ($above-xs) and ($below-s)
     --columns: 3
 
     &.columns-2
       --columns: 2
+    &.columns-1
+      --columns: 1
   
   @media ($below-xs)
-    --columns: 2
+    --columns: 1
+
+  // if inside column or media text, make it smaller
+  .wp-block-column &,
+  .wp-block-media-text &
+    @media ($below-xs)
+      --columns: 2
+
+      &.columns-1
+        --columns: 1
 
 .blocks-gallery-caption
   order: 3

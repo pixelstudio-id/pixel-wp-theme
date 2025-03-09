@@ -16,8 +16,8 @@ if (is_admin()) {
  * @action wp_enqueue_scripts 100
  */
 function my_public_gutenberg_assets() {
-  wp_enqueue_style('my-gutenberg', MY_DIST . '/gutenberg.css', [], MY_VERSION);
-  wp_enqueue_script('my-gutenberg', MY_DIST . '/gutenberg.js', [], MY_VERSION, true);
+  wp_enqueue_style('my-gutenberg', MY_DIST . '/my-gutenberg.css', [], MY_VERSION);
+  wp_enqueue_script('my-gutenberg', MY_DIST . '/my-gutenberg.js', [], MY_VERSION, true);
 
   // Disable gutenberg default styling
   wp_dequeue_style('wp-block-library');
@@ -41,8 +41,8 @@ function my_admin_gutenberg_assets() {
 function my_editor_assets() {
   if (!is_admin()) { return; }
 
-  wp_enqueue_script('my-editor', MY_DIST . '/gutenberg-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
-  wp_enqueue_style('my-editor', MY_DIST . '/gutenberg-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
+  wp_enqueue_script('my-editor', MY_DIST . '/my-gutenberg-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
+  wp_enqueue_style('my-editor', MY_DIST . '/my-gutenberg-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
 }
 
 /**

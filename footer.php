@@ -1,6 +1,6 @@
   </main>
 
-  <?php get_template_part('parts/footer/template') ?>
+  <?php get_template_part('parts/footer/view') ?>
 
 </div> <?php // #main-container?>
 

@@ -1,0 +1,273 @@
+@import "@lib/helpers"
+  
+.menu-item:not([href])
+  cursor: default
+
+.header-menu
+  .has-columns-2
+    --_width: calc(var(--wideSize) / 2)
+    --_columns: 2
+
+    @media ($below-l)
+      --_width: 60vw
+
+  .has-columns-3
+    --_width: calc(var(--wideSize) * 3 / 4)
+    --_columns: 3
+    position: static // relative to grid instead of parent item
+
+    @media ($below-l)
+      --_width: 75vw
+
+  .has-columns-4,
+  .has-columns-5,
+  .has-columns-6
+    --_width: var(--wideSize)
+    position: static // relative to grid instead of parent item
+
+    @media ($below-l)
+      --_width: calc(100vw - var(--gridGap))
+
+  .has-columns-4
+    --_columns: 4
+  .has-columns-5
+    --_columns: 5
+  .has-columns-6
+    --_columns: 6
+
+  // Alignment
+  .is-align-left ul
+    left: 0
+    right: auto
+    transform: none
+
+  .is-align-right ul
+    left: auto 
+    right: 0
+    transform: none
+
+///// HORIZONTAL MENU
+
+.header-menu [class*="has-columns-"] .submenu
+  display: flex
+  align-items: flex-start
+  flex-wrap: wrap
+  flex-grow: 1
+  width: var(--_width)
+  padding: 0.75rem
+  border-radius: 0
+  
+  a
+    padding: 0.75rem
+    
+  li
+    width: calc(100% / var(--_columns))
+
+
+///// MEGA MENU
+
+.header-items
+  .mega-menu
+    display: flex
+    flex-wrap: wrap
+    overflow-y: auto
+    visibility: hidden
+    opacity: 0
+    background-color: var(--textInvert)
+
+    position: absolute
+    z-index: 10
+    top: 100%
+    left: 50%
+    transform: translateX(-50%)
+
+    padding: 0
+    width: var(--_width)
+    max-height: calc(100vh - var(--headingHeight, 80px))
+    border-radius: var(--gRadius)
+    box-shadow: var(--shadow1)
+    list-style-type: none
+
+  .mega-menu ul
+    list-style-type: none
+
+  // open mega menu on hover / focus
+  .mega-menu-wrapper:hover > ul
+    visibility: visible
+    opacity: 1
+    transition: var(--gTransition)
+  .mega-menu-wrapper:focus-within > ul
+    visibility: visible
+    opacity: 1
+    transition: var(--gTransition)
+
+  .mega-menu__column
+    flex-grow: 1
+    width: calc(100% / var(--_columns, 2))
+    padding: 0.75rem
+    border-radius: 0
+    
+    > a
+      opacity: .75
+      letter-spacing: 0.05em
+      text-transform: uppercase
+      font-weight: 700
+      font-size: var(--xsFontSize)
+      pointer-events: none
+
+    // hide description
+    > a > dd
+      display: none
+
+.offcanvas
+  .mega-menu
+    background-color: var(--textDark)
+    padding: 0.75rem 0
+
+  .mega-menu__column
+    > a
+      display: inline-block
+      opacity: .75
+      padding: 0.5rem 1.5rem
+
+      letter-spacing: 0.05em
+      text-transform: uppercase
+      font-weight: 700
+      font-size: var(--xsFontSize)
+      pointer-events: none
+
+    > a > dd
+      display: none
+
+  .menu-item-empty-title > a
+    display: none
+
+  .mega-menu-wrapper:not(.is-open) .mega-menu
+    display: none
+
+  .mega-menu-wrapper.is-open > a::after
+    transform: rotate(180deg)
+
+
+///// MENU HAS ICON
+
+.menu-item.menu-item-has-icon
+  img
+    margin-right: 0.25rem
+    max-width: 28px
+
+    .header &,
+    .subheader &
+      display: none
+
+    .offcanvas &
+      margin-right: 0.5rem
+
+.submenu-item.menu-item-has-icon
+  > a
+    display: grid
+    align-items: flex-start
+    grid-template-columns: 28px 1fr
+    column-gap: 0.5rem
+
+  img
+    grid-row: span 2
+    height: auto
+
+  .offcanvas &
+    a
+      align-items: center
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
+    img
+      grid-row: span 1
+    dt
+      font-weight: var(--fontWeight)
+    dd
+      display: none
+
+.submenu-item
+  // if has description
+  dd
+    opacity: .75
+    font-weight: var(--fontWeight)
+    font-size: var(--sFontSize)
+    line-height: 1.4
+
+///// MENU HAS IMAGE
+
+.menu-item-has-image
+  > a
+    flex-wrap: wrap
+    font-size: var(--sFontSize)
+
+  > a:hover img
+    opacity: .75
+
+  // if no link
+  > a[href="#"]
+    padding: 0 !important
+    pointer-events: none
+
+  img
+    margin-bottom: 0.5rem
+    width: auto
+    transition: var(--gTransition)
+
+  .offcanvas &
+    > a
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
+
+// Empty title - when the title is just "-"
+.menu-item-empty-title
+  > a
+    .offcanvas &
+      display: none
+    @media ($below-nav)
+      display: none
+
+// Has shortcode in menu item
+.menu-item-has-shortcode
+  // delete the closed and reopened <a>
+  > a:nth-child(1),
+  > a:nth-child(3)
+    display: none
+
+
+///// MENU WITH BACKGROUND
+
+.menu-item-has-background
+  --textColor: inherit
+  --bgHover: rgba(0,0,0,.1)
+  --alpha: 1
+
+  background-color: var(--bgColor, transparent)
+  color: var(--textColor, inherit)
+
+  .header &
+    padding: 0.5rem
+
+  .offcanvas &
+    --alpha: 0.5
+
+  &.menu-background-black
+    --textColor: var(--textInvert)
+    --bgColor: black
+    --bgHover: rgba(255,255,255,.2)
+
+  &.menu-background-lighter
+    --bgColor: rgba(255,255,255,.1)
+  
+  &.menu-background-darker
+    --bgColor: rgba(0,0,0,.05)
+
+  &.menu-background-white
+    --bgColor: white
+
+  &.menu-background-main
+    --bgColor: rgba(var(--color1LightRGB), var(--alpha))
+    --textColor: var(--text)
+
+  &.menu-background-sub
+    --bgColor: rgba(var(--color2LightRGB), var(--alpha))

@@ -10,12 +10,11 @@ const outputPath = '_dist';
 const localDomain = 'http://lab.test/';
 
 const entryPoints = {
-  main: `${assets}/main/main.js`,
-  admin: `${assets}/admin/admin.js`,
-  plugins: `${assets}/plugins/plugins.js`,
-  parts: './parts/parts.js',
-  gutenberg: './gutenberg/gutenberg.js',
-  'gutenberg-editor': './gutenberg/gutenberg-editor.js',
+  'my-main': `${assets}/my-main.js`,
+  'my-admin': `${assets}/my-admin.js`,
+  'my-parts': './parts/_my-parts.js',
+  'my-gutenberg': './gutenberg/my-gutenberg.js',
+  'my-editor': './gutenberg/my-editor.js',
 
   shop: `${shopPath}/js/shop.js`,
   'shop-editor': `${shopPath}/css/shop-editor.sass`,

@@ -57,7 +57,7 @@ function my_acf_render_xxx_block($block, $content='', $is_preview=false, $post_i
   $title = $fields['title'] ?? '';
   $content = $fields['content'] ?? '';
 
-  $atts = get_block_wrapper_attributes([
+  $atts = get_block_wrapper_attrib utes([
     'class' => 'acf-block-custom'
   ]);
 

@@ -1,4 +1,4 @@
-import '../css/shop.sass';
+import './my-shop.sass';
 
 const myCart = {
   init() {

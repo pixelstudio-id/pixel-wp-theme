@@ -26,8 +26,7 @@ if (is_admin()) {
 
 
 if (class_exists('WooCommerce')) {
-  require_once __DIR__ . '/woocommerce/_functions.php';
-  require_once __DIR__ . '/woocommerce/_functions-gutenberg.php';
+  require_once __DIR__ . '/woocommerce/_shop-functions.php';
 }
 
 

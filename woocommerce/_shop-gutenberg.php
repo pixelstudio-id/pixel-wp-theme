@@ -12,7 +12,7 @@ function my_editor_shop_assets() {
   if (!is_admin()) { return; }
   
   // wp_enqueue_script( 'my-shop-editor', MY_DIST . '/shop-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true );
-  wp_enqueue_style('my-shop-editor', MY_DIST . '/shop-editor.css', ['wp-edit-blocks'], MY_VERSION);
+  wp_enqueue_style('my-shop-editor', MY_DIST . '/my-shop-editor.css', ['wp-edit-blocks'], MY_VERSION);
 
   wp_deregister_style('wc-block-vendors-style');
   wp_deregister_style('wc-block-style');

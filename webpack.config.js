@@ -16,9 +16,9 @@ const entryPoints = {
   'my-gutenberg': './gutenberg/my-gutenberg.js',
   'my-editor': './gutenberg/my-editor.js',
 
-  shop: `${shopPath}/js/shop.js`,
-  'shop-editor': `${shopPath}/css/shop-editor.sass`,
-  'shop-admin': `${shopPath}/css/shop-admin.sass`,
+  'my-shop': `${shopPath}/my-shop.js`,
+  'shop-editor': `${shopPath}/my-shop-editor.sass`,
+  'shop-admin': `${shopPath}/my-shop-admin.sass`,
 };
 
 module.exports = {

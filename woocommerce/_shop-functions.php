@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/_shop-gutenberg.php';
+
 add_action('init', 'my_shop_init');
 add_action('after_setup_theme', 'my_shop_theme_supports');
 
@@ -72,8 +74,8 @@ function my_shop_theme_supports() {
  * @action wp_enqueue_scripts 101
  */
 function my_frontend_shop_assets() {
-  wp_enqueue_script('my-shop', MY_DIST . '/shop.js', [], MY_VERSION, true);
-  wp_enqueue_style('my-shop', MY_DIST . '/shop.css', [], MY_VERSION);
+  wp_enqueue_script('my-shop', MY_DIST . '/my-shop.js', [], MY_VERSION, true);
+  wp_enqueue_style('my-shop', MY_DIST . '/my-shop.css', [], MY_VERSION);
   
   wp_deregister_style('wc-block-vendors-style');
   wp_deregister_style('wc-block-style');
@@ -90,7 +92,7 @@ function my_frontend_shop_assets() {
  * @action admin_enqueue_scripts
  */
 function my_admin_shop_assets() {
-  wp_enqueue_style('my-shop-admin', MY_DIST . '/shop-admin.css', [], MY_VERSION);
+  wp_enqueue_style('my-shop-admin', MY_DIST . '/my-shop-admin.css', [], MY_VERSION);
 }
 
 

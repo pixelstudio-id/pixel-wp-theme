@@ -143,7 +143,7 @@
       object-position: center center
 
 // Caption
-.wp-block-gallery figure
+.wp-block-gallery .wp-block-image
   figcaption
     overflow-y: hidden
     background-image: linear-gradient( 0deg, rgba(black,.7), rgba(black,.5) 50%,transparent)
@@ -163,30 +163,7 @@
     opacity: .6
     color: inherit
 
-// GALLERY Slider
-.wp-block-gallery.is-style-px-slider
-  row-gap: 0.5rem
-
-  // Initially hide the second slide before loading
-  &.columns-default,
-  &.columns-3
-    > .wp-block-image:nth-child(n+4)
-      display: none
-  &.columns-2
-    > .wp-block-image:nth-child(n+3)
-      display: none
-  &.columns-4
-    > .wp-block-image:nth-child(n+5)
-      display: none
-  &.columns-5
-    > .wp-block-image:nth-child(n+6)
-      display: none
-  &.columns-6
-    > .wp-block-image:nth-child(n+7)
-      display: none
-
 // GALLERY Thumbnails
-
 .wp-block-gallery.is-style-px-thumbnails
   display: grid
   grid-template-columns: repeat(var(--columns, 3), 1fr)

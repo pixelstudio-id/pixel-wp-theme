@@ -1,0 +1,64 @@
+@import "@lib/helpers"
+  
+swiper-container
+  --_bulletColor: var(--main)
+  --_bulletColorHover: var(--mainLight)
+
+  .has-main-background-color &
+    --_bulletColor: var(--textInvert)
+    --_bulletColorHover: rgba(var(--textInvertRGB), .4)
+
+  // Next Prev
+  &::part(button-prev),
+  &::part(button-next)
+    border-radius: 50%
+    background: var(--mainLight) var(--_image) no-repeat center center
+    background-size: auto 60%
+    transition: var(--gTransition)
+    width: 2.25rem
+    height: 2.25rem
+    padding: 0.5rem
+    box-sizing: border-box
+    box-shadow: var(--shadow0)
+
+    &:hover
+      box-shadow: var(--shadow1)
+      transform: translateY(-1px)
+    &:active
+      transition: none
+      transform: none
+
+  &::part(button-prev)
+    --_image: url('./chevron-left.svg')
+    right: 3rem
+  &::part(button-next)
+    --_image: url('./chevron-right.svg')
+    right: 0.25rem
+
+  // Bullets
+  &::part(pagination)
+    position: static
+    display: flex
+    justify-content: center
+    column-gap: 0.5rem
+    margin-top: 0.5rem
+
+  &::part(bullet),
+  &::part(bullet-active)
+    position: static
+    transition: var(--gTransition)
+    width: 0.75rem
+    height: 0.75rem
+    margin: 0
+    background-color: transparent
+    border: 2px solid rgba(black, .2)
+    opacity: 1
+  &::part(bullet)
+    border-radius: 50%
+  &::part(bullet):hover
+    background-color: var(--_bulletColorHover)
+  &::part(bullet-active)
+    border-radius: 0.5rem
+    background-color: var(--_bulletColor)
+    width: 1.75rem
+    opacity: 1

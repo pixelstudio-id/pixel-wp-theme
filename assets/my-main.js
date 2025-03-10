@@ -1,4 +1,3 @@
-// import myMegaMenu from './_mega-menu';
 import './my-main.sass';
 
 import './swiper/view.sass';
@@ -13,6 +12,7 @@ import './blog/post.sass';
 import './blog/post-comments.sass';
 
 import './menu/menu.sass';
+import './menu/megamenu';
 
 // import './plugins/animation';
 // import './plugins/cf7.sass';
@@ -29,7 +29,6 @@ const myApp = {
 
 function onReady() {
   myApp.init();
-  // myMegaMenu.init();
 }
 
 function onLoad() {

@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/gallery-slider/index.php';
+
 if (is_admin()) {
   add_action('admin_enqueue_scripts', 'my_admin_gutenberg_assets', 100);
   add_action('enqueue_block_editor_assets', 'my_editor_assets', 100);
@@ -41,8 +43,8 @@ function my_admin_gutenberg_assets() {
 function my_editor_assets() {
   if (!is_admin()) { return; }
 
-  wp_enqueue_script('my-editor', MY_DIST . '/my-gutenberg-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
-  wp_enqueue_style('my-editor', MY_DIST . '/my-gutenberg-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
+  wp_enqueue_script('my-editor', MY_DIST . '/my-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
+  wp_enqueue_style('my-editor', MY_DIST . '/my-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
 }
 
 /**

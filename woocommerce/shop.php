@@ -7,12 +7,13 @@ $products = $products_query->get_posts();
 $page = get_post(get_option('woocommerce_shop_page_id'));
 $pagination = H::get_pagination();
 
+the_post();
 get_header();
 ///// ?>
 
 <?php // do_action('woocommerce_before_main_content'); ?>
 
-<?= apply_filters('the_content', $page->post_content); ?>
+<?php the_content() ?>
 
 <?php
   // do_action('woocommerce_before_shop_loop');

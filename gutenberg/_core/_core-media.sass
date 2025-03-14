@@ -337,16 +337,6 @@
 .wp-block-cover.is-style-px-below-header
   margin-top: calc(var(--headerHeight) * -1) !important
 
-body.px-has-transparent-header
-  .header:not(.is-stuck),
-  .header-mobile:not(.is-stuck)
-    background-color: transparent
-
-    .menu-item > a
-      color: var(--textInvert)
-    .menu-item.menu-item-has-children > a::after
-      filter: var(--textInvertMask)
-
 // Cover Mobile
 .wp-block-cover__image-background[style*="--pxMobileMediaURL"]
   @media ($below-s)
@@ -359,39 +349,42 @@ body.px-has-transparent-header
 ///// MEDIA TEXT
 
 .wp-block-media-text
-  --_gap: var(--blockGap)
+  --_gap: var(--blockWideGap)
   display: grid
   row-gap: var(--_gap)
   column-gap: var(--_gap)
+  padding: var(--_padding, 0)
   grid-template-columns: 50% auto
+  
+  &.alignwide
+    * + &
+      margin-top: var(--blockWideGap)
 
-  &.alignwide,
-  &.alignfull
-    --_gap: var(--blockWideGap)
-    margin-top: var(--blockWideGap)
+  &.has-background
+    --_padding: var(--blockGap)
+    border-radius: var(--gRadius)
+  &.has-background.is-image-fill
+    --_padding: 0
+    --_contentPadding: var(--blockGap)
+    column-gap: 0
+    row-gap: 0
+    overflow: hidden
 
-    &:first-child
-      margin-top: 0
+  &.has-background.is-image-fill.alignwide
+    --_contentPadding: var(--_gap)
 
   &:not([class*="is-vertically-aligned-"])
     align-items: center
 
-  &.has-background
-    border-radius: var(--gRadius)
-
   @media ($below-s)
-    --columnGap: 1rem
+    --_gap: var(--blockGap)
 
-  @media ($below-xs)
+    // has !important to override the inline custom width
     &.is-stacked-on-mobile
-      --columnsMedia: 1fr
-      --columnsContent: 1fr
-      grid-template-columns: minmax(0, 1fr)
-
+      grid-template-columns: minmax(0, 1fr) !important
 
 .wp-block-media-text__media
   margin-bottom: 0
-
   img
     width: 100%
 
@@ -399,36 +392,53 @@ body.px-has-transparent-header
     align-self: stretch
     background-repeat: no-repeat
     background-size: cover
-    border-radius: var(--gRadius)
     min-height: 150px
     height: 100%
 
     img
+      border-radius: 0
       display: none 
 
-  @media ($above-xs)
+  @media ($above-s)
     .has-media-on-the-right &
       order: 1
 
-
 .wp-block-media-text__content
-  padding: var(--contentPadding, 0)
-
-  .wp-block-media-text.has-background &
-    --contentPadding: 3rem
-
-    @media ($below-m)
-      --contentPadding: 1.5rem
-
-    @media ($below-s)
-      --contentPadding: 1rem
-
-    @media ($below-xs)
-      --contentPadding: 0 1rem 1rem 1rem
+  padding: var(--_contentPadding, 0)
   
-  @media ($below-xs)
+  @media ($below-s)
     .is-stacked-on-mobile &
       order: 2
+
+// Full Media Text - the content is still on wide container
+.wp-block-media-text.alignfull
+  --_contentPadding: var(--blockWideGap)
+  column-gap: 0
+  row-gap: 0
+  border-radius: 0
+
+  img
+    border-radius: 0
+  
+  @media ($below-m)
+    --_contentPadding: var(--blockGap)
+
+  @media ($above-s)
+    + .wp-block-media-text.alignfull
+      margin-top: 0
+
+    &.is-image-fill .wp-block-media-text__media
+      min-height: 18rem
+
+    .wp-block-media-text__content
+      > *
+        max-width: calc((var(--wideSize) - var(--_contentPadding) * 2) / 2)
+        margin-left: 0
+
+    &.has-media-on-the-right
+      .wp-block-media-text__content > *
+        margin-right: 0
+        margin-left: auto
 
 ///// AUDIO
 

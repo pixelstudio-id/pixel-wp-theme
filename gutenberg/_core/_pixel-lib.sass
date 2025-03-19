@@ -1,51 +1,73 @@
 ///// EDJE ICON
 
 .wp-block-px-icon
-  --iconSize: 60px
-  --iconPadding: 1rem
-  --iconGap: 1rem
-  --iconBg: var(--bgColor, rgba(0,0,0,.1))
+  --iconColor: currentColor
+
+  --_iconSize: 1.5rem
+  --_iconPadding: 1rem
+  --_iconBg: var(--bgColor, #e5e5e5)
+  --_gap: 1rem
+
+  --_titleSize: var(--h5Size)
+  --_descSize: var(--fontSize)
+
+  --_vAlign: flex-start
+  --_hAlign: flex-start
 
   display: flex
-  align-items: flex-start
-  background-color: transparent
-  color: var(--textColor, inherit)
+  align-items: var(--_vAlign)
+  justify-content: var(--_hAlign)
+  column-gap: var(--_gap)
+  row-gap: var(--_gap)
   border-radius: var(--gRadius)
+  background-color: transparent
+  color: inherit
 
-  &.is-style-boxed
-    --iconPadding: 0
-    --iconSize: 28px
-    --iconBg: transparent
-
-    padding: 1.25rem
-    background-color: var(--bgColor, var(--grayLight))
-    box-shadow: var(--shadow0)
+    // if has background
+  &.has-background
+    --_iconPadding: 1rem
 
   &.use-image
-    --iconPadding: 0
-    --iconSize: 60px
-    --iconBg: transparent
+    --_iconPadding: 0
+    --_iconSize: 2.75rem
+    --_iconBg: transparent
 
-  &.use-image.is-style-boxed
-    @media ($above-s) and ($below-m)
-      --iconSize: 45px
-    @media ($above-xs) and ($below-s)
-      --iconSize: 35px
+  &.size-small
+    --_iconSize: 1.125rem
+    --_iconPadding: 0.75rem
+  &.size-large
+    --_iconSize: 2rem
+    --_iconPadding: 1.25rem
 
-  &.has-icon-position-top
-    flex-wrap: wrap
+  &.is-style-boxed
+    --_iconPadding: 0
+    --_iconBg: transparent
+    padding: 1rem 1.25rem
+    background-color: var(--bgColor)
+    box-shadow: var(--shadow0)
 
   &.aligncenter
-    justify-content: center
+    --_hAlign: center
+    text-align: center
+  &.alignright
+    --_hAlign: flex-end
+    text-align: right
 
+  &.alignright,
   &.alignleft
-    justify-content: flex-end
+    float: none
+    margin-right: auto
+    margin-left: auto
 
+  &.has-no-heading,
   &.has-no-description
-    align-items: center
+    --_vAlign: center
 
-  @media ($below-m)
-    --iconGap: 0.75rem
+  &.has-icon-position-top
+    --_gap: 0.5rem
+    flex-direction: column
+    align-items: var(--_hAlign)
+    justify-content: var(--_vAlign)
 
 // if has link
 a.wp-block-px-icon
@@ -65,62 +87,113 @@ a.wp-block-px-icon
     transform: none
     transition: none
 
-
 .wp-block-px-icon__figure
   display: flex
   align-items: center
   justify-content: center
-  
-  min-width: var(--iconSize)
-  max-width: var(--iconSize)
-  width: var(--iconSize)
-  height: var(--iconSize)
-  margin: 0
-  padding: var(--iconPadding)
-  background-color: var(--iconBg)
-  border-radius: 50%
 
-  .has-icon-position-left &
-    margin-right: var(--iconGap)
+  margin: 0
+  padding: var(--_iconPadding)
+  background-color: var(--_iconBg)
+  border-radius: 50%
+  color: var(--textColor)
 
   .has-icon-position-right &
     order: 1
-    margin-left: var(--iconGap)
-
-  .has-icon-position-top &
-    margin-bottom: var(--iconGap)
 
   path,
   rect
-    fill: var(--iconColor, currentColor)
+    fill: var(--iconColor)
 
   svg
     max-width: 100%
     max-height: 100%
+    width: var(--_iconSize)
+    height: var(--_iconSize)
+  img
+    width: var(--_iconSize)
+    height: auto
+  b
+    font-family: var(--h2FontFamily)
+    font-size: var(--h1Size)
+    line-height: 1
+    color: var(--iconColor)
 
 
 .wp-block-px-icon__content
+  display: flex
+  flex-direction: column
+  row-gap: 0.75rem
   flex: 1
   width: 100%
-
-  .has-icon-position-top &
-    flex: auto
+  margin: 0
 
   dt
     font-family: var(--hFontFamily)
     font-weight: 700
-    font-size: var(--h5Size)
+    font-size: var(--_titleSize)
     line-height: var(--hLineHeight)
+    color: var(--textColor)
 
-    @media ($below-m)
-      font-size: var(--h6Size)
+    strong
+      font-weight: 400
 
   dd
-    margin-top: 0.75rem
-  dd p + p
-    margin-top: 0.5rem
+    font-size: var(--_descSize)
 
-  
+    p + p
+      margin-top: 0.5rem
+
+.wp-block-px-icon.is-style-inline
+  --_iconSize: 1rem
+  --_iconPadding: 0.5rem
+  --_gap: 0.5rem
+  display: block
+
+  &.size-small
+    --_iconSize: 0.75rem
+    --_iconPadding: 0.375rem
+  &.size-large
+    --_iconSize: 1.25rem
+    --_iconPadding: 0.75rem
+
+  &.has-background
+    --_iconPadding: 0.5rem
+
+  &.has-icon-position-right
+    figure
+      float: right
+  &.has-icon-position-top
+    .wp-block-px-icon__content
+      display: block
+
+  figure
+    display: inline-flex
+    margin-right: 0.5rem
+    border-radius: 0.25rem
+
+  dl
+    display: inline
+    align-items: center
+    width: auto
+    max-width: 100%
+    flex: none
+  dt,
+  dd,
+  p
+    display: inline
+    font-size: var(--fontSize)
+  dt
+    display: inline-block
+
+  dt
+    margin-right: 0.5rem
+  p
+    display: inline
+  p:nth-child(n+2)
+    display: block
+  p + p
+    margin-top: 1rem
 
 ///// PIXEL FAQ
 

@@ -288,6 +288,27 @@
   line-height: 1
   clear: both
 
+  &.has-background
+    height: 0.5rem
+    border-top: none
+    border-radius: var(--gRadius)
+
+  &.alignleft,
+  &.alignright
+    --_rim: calc((100vw - var(--wideSize) - var(--gridRim)) / 2)
+    .wp-block-column &
+      --_rim: 0
+
+    @media ($below-l)
+      --_rim: var(--gridRim)
+
+  &.alignleft
+    margin-right: auto
+    margin-left: var(--_rim)
+  &.alignright
+    margin-left: auto
+    margin-right: var(--_rim)
+
   &.is-style-wide
     width: var(--contentSize)
   &.is-style-wide.alignwide

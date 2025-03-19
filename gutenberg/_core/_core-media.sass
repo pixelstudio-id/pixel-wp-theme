@@ -1,7 +1,7 @@
 ///// IMAGE
 
 .wp-block-image
-  text-align: center
+  display: block
 
   &.is-style-rounded img
     border-radius: 9999px
@@ -11,7 +11,7 @@
     position: relative
     z-index: 2
     margin-bottom: 1.5rem
-    max-width: calc(var(--contentSize) / 2)
+    max-width: clamp(120px, 50%, calc(var(--contentSize) / 2))
 
     figcaption
       display: block
@@ -25,11 +25,16 @@
     padding-right: 1.5rem
     text-align: left
     margin-left: calc((100% - var(--contentSize)) / 2)
+    @media ($below-s)
+      margin-left: 0
+
   &.alignright
     float: right
     padding-left: 1.5rem
     text-align: right
     margin-right: calc((100% - var(--contentSize)) / 2)
+    @media ($below-s)
+      margin-right: 0
 
   &.alignfull
     width: 100%
@@ -349,7 +354,7 @@
 ///// MEDIA TEXT
 
 .wp-block-media-text
-  --_gap: var(--blockWideGap)
+  --_gap: var(--blockGap)
   display: grid
   row-gap: var(--_gap)
   column-gap: var(--_gap)
@@ -357,28 +362,28 @@
   grid-template-columns: 50% auto
   
   &.alignwide
-    * + &
-      margin-top: var(--blockWideGap)
+    --_gap: var(--blockWideGap)
+    @media ($below-s)
+      --_gap: var(--blockgap)
+
+  &:alignwide:not(:first-child)
+    margin-top: var(--blockWideGap)
 
   &.has-background
     --_padding: var(--blockGap)
     border-radius: var(--gRadius)
   &.has-background.is-image-fill
     --_padding: 0
+    --_gap: 0
     --_contentPadding: var(--blockGap)
-    column-gap: 0
-    row-gap: 0
     overflow: hidden
-
   &.has-background.is-image-fill.alignwide
-    --_contentPadding: var(--_gap)
+    --_contentPadding: var(--blockWideGap)
 
   &:not([class*="is-vertically-aligned-"])
     align-items: center
 
   @media ($below-s)
-    --_gap: var(--blockGap)
-
     // has !important to override the inline custom width
     &.is-stacked-on-mobile
       grid-template-columns: minmax(0, 1fr) !important
@@ -412,9 +417,8 @@
 
 // Full Media Text - the content is still on wide container
 .wp-block-media-text.alignfull
+  --_gap: 0
   --_contentPadding: var(--blockWideGap)
-  column-gap: 0
-  row-gap: 0
   border-radius: 0
 
   img

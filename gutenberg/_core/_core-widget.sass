@@ -4,17 +4,18 @@
 ul.wp-block-latest-posts
   padding-left: 0
 
-.wp-block-latest-posts
+.wp-block-latest-posts.is-grid
+  --_padding: 1.5rem
   display: grid
-  grid-template-columns: repeat(var(--postsColumns, 3), 1fr)
-  column-gap: var(--postsGap, 1.5rem)
-  row-gap: var(--postsGap, 1.5rem)
+  grid-template-columns: repeat(var(--_columns, 3), 1fr)
+  column-gap: var(--_gap, 1.5rem)
+  row-gap: var(--_gap, 1.5rem)
 
   list-style-type: none
   clear: both
 
   @media ($below-m)
-    --postsGap: 1rem
+    --_gap: 1rem
 
   // the top spacing should follow Group sizing
   &.alignwide,
@@ -22,52 +23,90 @@ ul.wp-block-latest-posts
     --blockGap: var(--blockWideGap)
 
   li
+    overflow: hidden
+    border-radius: var(--largeRadius)
     clear: both
-
-  a
-    display: block
-    text-decoration: none
-  a:hover
-    color: var(--linkColorHover)
-    text-decoration: underline
-
-  li > a
-    font-family: var(--hFontFamily)
-    font-size: var(--postsFontSize, var(--h5Size))
+    background-color: var(--textInvert)
+    padding: var(--_padding)
+    box-shadow: 0 1px 0 0 rgba(black, .1)
 
   &.columns-1
-    --postsColumns: 1
+    --_columns: 1
   &.columns-2
-    --postsColumns: 2
+    --_columns: 2
   &.columns-3
-    --postsColumns: 3
+    --_columns: 3
   &.columns-4
-    --postsColumns: 4
+    --_columns: 4
   &.columns-5
-    --postsColumns: 5
+    --_columns: 5
   &.columns-6
-    --postsColumns: 6
+    --_columns: 6
 
   &.columns-2,
   &.columns-3
     @media ($below-s)
-      --postsGap: 1rem
-      --postsColumns: 2
+      --_gap: 1rem
+      --_columns: 2
     @media ($below-xs)
-      --postsColumns: 1
+      --_columns: 1
 
   &.columns-4,
   &.columns-5,
   &.columns-6
-    --postsGap: 1rem
-    --postsFontSize: var(--h6Size)
+    --_gap: 1rem
 
     @media ($below-m)
-      --postsColumns: 3
+      --_columns: 3
     @media ($below-s)
-      --postsColumns: 2
+      --_columns: 2
 
+.wp-block-latest-posts.is-list
+  --_imageSize: 6rem
 
+  display: flex
+  flex-direction: column
+  row-gap: 1.5rem
+  list-style-type: none
+  max-width: var(--contentSize)
+
+  @container (max-width:320px)
+    --_imageSize: 0
+
+  li
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    position: relative
+    padding-left: calc(var(--_imageSize) + 0.75rem)
+    column-gap: 1rem
+    row-gap: 0.25rem
+    min-height: var(--_imageSize)
+
+.wp-block-latest-posts__post-title
+  line-height: 1.4
+  font-family: var(--hFontFamily)
+
+  .is-grid &
+    display: block
+    margin-top: 0.75rem
+    text-decoration: none
+    font-weight: 700
+    font-size: var(--h5Size)
+
+    &:hover
+      color: var(--linkColorHover)
+      text-decoration: underline
+
+  .is-list &
+    display: block
+    width: 100%
+    text-decoration: none
+    font-weight: 700
+    font-size: var(--h6Size)
+
+    &:hover
+      text-decoration: underline
 
 .wp-block-latest-posts__post-author,
 .wp-block-latest-posts__post-date
@@ -82,49 +121,51 @@ ul.wp-block-latest-posts
   margin-right: 0.5rem
 
 .wp-block-latest-posts__featured-image
-  margin-bottom: 0.5rem
-  max-width: var(--postsImageWidth, 100%)
-
-  img
-    box-shadow: var(--shadow0)
-    width: 100%
-    max-height: 150px
-    object-fit: cover
-
   a:hover
     opacity: .75
+  &:hover + a
+    text-decoration: underline
 
-  &.alignleft,
-  &.alignright
-    --postsImageWidth: 45%
-
-    .columns-4 &,
-    .columns-5 &,
-    .columns-6 &
-      --postsImageWidth: 35%
-
-  &.alignleft
-    float: left
-    margin-right: 1rem
-
-  &.alignright
-    float: right
-    margin-left: 1rem
-  
-  &.aligncenter,
   .is-grid &
-    --postsMaxWidth: none
+    margin: calc(-1 * var(--_padding))
+    margin-bottom: 0
 
-  // underline the title when hovering the image
-  &:hover + a
-    text-decoration: underline
+    img
+      width: 100%
+      max-width: auto
+      max-height: 150px
+      object-fit: cover
+      box-shadow: var(--shadow0)
+      border-radius: 0
 
-  // underline the title when hovering the image
-  &:hover + a
-    text-decoration: underline
+  .is-list &
+    position: absolute
+    top: 0
+    left: 0
+
+    img
+      min-width: var(--_imageSize)
+      width: var(--_imageSize)
+      height: var(--_imageSize)
+      aspect-ratio: 1/1
+      object-fit: cover
+      object-position: center center
+      border-radius: var(--gRadius)
+
+    @container (max-width:320px)
+      position: static
+      img
+        width: 100%
+        height: auto
+        aspect-ratio: 3/1
 
 .wp-block-latest-posts__post-excerpt
-  font-size: var(--sFontSize)
+  .is-grid &
+    margin-top: 0.5rem
+    font-size: var(--sFontSize)
+
+  .is-list &
+    font-size: var(--sFontSize)
 
 ///// EMBED
 

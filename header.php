@@ -13,5 +13,3 @@
 
   <?php get_template_part('parts/header-sub/view') ?>
   <?php get_template_part('parts/header-main/view') ?>
-
-  <main role="main">

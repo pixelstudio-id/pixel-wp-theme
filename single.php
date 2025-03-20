@@ -32,85 +32,82 @@ if ($tags) {
 get_header();
 ///// ?>
 
-<header class="post-hero | wp-block-cover alignfull" style="min-height:350px;">
-  <span
-    aria-hidden="true"
-    class="wp-block-cover__background has-color-1-background-color has-background-dim"
-  ></span>
-
-  <?php if (has_post_thumbnail()): ?>
-    <img
-      class="wp-block-cover__image-background"
-      loading="lazy"
-      src="<?= esc_url(get_the_post_thumbnail_url(null, 'large')) ?>"
-      alt="<?= esc_attr(get_the_title()) ?>"
-    >
-  <?php endif; ?>
-
-  <div class="wp-block-cover__inner-container">
-    <h1 class="has-color has-text-invert-color has-text-align-center">
-      <?php the_title(); ?>
-    </h1>
-
-    <ul class="post-meta | is-style-px-inline">
-      <li>
-        By <?php the_author(); ?>
-      </li>
-
-      <li>
-        <?= get_the_date() ?>
-      </li>
-
-      <?php if ($terms): ?>
-      <li>
-        <?php foreach ($terms as $term): ?>
-          <a href="<?= esc_url($term->_link) ?>">
-            <?= esc_html($term->name) ?>
-          </a>
-        <?php endforeach; ?>
-      </li>
+<div class="post-wrapper">
+  <main class="post-main" role="main">
+    <header class="post-header">
+      <?php if (has_post_thumbnail()): ?>
+        <img
+          loading="lazy"
+          src="<?= esc_url(get_the_post_thumbnail_url(null, 'large')) ?>"
+          alt="Banner of <?= esc_attr(get_the_title()) ?>"
+        >
       <?php endif; ?>
-
-      <?php if (get_comments_number() !== '0'): ?>
+      <h1>
+        <?php the_title() ?>
+      </h1>
+      <ul class="post-header__meta">
         <li>
-          <a href="#comments">
-            <?= sprintf(__('%d Comments'), get_comments_number()) ?>
-          </a>
+          By <?php the_author(); ?>
         </li>
-      <?php endif; ?>
 
-      <?php if ($tags): ?>
         <li>
-          <?php foreach ($tags as $tag): ?>
-            <a href="<?= esc_url($tag->_link) ?>">
-              <?= esc_html($tag->name) ?>
+          <?= get_the_date() ?>
+        </li>
+
+        <?php if ($terms): ?>
+        <li>
+          <?php foreach ($terms as $term): ?>
+            <a href="<?= esc_url($term->_link) ?>">
+              <?= esc_html($term->name) ?>
             </a>
           <?php endforeach; ?>
         </li>
-      <?php endif; ?>
-    </ul>
-  </div>
-</header>
+        <?php endif; ?>
 
-<?php the_content(); ?>
+        <?php if (get_comments_number() !== '0'): ?>
+          <li>
+            <a href="#comments">
+              <?= sprintf(__('%d Comments'), get_comments_number()) ?>
+            </a>
+          </li>
+        <?php endif; ?>
 
-<?php if (function_exists('sharing_display')) {
-  do_shortcode('[h-jetpack-sharing]');
-} ?>
+        <?php if ($tags): ?>
+          <li>
+            <?php foreach ($tags as $tag): ?>
+              <a href="<?= esc_url($tag->_link) ?>">
+                <?= esc_html($tag->name) ?>
+              </a>
+            <?php endforeach; ?>
+          </li>
+        <?php endif; ?>
+      </ul>
+    </header>
 
-<?php get_template_part('parts/author', ''); ?>
+    <?php the_content() ?>
 
-<nav class="post-nav">
-  <?php previous_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
-  <?php next_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
-</nav>
+    <?php get_template_part('parts/author', ''); ?>
 
-<footer class="related-posts / wp-block-group has-background has-text-invert-background-color alignfull">
-  <h3 class="alignwide">
-    <?= __('Related Posts') ?>
-  </h3>
-  <?php get_template_part('parts/posts', '', ['posts' => $related_posts]); ?>
-</footer>
+    <nav class="post-nav">
+      <?php previous_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
+      <?php next_post_link('%link', '%thumbnail <p>%label %title</p>'); ?>
+    </nav>
+  </main>
+  <aside class="post-sidebar">
+    <div class="post-sidebar__widget">
+      <h5>
+        <?= __('Related Posts') ?>
+      </h5>
+      <?php get_template_part('parts/posts', '', [
+        'posts' => $related_posts,
+        'view' => 'list',
+        'has_date' => false,
+        'has_author' => false,
+        'has_excerpt' => false,
+      ]); ?>
+    </div>
+  </aside>
+</div>
 
 <?php
   if (comments_open() || get_comments_number()) {

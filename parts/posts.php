@@ -4,10 +4,17 @@ if (isset($args['posts'])) {
   $posts = $args['posts'];
 }
 
+$view = $args['view'] ?? 'grid'; // either 'list' or 'grid'
+$columns = $args['columns'] ?? 3;
+
+$has_author = $args['has_author'] ?? true;
+$has_date = $args['has_date'] ?? true;
+$has_excerpt = $args['has_excerpt'] ?? true;
+
 // ?>
 
 <?php if (count($posts) > 0): ?>
-  <ul class="wp-block-latest-posts wp-block-latest-posts__list is-grid columns-3 has-dates has-author alignwide">
+  <ul class="wp-block-latest-posts wp-block-latest-posts__list is-<?= esc_attr($view) ?> columns-<?= esc_attr($columns) ?> alignwide">
   <?php foreach ($posts as $post): ?>
     <?php setup_postdata($post); ?>
 
@@ -22,19 +29,27 @@ if (isset($args['posts'])) {
         </a>
       </div>
 
-      <a href="<?php the_permalink(); ?>">
+      <a class="wp-block-latest-posts__post-title" href="<?php the_permalink(); ?>">
         <?php the_title(); ?>
       </a>
+      
+      <?php if ($has_author): ?>
+        <div class="wp-block-latest-posts__post-author">
+          by <?php the_author(); ?>
+        </div>
+      <?php endif ?>
 
-      <div class="wp-block-latest-posts__post-author">
-        by <?php the_author(); ?>
-      </div>
-      <time class="wp-block-latest-posts__post-date">
-        <?= get_the_date() ?>
-      </time>
-      <div class="wp-block-latest-posts__post-excerpt">
-        <?php the_excerpt(); ?>
-      </div>
+      <?php if ($has_date): ?>
+        <time class="wp-block-latest-posts__post-date">
+          <?= get_the_date() ?>
+        </time>
+      <?php endif ?>
+
+      <?php if ($has_excerpt): ?>
+        <div class="wp-block-latest-posts__post-excerpt">
+          <?php the_excerpt(); ?>
+        </div>
+      <?php endif ?>
     </li>
   <?php endforeach; ?>
   </ul>

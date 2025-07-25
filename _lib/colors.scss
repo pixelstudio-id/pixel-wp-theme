@@ -1,44 +1,26 @@
 // This file is using .scss format to make it easier to write Maps & List
+//
+// Filter is used to change the color of PNG icon or SVG in pseudo-selector using `filter` property.
+// Generate the value by copying the hex color here https://codepen.io/hrsetyono/pen/BaxyJQv
+//
 $colors: (
-  ( hex: #252427, var: '--text',       slug: 'text-base' ),
-  ( hex: #ffffff, var: '--textInvert', slug: 'text-invert' ),
+  ( hex: #252427, var: '--base',       slug: 'base',   filter: invert(14%) sepia(5%) saturate(482%) hue-rotate(219deg) brightness(95%) contrast(97%)),
+  ( hex: #ffffff, var: '--baseInvert', slug: 'base-invert', filter: invert(100%) sepia(10%) saturate(7462%) hue-rotate(173deg) brightness(117%) contrast(108%) ),
 
-  ( hex: #888888, var: '--gray',       slug: 'gray' ),
-  ( hex: #5C5C5C, var: '--grayDark',   slug: 'gray-dark' ),
-  ( hex: #E0E0E0, var: '--grayLight',  slug: 'gray-light' ),
+  ( hex: #888888, var: '--gray',       slug: 'gray',       filter: invert(60%) sepia(0%) saturate(0%) hue-rotate(151deg) brightness(90%) contrast(88%)),
+  ( hex: #3C3C3C, var: '--grayDark',   slug: 'gray-dark',  filter: invert(35%) sepia(0%) saturate(0%) hue-rotate(193deg) brightness(98%) contrast(89%)),
+  ( hex: #F5F5F5, var: '--grayLight',  slug: 'gray-light', filter: invert(100%) sepia(2%) saturate(1493%) hue-rotate(171deg) brightness(114%) contrast(76%)),
 
-  ( hex: #283167, var: '--color1Dark',  slug: 'color-1-dark' ),
-  ( hex: #5C6BC0, var: '--color1',      slug: 'color-1',),
-  ( hex: #D3D7EE, var: '--color1Light', slug: 'color-1-light' ),
+  ( hex: #283167, var: '--color1Dark',  slug: 'color-1-dark',  filter: invert(17%) sepia(11%) saturate(5879%) hue-rotate(206deg) brightness(96%) contrast(93%)),
+  ( hex: #5C6BC0, var: '--color1',      slug: 'color-1',       filter: invert(59%) sepia(80%) saturate(2621%) hue-rotate(178deg) brightness(91%) contrast(87%)),
+  ( hex: #D3D7EE, var: '--color1Light', slug: 'color-1-light', filter: invert(87%) sepia(18%) saturate(184%) hue-rotate(170deg) brightness(105%) contrast(95%)),
 
-  ( hex: #26A65B, var: '--color2Dark',  slug: 'color-2-dark' ),
-  ( hex: #2ecc71, var: '--color2',      slug: 'color-2' ),
-  ( hex: #def7e8, var: '--color2Light', slug: 'color-2-light' ),
+  ( hex: #26A65B, var: '--color2Dark',  slug: 'color-2-dark',  filter: invert(49%) sepia(22%) saturate(1352%) hue-rotate(92deg) brightness(103%) contrast(90%)),
+  ( hex: #2ecc71, var: '--color2',      slug: 'color-2',       filter: invert(64%) sepia(63%) saturate(493%) hue-rotate(92deg) brightness(90%) contrast(90%)),
+  ( hex: #def7e8, var: '--color2Light', slug: 'color-2-light', filter: invert(98%) sepia(67%) saturate(213%) hue-rotate(65deg) brightness(100%) contrast(95%)),
 
-  ( hex: #e74c3c, var: '--color3',      slug: 'color-3' ),
-  ( hex: #fbdedb, var: '--color3Light', slug: 'color-3-light' ),
-);
-
-// Use this for the Filter value https://codepen.io/hrsetyono/pen/BaxyJQv - Useful to change the color of a PNG 
-// If you don't use PNG icon, feel free to remove the filter
-$filters: (
-  'text-base': invert(14%) sepia(5%) saturate(482%) hue-rotate(219deg) brightness(95%) contrast(97%),
-  'text-invert': invert(100%) sepia(10%) saturate(7462%) hue-rotate(173deg) brightness(117%) contrast(108%),
-
-  'gray': invert(60%) sepia(0%) saturate(0%) hue-rotate(151deg) brightness(90%) contrast(88%),
-  'gray-dark': invert(35%) sepia(0%) saturate(0%) hue-rotate(193deg) brightness(98%) contrast(89%),
-  'gray-light': invert(100%) sepia(2%) saturate(1493%) hue-rotate(171deg) brightness(114%) contrast(76%),
-
-  'color-1': invert(59%) sepia(80%) saturate(2621%) hue-rotate(178deg) brightness(91%) contrast(87%),
-  'color-1-dark': invert(17%) sepia(11%) saturate(5879%) hue-rotate(206deg) brightness(96%) contrast(93%),
-  'color-1-light': invert(87%) sepia(18%) saturate(184%) hue-rotate(170deg) brightness(105%) contrast(95%),
-
-  'color-2': invert(64%) sepia(63%) saturate(493%) hue-rotate(92deg) brightness(90%) contrast(90%),
-  'color-2-dark': invert(49%) sepia(22%) saturate(1352%) hue-rotate(92deg) brightness(103%) contrast(90%),
-  'color-2-light': invert(98%) sepia(67%) saturate(213%) hue-rotate(65deg) brightness(100%) contrast(95%),
-
-  'color-3': invert(59%) sepia(98%) saturate(5598%) hue-rotate(343deg) brightness(99%) contrast(83%),
-  'color-3-light': invert(96%) sepia(66%) saturate(482%) hue-rotate(292deg) brightness(101%) contrast(97%)
+  ( hex: #e74c3c, var: '--color3',      slug: 'color-3',       filter: invert(59%) sepia(98%) saturate(5598%) hue-rotate(343deg) brightness(99%) contrast(83%)),
+  ( hex: #fbdedb, var: '--color3Light', slug: 'color-3-light', filter: invert(96%) sepia(66%) saturate(482%) hue-rotate(292deg) brightness(101%) contrast(97%) ),
 );
 
 // BRAND COLORS
@@ -98,12 +80,13 @@ $filters: (
     $var: map-get($c, 'var');
     $hex: map-get($c, 'hex');
     $slug: map-get($c, 'slug');
+    $filter: map-get($c, 'filter');
 
     #{$var} : #{$hex};
     // RGB version for transparency
     // How to use: `rgba(--color1, .5)` which will output `rgba(var(--color1RGB), .5)`
     #{$var}RGB : #{ red($hex) }, #{ green($hex) }, #{ blue($hex) };
-    #{$var}Filter: map-get($filters, $slug);
+    #{$var}Filter: $filter;
   }
 
   // Other colors
@@ -114,8 +97,8 @@ $filters: (
   --colorAlert      : #e74c3c;
   --colorAlertLight : #f8cdc9;
 
-  --textDark: #1E1E1F;
-  --textDark2: #141415;
+  --baseDark: #1E1E1F;
+  --baseDark2: #141415;
 
   // Compatibility for newer/older color names
   $altNames: (
@@ -127,8 +110,10 @@ $filters: (
     --subLight: --color2Light,
     --subDark: --color2Dark,
 
-    --black: --text,
-    --white: --textInvert,
+    --text: --base,
+    --textInvert: --baseInv,
+    --black: --base,
+    --white: --baseInv,
   );
 
   @each $altName, $name in $altNames {
@@ -145,13 +130,12 @@ $filters: (
 }
 .has-text-color,
 .has-inline-color {
-  color: var(--textColor, var(--text));
+  color: var(--textColor, var(--base));
 }
 
 @each $c in $colors {
   $var: map-get($c, 'var');
   $slug: map-get($c, 'slug');
-  $filter: map-get($filters, $slug);
 
   .has-#{$slug}-background-color {
     --bgColor: var(#{$var});
@@ -168,8 +152,8 @@ $filters: (
 ///// GRADIENTS
 
 $gradients: (
-  'text',
-  'textInvert',
+  'base',
+  'baseInv',
   'color1',
   'color1Light',
   'color2',

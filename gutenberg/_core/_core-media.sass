@@ -1,6 +1,7 @@
 ///// IMAGE
 
 .wp-block-image
+  --contentSize: 650px
   display: block
 
   &.is-style-rounded img
@@ -456,25 +457,28 @@
 ///// FILE
 
 .wp-block-file
-  --bgColor: var(--color1)
-  
   display: flex
-  align-items: center
-  justify-content: center
-  padding: 1.25rem
-  background-color: rgba(black, .05)
-  border: 1px solid rgba(black, .2)
+  flex-direction: column
+  flex-wrap: wrap
+  column-gap: 1rem
+  row-gap: 1rem
+  align-items: var(--_align, center)
+  background-color: transparent !important
+  padding: 0
+  border: 0
   border-radius: var(--gRadius)
 
+  // hide the file name
+  > a[id*="wp-block-file--media-"]
+    display: none
+
   &.alignleft
-    justify-content: flex-start
-    float: left
+    --_align: flex-start
+    float: none
 
   &.alignright
-    justify-content: flex-end
-
-.wp-block-file__button
-  margin-left: 1rem
+    --_align: flex-end
+    float: none
 
 
 ///// VIDEO

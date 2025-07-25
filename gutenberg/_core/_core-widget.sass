@@ -26,7 +26,7 @@ ul.wp-block-latest-posts
     overflow: hidden
     border-radius: var(--largeRadius)
     clear: both
-    background-color: var(--textInvert)
+    background-color: var(--baseInv)
     padding: var(--_padding)
     box-shadow: 0 1px 0 0 rgba(black, .1)
 
@@ -111,7 +111,7 @@ ul.wp-block-latest-posts
 .wp-block-latest-posts__post-author,
 .wp-block-latest-posts__post-date
   display: inline-block
-  color: var(--textDim)
+  color: var(--gray)
   font-weight: 600
   font-size: var(--xsFontSize)
   opacity: .5
@@ -232,7 +232,7 @@ ul.wp-block-latest-posts
   input
     flex: 1
   button
-    background-color: var(--text)
+    background-color: var(--base)
   
 .wp-block-search__button-inside
   .wp-block-search__inside-wrapper
@@ -240,7 +240,7 @@ ul.wp-block-latest-posts
     border: 1px solid
     border-radius: var(--gRadius)
     padding: 0.25rem
-    background-color: var(--textInvert)
+    background-color: var(--baseInv)
 
     &:focus-within
       outline: auto
@@ -297,7 +297,7 @@ $social-colors: ( facebook: #1977f2, instagram: #f00075, linkedin: #0577b5, skyp
 
   &.is-style-default,
   &.is-style-pill-shape
-    --iconColor: var(--textInvert)
+    --iconColor: var(--baseInv)
   
   &.is-style-logos-only
     --iconPadding: 0px

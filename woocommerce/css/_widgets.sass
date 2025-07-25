@@ -148,11 +148,11 @@
 
   cursor: pointer
   padding: 0.5rem
-  border: 1px solid rgba(--text, .2)
+  border: 1px solid rgba(--base, .2)
   border-bottom-width: 2px
   border-radius: var(--gRadius)
 
-  color: var(--text)
+  color: var(--base)
   font-weight: var(--hFontWeight)
   text-transform: uppercase
   text-align: center
@@ -164,22 +164,22 @@
 
   &.is-cart-filled
     background-color: var(--color1)
-    color: var(--textInvert)
+    color: var(--baseInv)
       
 
     &:hover
       background-color: var(--color1Dark)
 
     path
-      fill: var(--textInvert)
+      fill: var(--baseInv)
 
   body.h-has-transparent-header &
-    border-color: rgba(--textInvert, .3)
-    color: var(--textInvert)
+    border-color: rgba(--baseInv, .3)
+    color: var(--baseInv)
 
   &:hover
     transform: translateY(-2px)
-    border-color: rgba(--text, .5)
+    border-color: rgba(--base, .5)
     box-shadow: var(--shadow0)
 
   &:active
@@ -201,12 +201,12 @@
     display: flex
     align-items: center
     justify-content: center
-    background-color: var(--textInvert)
+    background-color: var(--baseInv)
     
     width: 1rem
     height: 1rem
     border-radius: 50%
-    box-shadow: 0 0 0 1px var(--textInvert)
+    box-shadow: 0 0 0 1px var(--baseInv)
 
     line-height: 1
     color: var(--color1)
@@ -236,7 +236,7 @@
   transform: translateX(1rem)
   transition: none
 
-  background-color: var(--textInvert)
+  background-color: var(--baseInv)
   width: 320px
 
   box-shadow: var(--shadow1)
@@ -305,7 +305,7 @@
 
       width: 2rem
       height: 2rem
-      border: 1px solid var(--text)
+      border: 1px solid var(--base)
       border-bottom-width: 2px
       border-radius: var(--gRadius)
 
@@ -314,7 +314,7 @@
       opacity: .5
 
     &:hover::after
-      background-color: rgba(--text, .2)
+      background-color: rgba(--base, .2)
       opacity: .8
 
     &:active::after
@@ -326,7 +326,7 @@
   display: flex
   flex-direction: column
   flex: 1
-  color: var(--text)
+  color: var(--base)
 
 .woocommerce-mini-cart__empty-message
   padding: var(--blockGap) 0
@@ -350,7 +350,7 @@
 .woocommerce-mini-cart__total
   display: flex
   align-items: center
-  border-top: 1px solid rgba(--text, .1)
+  border-top: 1px solid rgba(--base, .1)
   text-align: center
   padding: 0.75rem 1rem
 
@@ -382,7 +382,7 @@
   a:first-child
     background-color: transparent
     font-size: var(--xsFontSize)
-    color: var(--text)
+    color: var(--base)
 
     .has-buttons-checkout-only &
       display: none

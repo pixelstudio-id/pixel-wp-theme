@@ -74,7 +74,7 @@ a:active .wc-block-grid__product-image img,
   font-weight: var(--hFontWeight)
   font-family: var(--hFontFamily)
   font-size: var(--mFontSize)
-  color: var(--text)
+  color: var(--base)
   
 
 // Price
@@ -104,10 +104,10 @@ a:active .wc-block-grid__product-image img,
   z-index: 2
   top: 0.5rem
   left: 0.5rem
-  background-color: var(--text)
+  background-color: var(--base)
   padding: 0 0.375rem
 
-  color: var(--textInvert)
+  color: var(--baseInv)
   font-size: var(--xsFontSize)
   font-weight: 700
   text-transform: uppercase
@@ -211,10 +211,10 @@ a:active .wc-block-grid__product-image img,
 
   button
     padding: 0.5rem 0.75rem
-    border: 1px solid var(--text)
+    border: 1px solid var(--base)
 
     font-weight: 700
-    color: var(--text)
+    color: var(--base)
     transition: var(--gTransition)
 
   button + button
@@ -234,8 +234,8 @@ a:active .wc-block-grid__product-image img,
 
   button.wc-block-pagination-page--active
     opacity: 1
-    background-color: var(--text)
-    color: var(--textInvert)
+    background-color: var(--base)
+    color: var(--baseInv)
 
 
 ///// FEATURED CATEGORY
@@ -290,7 +290,7 @@ a:active .wc-block-grid__product-image img,
   min-height: 0 !important
   padding: 1rem
   border-radius: var(--gRadius)
-  color: var(--textColor, var(--text))
+  color: var(--textColor, var(--base))
 
   will-change: transform
   transition: var(--gTransition)
@@ -508,7 +508,7 @@ a:active .wc-block-grid__product-image img,
   display: inline-block
   padding: 0.125rem 0.375rem
   margin-left: 0.25rem
-  background-color: rgba(--text, .1)
+  background-color: rgba(--base, .1)
 
   line-height: 1
   font-weight: 700
@@ -533,8 +533,8 @@ a:active .wc-block-grid__product-image img,
     border-radius: var(--gRadius)
     outline: none
 
-    background-color: var(--text)
-    color: var(--textInvert)
+    background-color: var(--base)
+    color: var(--baseInv)
 
   path
     fill: currentColor
@@ -643,7 +643,7 @@ a:active .wc-block-grid__product-image img,
 .wc-block-review-list-item__author
   .wc-block-all-reviews:not(.has-product-name) &
     order: 1
-    color: var(--text)
+    color: var(--base)
     font-weight: 700
     font-size: var(--fontSize)
 
@@ -660,7 +660,7 @@ a:active .wc-block-grid__product-image img,
 
 // review load more
 .wc-block-load-more
-  --textColor: var(--text)
+  --textColor: var(--base)
   align-self: center
   margin-top: var(--blockGap)
 

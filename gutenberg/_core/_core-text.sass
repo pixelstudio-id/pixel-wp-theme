@@ -96,7 +96,7 @@ ol.has-background
       top: 0
       width: 100px
       height: 3px
-      background-color: var(--text)
+      background-color: var(--base)
       transform: translateX(-50%)
 
 // QUOTE Testimony
@@ -123,7 +123,7 @@ ol.has-background
 
   cite
     font-style: normal
-    color: var(--text)
+    color: var(--base)
     opacity: 1
     line-height: 1.5
 
@@ -197,7 +197,7 @@ ol.has-background
     font-size: var(--fontSize)
     font-weight: 700
     font-style: normal
-    color: var(--text)
+    color: var(--base)
 
     @media ($below-s)
       position: static
@@ -211,7 +211,7 @@ ol.has-background
   &::before
     content: ""
     display: inline-block
-    background-color: var(--textInvert)
+    background-color: var(--baseInv)
 
     position: absolute
     z-index: 2
@@ -232,7 +232,7 @@ ol.has-background
     right: calc(-1 * var(--gap))
     width: 2px
     height: 100%
-    background-color: var(--text)
+    background-color: var(--base)
     transform: translateX(var(--x))
 
     @media ($below-s)
@@ -308,7 +308,7 @@ ol.has-background
   table
     border-collapse: collapse
     border-spacing: 0
-    color: var(--text)
+    color: var(--base)
   &.has-fixed-layout table,
   table.has-fixed-layout
     table-layout: fixed
@@ -316,17 +316,17 @@ ol.has-background
   thead,
   tfoot
     background-color: var(--bgColor, #eef2f7)
-    color: var(--textColor, var(--text))
+    color: var(--textColor, var(--base))
     font-weight: 700
     text-align: left
 
   thead
-    border-bottom: 2px solid var(--text)
+    border-bottom: 2px solid var(--base)
   tfoot
-    border-top: 2px solid var(--text)
+    border-top: 2px solid var(--base)
   tbody
-    background-color: var(--textInvert)
-    color: var(--text)
+    background-color: var(--baseInv)
+    color: var(--base)
 
   th, td
     padding: 0.5rem 1rem
@@ -345,7 +345,7 @@ ol.has-background
       --tableStripe: rgba(var(--bgColorRGB), .1)
 
     tbody tr:nth-child(odd)
-      background: var(--textInvert)
+      background: var(--baseInv)
     tbody tr:nth-child(even)
       background-color: var(--tableStripe)
 
@@ -355,13 +355,13 @@ ol.has-background
   &.is-style-main-stripes
     --tableStripe: #{rgba(--main, .1)}
     --bgColor: var(--main)
-    --textColor: var(--textInvert)
+    --textColor: var(--baseInv)
 
   &.is-style-sub,
   &.is-style-sub-stripes
     --tableStripe: #{rgba(--sub, .2)}
     --bgColor: var(--sub)
-    --textColor: var(--text)
+    --textColor: var(--base)
 
 
 ///// VERSE

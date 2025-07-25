@@ -10,7 +10,7 @@
 
 .header,
 .header-mobile
-  --_color: var(--text)
+  --_color: var(--base)
   --_colorFilter: var(--textFilter)
   --_hoverColor: var(--color1)
   --_hoverColorFilter: var(--color1Filter)
@@ -26,8 +26,8 @@
   color: var(--_color)
 
   body.px-has-transparent-header &
-    --_color: var(--textInvert)
-    --_colorFilter: var(--textInvertFilter)
+    --_color: var(--baseInv)
+    --_colorFilter: var(--baseInvFilter)
     --_hoverColor: var(--color2)
     --_hoverColorFilter: var(--color2Filter)
 
@@ -83,7 +83,7 @@
   // tagline
   span
     font-size: var(--sFontSize)
-    color: var(--text)
+    color: var(--base)
 
 .wp-block-site-logo__alt
   + img
@@ -101,7 +101,7 @@
 ///// TOGGLE
 
 .toggle-offcanvas
-  --_color: var(--text)
+  --_color: var(--base)
 
   display: flex
   align-items: center
@@ -113,7 +113,7 @@
   border-radius: var(--gRadius)
 
   .offcanvas &
-    --_color: var(--textInvert)
+    --_color: var(--baseInv)
     position: absolute
     z-index: 2
     top: 0.5rem
@@ -137,7 +137,7 @@
 
     .offcanvas &
       background-image: url('./svg/xmark.svg')
-      filter: var(--textInvertFilter)
+      filter: var(--baseInvFilter)
 
   span
     margin-right: 0.25rem
@@ -152,7 +152,7 @@
 
   // when transparent
   body.px-has-transparent-header &
-    --toggleColor: var(--textInvert)
+    --toggleColor: var(--baseInv)
 
 ///// HEADER MENU
 
@@ -190,10 +190,10 @@
     left: 10px
     right: 10px
     height: 3px
-    background-color: var(--text)
+    background-color: var(--base)
 
     body.px-has-transparent-header &
-      background-color: var(--textInvert)
+      background-color: var(--baseInv)
 
   .menu-item:hover > a::before
     visibility: visible
@@ -231,7 +231,7 @@
   .submenu
     visibility: hidden
     opacity: 0
-    background-color: var(--textInvert)
+    background-color: var(--baseInv)
 
     width: 260px
     padding: 0.5rem
@@ -278,7 +278,7 @@
     
     // --bgHover is added by megamenu class
     > a:hover
-      background-color: var(--bgHover, #{rgba(--text, .1)})
+      background-color: var(--bgHover, #{rgba(--base, .1)})
 
     > a:active
       transition: none

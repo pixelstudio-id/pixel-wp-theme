@@ -6,7 +6,7 @@
   margin-top: var(--blockWideGap)
   margin-bottom: var(--blockWideGap)
 
-  color: var(--text)
+  color: var(--base)
   font-size: var(--sFontSize)
 
   a,
@@ -16,17 +16,17 @@
     cursor: pointer
 
     background-color: transparent
-    border: 2px solid var(--text)
+    border: 2px solid var(--base)
     border-radius: 0
     width: auto
 
-    color: var(--text)
+    color: var(--base)
     -webkit-appearance: none
     appearance: none
     will-change: transform
 
     &:hover
-      background-color: rgba(--text, .1)
+      background-color: rgba(--base, .1)
       transform: translateY(-1px)
       box-shadow: var(--shadow1)
     &:active
@@ -49,7 +49,7 @@
     height: 1rem
 
   path
-    fill: var(--text)
+    fill: var(--base)
 
   // no href
   a:not([href])

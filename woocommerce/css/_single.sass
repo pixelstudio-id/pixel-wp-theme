@@ -32,7 +32,7 @@ div.woocommerce-product-gallery
   border: 1px solid rgba(black, .1)
   border-bottom-width: 2px
   
-  background: var(--textInvert) url('./img/expand-arrows-alt.svg') no-repeat center center
+  background: var(--baseInv) url('./img/expand-arrows-alt.svg') no-repeat center center
   background-size: 50% auto
 
   color: transparent
@@ -80,7 +80,7 @@ div.woocommerce-product-gallery
 
   img.flex-active
     opacity: 1
-    box-shadow: 0 0 0 1px var(--text), var(--shadow1)
+    box-shadow: 0 0 0 1px var(--base), var(--shadow1)
     transform: none
     transition: none
 
@@ -99,7 +99,7 @@ img.zoomImg
     justify-content: flex-start
     margin-top: var(--blockGap)
     font-size: var(--h3Size)
-    color: var(--text)
+    color: var(--base)
     line-height: 1
 
   del
@@ -279,7 +279,7 @@ a.reset_variations
   .stock
     padding: 0 0.5rem
     border-radius: var(--gRadius)
-    background-color: rgba(--text, .2)
+    background-color: rgba(--base, .2)
     font-weight: var(--fontWeight)
     font-size: var(--fontSize)
 
@@ -384,9 +384,9 @@ div.woocommerce-product-rating
     --iconSvg: url('./img/comment-alt.svg')
   
   &.active a
-    --iconFilter: var(--textInvertFilter)
+    --iconFilter: var(--baseInvFilter)
     background-color: var(--color1)
-    color: var(--textInvert)
+    color: var(--baseInv)
     box-shadow: var(--shadowThin)
 
 // Custom mobile tab
@@ -521,7 +521,7 @@ div.woocommerce-product-rating
     flex-direction: column
     row-gap: 1rem
     padding: 1rem
-    border: 1px solid rgba(--text, .1)
+    border: 1px solid rgba(--base, .1)
     border-radius: var(--gRadius)
 
   .woocommerce-variation-add-to-cart

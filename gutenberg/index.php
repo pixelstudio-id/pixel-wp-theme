@@ -4,7 +4,7 @@ require_once __DIR__ . '/gallery-slider/index.php';
 
 if (is_admin()) {
   add_action('admin_enqueue_scripts', 'my_admin_gutenberg_assets', 100);
-  add_action('enqueue_block_editor_assets', 'my_editor_assets', 100);
+  add_action('enqueue_block_editor_assets', 'my_editor_assets', 1000);
 
   add_filter('px_disallowed_blocks', 'my_disallowed_blocks');
   // add_filter('px_blocks_disabled_tab', 'my_blocks_disabled_tab');

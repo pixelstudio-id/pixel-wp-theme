@@ -63,7 +63,7 @@ body.has-checkout-form-open
 
   visibility: hidden
   opacity: 0
-  background-color: var(--textInvert)
+  background-color: var(--baseInv)
   transform: translateY(calc(-50% + 1rem)) translateX(-50%)
   transition: var(--gTransition)
 
@@ -260,9 +260,9 @@ div.create-account
 ///// ORDER REVIEW
 
 .h-order-review__wrapper
-  background-color: var(--textInvert)
+  background-color: var(--baseInv)
   padding: 2rem
-  border: 2px solid rgba(--text, .1)
+  border: 2px solid rgba(--base, .1)
   border-radius: var(--gRadius)
 
   #order_review_heading
@@ -286,7 +286,7 @@ div.create-account
   tr
     display: flex
     width: 100%
-    border-bottom: 1px dashed rgba(--text, .2)
+    border-bottom: 1px dashed rgba(--base, .2)
 
   th,
   td
@@ -360,10 +360,10 @@ div.create-account
     font-size: small
     
   label:hover
-    border-color: rgba(--text, .1)
+    border-color: rgba(--base, .1)
 
   input:checked ~ label
-    // border-color: rgba(--text, .1)
+    // border-color: rgba(--base, .1)
     background-color: var(--color1Light)
 
   input
@@ -379,7 +379,7 @@ div.create-account
 
 .wc_payment_methods
   padding-left: 0
-  border: 2px solid rgba(--text, .1)
+  border: 2px solid rgba(--base, .1)
   border-radius: var(--gRadius)
 
   font-size: var(--sFontSize)
@@ -394,7 +394,7 @@ div.create-account
 
   position: relative
   padding: 0.75rem
-  border-bottom: 1px dashed rgba(--text, .1)
+  border-bottom: 1px dashed rgba(--base, .1)
 
   &:last-child
     border-bottom: none
@@ -433,6 +433,6 @@ div.create-account
 .h-checkout-legal
   margin-top: 2rem
   padding-top: 1rem
-  border-top: 1px solid rgba(--text, .1)
+  border-top: 1px solid rgba(--base, .1)
   color: var(--gray)
   font-size: var(--xsFontSize)

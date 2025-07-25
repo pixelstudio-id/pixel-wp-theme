@@ -27,7 +27,7 @@ body.woocommerce-cart
   width: 100%
 
   thead th
-    border-bottom: 2px solid rgba(--text, .1)
+    border-bottom: 2px solid rgba(--base, .1)
     padding-bottom: 1rem
 
   tbody th,
@@ -36,7 +36,7 @@ body.woocommerce-cart
     font-size: var(--xsFontSize)
 
   th, td
-    border-bottom: 1px dashed rgba(--text, .1)
+    border-bottom: 1px dashed rgba(--base, .1)
 
   tr
     position: relative
@@ -122,11 +122,11 @@ a.remove
   justify-content: center
   cursor: pointer
 
-  background-color: var(--textInvert)
-  background: var(--textInvert) url('./img/trash.svg') no-repeat center center
+  background-color: var(--baseInv)
+  background: var(--baseInv) url('./img/trash.svg') no-repeat center center
   background-size: 40% auto
 
-  border: 1px solid rgba(--text, .1)
+  border: 1px solid rgba(--base, .1)
   border-bottom-width: 2px
   border-radius: var(--gRadius)
   width: 2rem
@@ -182,7 +182,7 @@ td.actions
     width: 150px
 
   button
-    --textColor: var(--text)
+    --textColor: var(--base)
     background-color: transparent
     font-size: var(--xsFontSize)
 
@@ -209,9 +209,9 @@ td.actions
 
 .cart-collaterals
   grid-column: span 4
-  background-color: var(--textInvert)
+  background-color: var(--baseInv)
   padding: 2rem
-  border: 2px solid rgba(--text, .1)
+  border: 2px solid rgba(--base, .1)
   border-radius: var(--gRadius)
 
   @media ($below-m)
@@ -238,7 +238,7 @@ td.actions
     justify-content: center
 
   .cart-subtotal
-    border-bottom: 1px dashed rgba(--text, .1)
+    border-bottom: 1px dashed rgba(--base, .1)
 
 .cart-collaterals__h-footnote
   margin-top: 0.5rem
@@ -257,7 +257,7 @@ td.actions
 
   padding: 0.5rem
   margin-top: 1rem
-  border: 1px solid rgba(--text, .1)
+  border: 1px solid rgba(--base, .1)
   border-radius: var(--gRadius)
 
   color: var(--gray)

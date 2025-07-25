@@ -29,7 +29,9 @@ function my_init_api() {
   // sample-post/:id
   register_rest_route(MY_NAMESPACE, '/sample-post/(?P<id>\d+)', [
     'methods' => 'POST',
-    'permission_callback' => '__return_true',
+    'permission_callback' => function() {
+      return current_user_can('edit_posts');
+    },
     'callback' => '_my_api_sample_post'
   ]);
 
@@ -41,7 +43,8 @@ function my_init_api() {
 }
 
 /**
- * Get header tokens for testing in Postman
+ * Get the Cookie and Nonce by visiting this endpoint while logged-in in your browser.
+ * For use in Postman or other API testing tools.
  * 
  * @route GET /token
  */
@@ -66,6 +69,10 @@ function _my_api_get_token() {
 
 /**
  * @route GET /sample-get/:id
+ * 
+ * Header:
+ * X-WP-Nonce xxxxxx
+ * Cookie wordpress_logged_in_xxxxx=pixelstudio%xxxxxx
  */
 function _my_api_sample_get($params) {
   $id = $params['id'];
@@ -75,6 +82,8 @@ function _my_api_sample_get($params) {
 
 /**
  * @route POST /sample-post/:id
+ * 
+ * Need 
  */
 function _my_api_sample_post($request) {
   $params = $request->get_params();

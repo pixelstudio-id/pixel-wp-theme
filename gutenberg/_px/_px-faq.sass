@@ -7,7 +7,7 @@
 
   &.is-style-default,
   &:not([class*="is-style-"])
-    border: 1px solid rgbA(var(--borderColor, var(--textRGB)), .3)
+    border: 1px solid rgbA(var(--borderColor, var(--baseRGB)), .3)
     background-color: transparent
     color: inherit
 
@@ -34,7 +34,7 @@
       transform: none
 
   &:hover
-    border-color: rgbA(var(--borderColor, var(--textRGB)), 1) !important
+    border-color: rgbA(var(--borderColor, var(--baseRGB)), 1) !important
 
 .wp-block-px-faq__question
   display: flex

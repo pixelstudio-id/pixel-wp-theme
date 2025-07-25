@@ -3,7 +3,7 @@
 .wp-block-buttons
   --_gap: 1rem
   --bgColor: var(--color1)
-  --textColor: var(--textInvert)
+  --textColor: var(--baseInv)
 
   display: flex
   align-items: center
@@ -50,7 +50,7 @@
   font-weight: 700
   font-size: var(--sFontSize)
   letter-spacing: 0.05em
-  color: var(--textColor, var(--textInvert))
+  color: var(--textColor, var(--baseInv))
   vertical-align: top
   line-height: 1
   
@@ -76,7 +76,7 @@
 
   &:hover
     opacity: .9
-    color: var(--textColor, var(--textInvert))
+    color: var(--textColor, var(--baseInv))
     transform: translateY(-2px)
     box-shadow: var(--shadow1)
 
@@ -215,47 +215,56 @@
   column-gap: var(--blockGap)
   row-gap: calc(var(--blockGap) / 2)
 
-  &.is-nowrap
-    flex-wrap: nowrap
+  @media ($above-s)
+    &.is-nowrap
+      flex-wrap: nowrap
 
   > *
     width: auto
     margin: 0
 
   &[class*="px-has-columns-"]
-    display: grid
-    grid-template-columns: repeat(var(--columns, 2), 1fr)
+    grid-template-columns: repeat(var(--_columns, 2), 1fr)
+    flex-wrap: wrap
     row-gap: var(--blockGap)
 
+    > *
+      width: calc(100% / var(--_columns) - ((var(--_columns) - 1) / var(--_columns)) * var(--blockGap))
+    
   &.px-has-columns-2
-    --columns: 2
+    --_columns: 2
     @media ($below-s)
-      --columns: 1
+      --_columns: 1
 
   &.px-has-columns-3
-    --columns: 3
+    --_columns: 3
     @media ($below-s)
-      --columns: 1
+      --_columns: 2
+    @media ($below-xs)
+      --_columns: 1
 
   &.px-has-columns-4
-    --columns: 4
-
+    --_columns: 4
+    @media ($below-m)
+      --_columns: 3
     @media ($below-s)
-      --columns: 2
+      --_columns: 2
     @media ($below-xs)
-      --columns: 1
+      --_columns: 1
+
 
 // Group Inside Columns
 .wp-block-columns,
 .wp-block-media-text__content,
 .wp-block-cover__inner-container
+  .wp-block-group
+    margin-top: var(--blockGap)
+  .wp-block-group:first-child
+    margin-top: 0
   .wp-block-group.alignfull
     padding-right: 0
     padding-left: 0
   
-  .wp-block-group:first-child
-    margin-top: 0
-
   .wp-block-group.alignfull + *
     margin-top: var(--blockGap)
   .wp-block-group.is-layout-flex
@@ -327,4 +336,4 @@
       font-family: var(--codeFontFamily)
       font-size: var(--lFontSize)
       letter-spacing: 1.5rem
-      color: var(--bgColor, var(--text))
+      color: var(--bgColor, var(--base))

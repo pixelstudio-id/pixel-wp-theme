@@ -29,71 +29,70 @@
         { "name": "Tertiary",       "slug": "color-3",       "color": "var(--color3)" },
         { "name": "Tertiary Light", "slug": "color-3-light", "color": "var(--color3Light)" },
 
-        { "name": "Text",        "slug": "text-base",   "color": "var(--text)" },
-        { "name": "Text Invert", "slug": "text-invert", "color": "var(--textInvert)" },
-
+        { "name": "Base",        "slug": "base",   "color": "var(--base)" },
+        { "name": "Base Inverse", "slug": "base-inv", "color": "var(--baseInv)" },
         { "name": "Gray",       "slug": "gray",       "color": "var(--gray)" },
         { "name": "Gray Dark",  "slug": "gray-dark",  "color": "var(--grayDark)" },
         { "name": "Gray Light", "slug": "gray-light", "color": "var(--grayLight)" }
       ],
       "gradients": [
         {
-          "slug": "text-to-bottom",
-          "gradient": "linear-gradient(to bottom, var(--text), transparent)",
+          "slug": "base-to-bottom",
+          "gradient": "linear-gradient(to bottom, var(--base), transparent)",
           "name": "Black to Bottom"
         },
         {
-          "slug": "text-to-top",
-          "gradient": "linear-gradient(to top, var(--text), transparent)",
+          "slug": "base-to-top",
+          "gradient": "linear-gradient(to top, var(--base), transparent)",
           "name": "Black to Top"
         },
         {
-          "slug": "textInvert-to-bottom",
-          "gradient": "linear-gradient(to bottom, var(--textInvert), transparent)",
+          "slug": "base-inverse-to-bottom",
+          "gradient": "linear-gradient(to bottom, var(--baseInv), transparent)",
           "name": "White to Bottom"
         },
         {
-          "slug": "textInvert-to-top",
-          "gradient": "linear-gradient(to top, var(--textInvert), transparent)",
+          "slug": "base-inverse-to-top",
+          "gradient": "linear-gradient(to top, var(--baseInv), transparent)",
           "name": "White to Top"
         },
         {
-          "slug": "color1-to-bottom",
+          "slug": "color-1-to-bottom",
           "gradient": "linear-gradient(to bottom, var(--color1), transparent)",
           "name": "Color 1 to Bottom"
         },
         {
-          "slug": "color1-to-top",
+          "slug": "color-1-to-top",
           "gradient": "linear-gradient(to top, var(--color1), transparent)",
           "name": "Color 1 to Top"
         },
         {
-          "slug": "color1Light-to-bottom",
+          "slug": "color-1-light-to-bottom",
           "gradient": "linear-gradient(to bottom, var(--color1Light), transparent)",
           "name": "Color 1 Light to Bottom"
         },
         {
-          "slug": "color1Light-to-top",
+          "slug": "color-1-light-to-top",
           "gradient": "linear-gradient(to top, var(--color1Light), transparent)",
           "name": "Color 1 Light to Top"
         },
         {
-          "slug": "color2-to-bottom",
+          "slug": "color-2-to-bottom",
           "gradient": "linear-gradient(to bottom, var(--color2), transparent)",
           "name": "Color 2 to Bottom"
         },
         {
-          "slug": "color2-to-top",
+          "slug": "color-2-to-top",
           "gradient": "linear-gradient(to top, var(--color2), transparent)",
           "name": "Color 2 to Top"
         },
         {
-          "slug": "color2Light-to-bottom",
+          "slug": "color-2-light-to-bottom",
           "gradient": "linear-gradient(to bottom, var(--color2Light), transparent)",
           "name": "Color 2 Light to Bottom"
         },
         {
-          "slug": "color2Light-to-top",
+          "slug": "color-2-light-to-top",
           "gradient": "linear-gradient(to top, var(--color2Light), transparent)",
           "name": "Color 2 Light to Top"
         }
@@ -143,7 +142,7 @@
 					"name": "6"
 				}
 			],
-      "units": [ "px", "rem", "vh", "vw" ]
+      "units": [ "px", "%", "rem", "vh", "vw" ]
     },
     "useRootPaddingAwareAlignments": true,
     "typography": {

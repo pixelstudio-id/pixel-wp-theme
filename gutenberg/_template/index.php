@@ -57,13 +57,13 @@ function my_acf_render_xxx_block($block, $content='', $is_preview=false, $post_i
   $title = $fields['title'] ?? '';
   $content = $fields['content'] ?? '';
 
-  $atts = get_block_wrapper_attrib utes([
+  $atts = get_block_wrapper_attributes([
     'class' => 'acf-block-custom'
   ]);
 
   /// ?>
 
-  <div <?= esc_attr($atts) ?>>
+  <div <?= $atts ?>>
     <h2>
       <?= esc_html($title) ?>
     </h2>

@@ -18,8 +18,8 @@
   > li
     padding: 1.25rem
     margin-bottom: 1.5rem
-    background-color: var(--textInvert)
-    border: 1px solid rgba(--text, .1)
+    background-color: var(--baseInv)
+    border: 1px solid rgba(--base, .1)
     border-radius: var(--gRadius)
 
 // Single Comment
@@ -39,7 +39,7 @@
     width: 2rem
     height: 2rem
     border-radius: 50%
-    border: 1px solid rgba(--text, .1)
+    border: 1px solid rgba(--base, .1)
 
   b
     display: inline-block
@@ -123,7 +123,7 @@ a.comment-edit-link::before
 .comment .children
   margin-top: 1rem
   padding-left: 1rem
-  border-left: 2px solid rgba(--text, .1)
+  border-left: 2px solid rgba(--base, .1)
   list-style-type: none
   
   .comment
@@ -156,8 +156,8 @@ a.comment-edit-link::before
 
   .comments-list & // if reply
     margin-top: 1.25rem
-    background-color: var(--textInvert)
-    border: 1px solid rgba(--text, .2)
+    background-color: var(--baseInv)
+    border: 1px solid rgba(--base, .2)
     box-shadow: var(--shadow0)
 
   > p
@@ -200,11 +200,11 @@ a.comment-edit-link::before
 .comment-form-email
   transition: var(--gTransition)
   padding: 0.25rem 0.5rem
-  border: 2px solid rgba(--text, .1)
+  border: 2px solid rgba(--base, .1)
   border-radius: var(--gRadius)
 
   &:focus-within
-    border-color: var(--text)
+    border-color: var(--base)
 
 .comment-form-comment
   label

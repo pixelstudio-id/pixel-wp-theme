@@ -1,5 +1,5 @@
-import './view.sass';
-import './view-offcanvas.sass';
+import './header-main.sass';
+import './_offcanvas.sass';
 
 const stickyHeader = {
   hasTransparentHeader: false,

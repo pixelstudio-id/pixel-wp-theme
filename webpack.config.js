@@ -4,21 +4,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const path = require('path');
 
-const assets = './assets';
-const shopPath = './woocommerce';
 const outputPath = '_dist';
 const localDomain = 'http://lab.test/';
 
 const entryPoints = {
-  'my-main': `${assets}/my-main.js`,
-  'my-admin': `${assets}/my-admin.js`,
+  'my-main': './assets/my-main.js',
+  'my-admin': './assets/my-admin.js',
   'my-parts': './parts/_my-parts.js',
   'my-gutenberg': './gutenberg/my-gutenberg.js',
   'my-editor': './gutenberg/my-editor.js',
 
-  'my-shop': `${shopPath}/my-shop.js`,
-  'shop-editor': `${shopPath}/my-shop-editor.sass`,
-  'shop-admin': `${shopPath}/my-shop-admin.sass`,
+  'my-shop': './woocommerce/my-shop.js',
+  'shop-editor': './woocommerce/my-shop-editor.sass',
+  'shop-admin': './woocommerce/my-shop-admin.sass',
 };
 
 module.exports = {

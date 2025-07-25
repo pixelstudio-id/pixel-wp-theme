@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/gallery-slider/index.php';
+require_once __DIR__ . '/gallery-slider/gallery-slider.php';
 
 if (is_admin()) {
   add_action('admin_enqueue_scripts', 'my_admin_gutenberg_assets', 100);

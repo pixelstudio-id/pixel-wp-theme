@@ -1,8 +1,9 @@
 // This file is using .scss format to make it easier to write Maps & List
+
+// Colors used in the theme.
 //
 // Filter is used to change the color of PNG icon or SVG in pseudo-selector using `filter` property.
 // Generate the value by copying the hex color here https://codepen.io/hrsetyono/pen/BaxyJQv
-//
 $colors: (
   ( hex: #252427, var: '--base',       slug: 'base',   filter: invert(14%) sepia(5%) saturate(482%) hue-rotate(219deg) brightness(95%) contrast(97%)),
   ( hex: #ffffff, var: '--baseInvert', slug: 'base-invert', filter: invert(100%) sepia(10%) saturate(7462%) hue-rotate(173deg) brightness(117%) contrast(108%) ),
@@ -119,7 +120,7 @@ $colors: (
   @each $altName, $name in $altNames {
     #{$altName}: var(#{$name});
     #{$altName}RGB: var(#{$name}RGB);
-    #{$altName}Filter: var(#{$name}Filter);
+    // #{$altName}Filter: var(#{$name}Filter);
   }
 }
 
@@ -140,12 +141,12 @@ $colors: (
   .has-#{$slug}-background-color {
     --bgColor: var(#{$var});
     --bgColorRGB: var(#{$var}RGB);
-    --filterBg: var(#{$var}Filter);
+    --bgFilter: var(#{$var}Filter);
   }
   .has-#{$slug}-color {
     --textColor: var(#{$var});
     --textColorRGB: var(#{$var}RGB);
-    --filterColor: var(#{$var}Filter);
+    --textFilter: var(#{$var}Filter);
   }
 }
 

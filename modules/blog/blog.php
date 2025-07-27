@@ -1,6 +1,5 @@
 <?php
 
-add_shortcode('current-year', 'shortcode_current_year');
 add_filter('excerpt_length', 'my_custom_excerpt_length', 999);
 add_action('pre_get_posts', 'my_exclude_pages_from_search');
 
@@ -14,19 +13,6 @@ function my_exclude_pages_from_search($query) {
   if ($query->is_search() && $query->is_main_query()) {
     $query->set('post_type', 'post');
   }
-}
-
-
-/**
- * Output current year
- *   [current-year]
- */
-function shortcode_current_year($atts, $content = null) {
-  // $atts = shortcode_atts([
-  //   'name' => 'Default value'
-  // ], $atts);
-
-  return date('Y');
 }
 
 /**

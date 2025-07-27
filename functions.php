@@ -1,38 +1,27 @@
 <?php
 
-$inc = __DIR__ . '/inc';
-require_once $inc . '/_helpers.php';
+require_once __DIR__ . '/_lib/helpers.php';
 
 // Abort if required plugins is inactive
 if (!Helper::has_required_plugins()) { return; }
 
 $THEME = wp_get_theme();
 define('MY_VERSION', $THEME->get('Version'));
+define('MY_NAMESPACE', 'my/v1');
 define('MY_DIST', get_stylesheet_directory_uri() . '/_dist');
 define('MY_IMAGES', get_stylesheet_directory_uri() . '/images');
 
-
-// Modules
-require_once $inc . '/enqueue.php';
-require_once $inc . '/acf.php';
+require_once __DIR__ . '/modules/modules.php';
 require_once __DIR__ . '/gutenberg/gutenberg.php';
-
-if (is_admin()) {
-  require_once $inc . '/admin.php';
-} else {
-  // require_once $inc . '/api.php'; // @todo - uncomment this if you're using API
-  require_once $inc . '/frontend.php';
-}
-
 
 if (class_exists('WooCommerce')) {
   require_once __DIR__ . '/woocommerce/_shop-functions.php';
 }
 
-
 // Initial setup
 my_before_setup_theme();
 add_action('after_setup_theme', 'my_after_setup_theme');
+add_action('acf/input/admin_footer', 'my_acf_change_color_palette');
 
 
 /////
@@ -68,7 +57,6 @@ function my_after_setup_theme() {
   add_theme_support('px-tabs-block');
 
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website
-  add_theme_support('h-widgets');
 
   // Gutenberg support
   add_theme_support('responsive-embeds');
@@ -91,3 +79,25 @@ function my_after_setup_theme() {
 //     'after_title'   => '</h3>',
 //   ]);
 // }
+
+/**
+ * Change the palette on ACF Color Picker
+ * 
+ * @action acf/input/admin_footer
+ * @todo - don't forget to change accordingly if you use ACF Color Picker
+ */
+function my_acf_change_color_palette() { ?>
+  <script>
+  (function() {
+    acf.add_filter('color_picker_args', function(args, $field) {
+      args.palettes = [
+        '#5C6BC0', '#D3D7EE',
+        '#2ecc71', '#def7e8',
+        '#e74c3c', '#fbdedb',
+        '#252427', '#ffffff'
+      ];
+      return args;
+    });
+  })();
+  </script>
+<?php }

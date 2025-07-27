@@ -2,14 +2,14 @@ import './my-main.sass';
 
 import './swiper/view.sass';
 
-import './components/normalize.sass';
-import './components/utilities.sass';
-import './components/fields.sass';
-import './components/grid.sass';
-import './components/widgets.sass';
+import './css-framework/normalize.sass';
+import './css-framework/utilities.sass';
+import './css-framework/fields.sass';
+import './css-framework/grid.sass';
+// import './css-framework/widgets.sass';
 
-import './blog/post.sass';
-import './blog/post-comments.sass';
+import './blog/blog.sass';
+import './blog/blog-comments.sass';
 
 import './menu/menu.sass';
 import './menu/megamenu';

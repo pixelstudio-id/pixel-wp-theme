@@ -8,9 +8,9 @@ const outputPath = '_dist';
 const localDomain = 'http://lab.test/';
 
 const entryPoints = {
-  'my-main': './assets/my-main.js',
-  'my-admin': './assets/my-admin.js',
-  'my-parts': './parts/_my-parts.js',
+  'my-main': './modules/my-main.js',
+  'my-admin': './modules/my-admin.js',
+  'my-parts': './parts/my-parts.js',
   'my-gutenberg': './gutenberg/my-gutenberg.js',
   'my-editor': './gutenberg/my-editor.js',
 

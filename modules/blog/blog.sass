@@ -18,6 +18,25 @@
   --contentSize: 100%
   flex: 1
 
+  // alignwide and alignfull become only slightly wider in blog post
+  @media (above($size-large + 64px))
+    .alignwide,
+    .alignfull
+      margin-top: var(--blockGap)
+      max-width: calc(100% + 4rem)
+      width: auto
+      margin-right: -2rem
+      margin-left: -2rem
+
+  .alignwide.has-background,
+  .alignfull.has-background
+    padding: 2rem
+    border-radius: var(--gRadius)
+
+    @media ($below-s)
+      padding-right: var(--gridRim)
+      padding-left: var(--gridRim)
+
 .post-sidebar
   position: sticky
   top: calc(var(--headerHeight) + var(--adminBarHeight))

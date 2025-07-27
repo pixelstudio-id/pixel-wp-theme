@@ -3,6 +3,23 @@
 @import "@lib/colors"
 @import "@lib/vars"
 
+// Fixed-width on blog wrapper
+body.post-type-post
+  .editor-styles-wrapper
+    --wp--style--global--content-size: 750px
+    --contentSize: 750px
+
+  .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > :where(:not(.alignleft):not(.alignright):not(.alignfull)),
+  .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+    max-width: var(--wp--style--global--content-size)
+
+  .alignfull
+    max-width: calc(var(--wp--style--global--content-size) + 4rem) !important
+    margin-right: auto
+    margin-left: auto
+  .alignfull.has-background
+    border-radius: var(--gRadius)
+
 ///// BUTTON
 
 div.editor-styles-wrapper .wp-block-buttons

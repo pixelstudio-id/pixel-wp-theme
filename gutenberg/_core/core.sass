@@ -71,8 +71,9 @@ main,
   margin-top: var(--blockWideGap)
 
   @media ($below-l)
-    margin-right: calc(-1 * var(--gridRim))
-    margin-left: calc(-1 * var(--gridRim))
+    main &
+      margin-right: calc(-1 * var(--gridRim))
+      margin-left: calc(-1 * var(--gridRim))
 
   &:first-child
     margin-top: 0

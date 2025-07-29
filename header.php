@@ -11,5 +11,6 @@
 
 <div id="main-container">
 
-  <?php get_template_part('parts/header-sub/view') ?>
-  <?php get_template_part('parts/header-main/view') ?>
+  <?php get_template_part('parts/notice/notice') ?>
+  <?php get_template_part('parts/header-sub/header-sub') ?>
+  <?php get_template_part('parts/header-main/header-main') ?>

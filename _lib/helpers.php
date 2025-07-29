@@ -18,5 +18,29 @@ class Helper {
     }
     return true;
   }
+
+  /**
+   * Format the number and text to fit https://wa.me/ format for Indonesian number
+   * 
+   * @param string $number - can contain dash and space
+   * @param string? $text
+   * 
+   * @return string - the wa.me link
+   */
+  static function create_whatsapp_link($number, $text = '') {
+    $is_phone_number = preg_match('/^\s*(\+?\d[\d\s-]{6,})$/', $number);
+    if (!$is_phone_number) { return ''; }
+
+    // sanitize
+    $wa_number = preg_replace('/[^0-9]/', '', $number);
+    $wa_number = preg_replace('/^0/', '62', $wa_number);
+    $wa_link = 'https://wa.me/' . $wa_number;
+
+    if ($text) {
+      $wa_link .= '?text=' . urlencode($text);
+    }
+
+    return $wa_link;
+  }
 }
 

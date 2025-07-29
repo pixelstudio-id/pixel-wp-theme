@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/blog/blog.php';
+require_once __DIR__ . '/menu/menu.php';
 
 add_action('wp_enqueue_scripts', 'my_enqueue_public_assets', 99);
 add_action('admin_enqueue_scripts', 'my_enqueue_admin_assets', 100);

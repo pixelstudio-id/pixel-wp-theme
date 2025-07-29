@@ -12,12 +12,7 @@ $menu = wp_nav_menu([
   'container' => false,
 ]);
 
-$menu_offcanvas = wp_nav_menu([
-  'theme_location' => 'main-menu',
-  'menu_class' => 'offcanvas-menu menu',
-  'echo' => false,
-  'container' => false,
-]);
+$menu_offcanvas = preg_replace('/header-menu/', 'offcanvas-menu', $menu);
 
 ///// ?>
 

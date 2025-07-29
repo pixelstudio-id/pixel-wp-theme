@@ -35,7 +35,7 @@
 
 /////
 
-.search-form
+.subheader__search
   display: inline-flex
   position: relative
     
@@ -43,7 +43,7 @@
     display: flex
     flex: 1
 
-  .search-field
+  input
     padding-top: 0.25rem
     padding-bottom: 0.25rem
 
@@ -52,11 +52,7 @@
     border-radius: var(--gRadius) 0 0 var(--gRadius)
     color: inherit
 
-    .sidebar &
-      padding-top: 0.5rem
-      padding-bottom: 0.5rem
-
-  .search-submit
+  input[type="submit"]
     display: flex
     align-items: center
     position: absolute
@@ -81,7 +77,3 @@
     &:active
       background-color: rgba(--color1, .75)
       transform: translateY(-50%)
-    
-    .sidebar &
-      padding: 0.25em 1.25em
-      background-size: auto 50%

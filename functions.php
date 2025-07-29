@@ -53,7 +53,7 @@ function my_after_setup_theme() {
   // Pixel Library Support
   add_theme_support('px-megamenu');
   add_theme_support('px-faq-block');
-  add_theme_support('px-icon-block', 'v6');
+  add_theme_support('px-icon-block', 'v6'); // v6-regular, v6-light, v6-duotone
   add_theme_support('px-tabs-block');
 
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website

@@ -15,7 +15,7 @@ get_header();
     'description' => $description,
   ]); ?>
   <?php get_template_part('parts/posts', '', $posts); ?>
-  <?php get_template_part('parts/pagination', '', $pagination); ?>
+  <?php get_template_part('parts/pagination'); ?>
 </main>
 
 <?php /////

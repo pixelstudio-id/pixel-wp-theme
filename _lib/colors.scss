@@ -20,8 +20,8 @@ $colors: (
   ( hex: #2ecc71, var: '--color2',      slug: 'color-2',       filter: invert(64%) sepia(63%) saturate(493%) hue-rotate(92deg) brightness(90%) contrast(90%)),
   ( hex: #def7e8, var: '--color2Light', slug: 'color-2-light', filter: invert(98%) sepia(67%) saturate(213%) hue-rotate(65deg) brightness(100%) contrast(95%)),
 
-  ( hex: #e74c3c, var: '--color3',      slug: 'color-3',       filter: invert(59%) sepia(98%) saturate(5598%) hue-rotate(343deg) brightness(99%) contrast(83%)),
-  ( hex: #fbdedb, var: '--color3Light', slug: 'color-3-light', filter: invert(96%) sepia(66%) saturate(482%) hue-rotate(292deg) brightness(101%) contrast(97%) ),
+  ( hex: #e74c3c, var: '--colorAlert',      slug: 'color-alert',       filter: invert(34%) sepia(62%) saturate(1730%) hue-rotate(337deg) brightness(96%) contrast(89%) ),
+  ( hex: #f8cdc9, var: '--colorAlertLight', slug: 'color-alert-light', filter: invert(84%) sepia(4%) saturate(1652%) hue-rotate(315deg) brightness(103%) contrast(94%) )
 );
 
 // BRAND COLORS
@@ -94,9 +94,6 @@ $colors: (
   --siteBg      : #f8f9fb;
   --siteBgColor : #f8f9fb;
   --panelBg     : #eff1f5;
-
-  --colorAlert      : #e74c3c;
-  --colorAlertLight : #f8cdc9;
 
   --baseDark: #1E1E1F;
   --baseDark2: #141415;

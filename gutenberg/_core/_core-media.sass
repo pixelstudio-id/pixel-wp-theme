@@ -108,8 +108,19 @@
     &.columns-8
       --columns: 8
 
+@media ($above-s) and ($below-m)
+    &.columns-6,
+    &.columns-7,
+    &.columns-8
+      --columns: 5
+
   @media ($above-xs) and ($below-s)
     --columns: 3
+    
+    &.columns-6,
+    &.columns-7,
+    &.columns-8
+      --columns: 4
 
     &.columns-2
       --columns: 2
@@ -118,6 +129,15 @@
   
   @media ($below-xs)
     --columns: 1
+
+    &.columns-7,
+    &.columns-8
+      --columns: 3
+
+    &.columns-5,
+    &.columns-4,
+    &.columns-3
+      --columns: 2
 
   // if inside column or media text, make it smaller
   .wp-block-column &,
@@ -322,6 +342,7 @@
   color: var(--textColor)
   margin-right: auto
   margin-left: auto
+  max-width: 100%
 
   .wp-block-cover:not(.alignfull) &
     padding-right: var(--gridRim)

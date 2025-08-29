@@ -170,3 +170,48 @@ $gradients: (
     --bgGradient: linear-gradient(to bottom, var(--#{$g}), transparent);
   }
 }
+
+///// FONTS
+
+$fonts: (
+  'notosans': (
+    family: 'Noto Sans',
+    format: 'woff2',
+    files: (
+      ('400', 400, normal),
+      ('400italic', 400, italic),
+      ('700', 700, normal),
+      ('700italic', 700, italic)
+    ),
+  ),
+  'notoserif': (
+    family: 'Noto Serif',
+    format: 'woff2',
+    files: (
+      ('400', 400, normal),
+      ('400italic', 400, italic),
+      ('700', 700, normal),
+      ('700italic', 700, italic)
+    ),
+  ),
+);
+
+@each $slug, $data in $fonts {
+  $family: map-get($data, 'family');
+  $files: map-get($data, 'files');
+  $format: map-get($data, 'format');
+
+  @each $file in $files {
+    $path: nth($file, 1);
+    $weight: nth($file, 2);
+    $style: nth($file, 3);
+
+    @font-face {
+      font-family: #{$family};
+      font-weight: $weight;
+      font-style: $style;
+      src: url('@lib/fonts/#{$slug}-#{$path}.#{$format}') format(#{$format});
+      font-display: swap;
+    }
+  }
+}

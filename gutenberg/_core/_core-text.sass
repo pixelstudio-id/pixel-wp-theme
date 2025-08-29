@@ -294,8 +294,6 @@ ol.has-background
 ///// TABLE
 
 .wp-block-table
-  --tableStripe: #eef2f7
-
   display: flex
   flex-direction: column
   overflow-x: auto
@@ -306,16 +304,19 @@ ol.has-background
     font-size: var(--sFontSize)
 
   table
+    --_stripeBg: rgbA(var(--bgColorRGB, var(--grayRGB)), .1)
+    --_border: rgbA(var(--baseRGB), .2)
     border-collapse: collapse
     border-spacing: 0
     color: var(--base)
+
   &.has-fixed-layout table,
   table.has-fixed-layout
     table-layout: fixed
 
   thead,
   tfoot
-    background-color: var(--bgColor, #eef2f7)
+    background-color: var(--bgColor, rgba(--gray, .2))
     color: var(--textColor, var(--base))
     font-weight: 700
     text-align: left
@@ -330,7 +331,7 @@ ol.has-background
 
   th, td
     padding: 0.5rem 1rem
-    border: 1px solid rgba(black, .5)
+    border-top: 1px solid var(--_border)
 
     @media ($below-s)
       padding: 0.25rem 0.5rem
@@ -341,28 +342,8 @@ ol.has-background
       color: var(--textColor)
 
   &.is-style-stripes
-    table
-      --tableStripe: rgba(var(--bgColorRGB), .1)
-
-    tbody tr:nth-child(odd)
-      background: var(--baseInv)
     tbody tr:nth-child(even)
-      background-color: var(--tableStripe)
-
-
-.wp-block-table
-  &.is-style-main,
-  &.is-style-main-stripes
-    --tableStripe: #{rgba(--main, .1)}
-    --bgColor: var(--main)
-    --textColor: var(--baseInv)
-
-  &.is-style-sub,
-  &.is-style-sub-stripes
-    --tableStripe: #{rgba(--sub, .2)}
-    --bgColor: var(--sub)
-    --textColor: var(--base)
-
+      background-color: var(--_stripeBg)
 
 ///// VERSE
   

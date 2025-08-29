@@ -10,7 +10,7 @@ add_filter('next_post_link', 'my_adjacent_post_link', 10, 5);
  * @action pre_get_posts
  */
 function my_exclude_pages_from_search($query) {
-  if ($query->is_search() && $query->is_main_query() && !isset($_GET['post_type'])) {
+  if (!is_admin() && $query->is_search() && $query->is_main_query() && !isset($_GET['post_type'])) {
     $query->set('post_type', 'post');
   }
 }

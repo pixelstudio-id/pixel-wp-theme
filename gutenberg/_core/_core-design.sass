@@ -6,7 +6,7 @@
   --textColor: var(--baseInv)
 
   display: flex
-  align-items: center
+  align-items: var(--vertAlign, center)
   justify-content: var(--flexAlign, none)
   flex-wrap: wrap
   column-gap: var(--_gap)
@@ -212,8 +212,8 @@
 .wp-block-group.is-layout-flex
   display: flex
   flex-wrap: wrap
-  column-gap: var(--blockGap)
-  row-gap: calc(var(--blockGap) / 2)
+  column-gap: var(--_gap, var(--blockGap))
+  row-gap: calc(var(--_gap, var(--blockGap)) / 2)
 
   @media ($above-s)
     &.is-nowrap
@@ -226,10 +226,10 @@
   &[class*="px-has-columns-"]
     grid-template-columns: repeat(var(--_columns, 2), 1fr)
     flex-wrap: wrap
-    row-gap: var(--blockGap)
+    row-gap: var(--_gap, var(--blockGap))
 
     > *
-      width: calc(100% / var(--_columns) - ((var(--_columns) - 1) / var(--_columns)) * var(--blockGap))
+      width: calc(100% / var(--_columns) - ((var(--_columns) - 1) / var(--_columns)) * var(--_gap, var(--blockGap)))
     
   &.px-has-columns-2
     --_columns: 2
@@ -272,8 +272,7 @@
   .wp-block-group.alignfull + *
     margin-top: var(--blockGap)
   .wp-block-group.is-layout-flex
-    column-gap: 0.5rem
-    row-gap: 0.5rem
+    --_gap: 0.5rem
     margin-right: 0
     margin-left: 0
 

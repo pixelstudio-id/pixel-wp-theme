@@ -87,21 +87,26 @@ main,
   &:last-child
     margin-bottom: 0
 
+  .alignfull
+    margin-top: 0
+
 
 .is-vertically-aligned-top,
 .are-vertically-aligned-top
-  align-items: flex-start
-  align-self: flex-start
+  --vertAlign: flex-start
 
 .is-vertically-aligned-center,
 .are-vertically-aligned-center
-  align-items: center
-  align-self: center
+  --vertAlign: center
 
 .is-vertically-aligned-bottom,
 .are-vertically-aligned-bottom
-  align-items: flex-end
-  align-self: flex-end
+  --vertAlign: flex-end
+
+[class*="is-vertically-aligned-"]
+  align-items: var(--vertAlign)
+  align-self: var(--vertAlign)
+
 
 // @since WP 5.7.0
 .is-content-justification-left

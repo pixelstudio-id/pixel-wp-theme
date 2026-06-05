@@ -7,31 +7,33 @@ form.wpcf7-form
   margin-left: auto
   background-color: white
   box-shadow: var(--shadow1)
+
+  &.spam,
+  &.invalid,
+  &.failed,
+  &.aborted,
+  &.unaccepted
+    --_responseBg: #{rgba(--red, .2)}
+    --_responseColor: var(--red)
+
+  &.sent
+    --_responseBg: #{rgba(--green, .3)}
+    --_responseColor: var(--green)
   
   br
     display: none
   label
     display: block
 
-div.wpcf7
+  div.wpcf7-response-output
+    background-color: var(--_responseBg)
+    margin: 0
+    margin-top: 1rem
+    border-width: 1px solid
+    border-radius: var(--gRadius)
+    color: var(--_responseColor)
+    text-align: center 
+
   span.wpcf7-not-valid-tip
     color: var(--red)
     font-size: var(--sFontSize)
-
-  div.wpcf7-response-output
-    margin: 0
-    margin-top: 1rem
-    border-width: 1px
-    border-radius: var(--gRadius)
-    text-align: center 
-
-  .wpcf7-validation-errors
-    background-color: rgba(--red, .2)
-    border-color: var(--red)
-    color: var(--red)
-  
-  .wpcf7-mail-sent-ok,
-  .wpcf7-mail-sent-ng
-    background-color: rgba(--green, .3)
-    border-color: var(--green)
-    color: var(--green)

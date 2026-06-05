@@ -8,11 +8,9 @@ const outputPath = '_dist';
 const localDomain = 'http://lab.test/';
 
 const entryPoints = {
-  'my-main': './modules/my-main.js',
-  'my-admin': './modules/my-admin.js',
-  'my-parts': './parts/my-parts.js',
-  'my-gutenberg': './gutenberg/my-gutenberg.js',
-  'my-editor': './gutenberg/my-editor.js',
+  'my-theme': './my-theme.js',
+  'my-admin': './my-admin.js',
+  'my-editor': './my-editor.js',
 
   'my-shop': './woocommerce/my-shop.js',
   'shop-editor': './woocommerce/my-shop-editor.sass',
@@ -50,7 +48,7 @@ module.exports = {
       //   use: 'vue-loader',
       // },
       {
-        test: /\.s?[ac]ss$/i,
+        test: /\.s?[c]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -58,25 +56,57 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpg|jpeg|png|gif|woff|woff2|eot|ttf|svg)$/i,
-        use: 'url-loader?limit=1024',
-      },
-      {
-        test: /\.jsx$/i,
+        test: /\.sass$/i,
         use: [
-          require.resolve('thread-loader'),
+          MiniCssExtractPlugin.loader,
+          'css-loader',
           {
-            loader: require.resolve('babel-loader'),
+            loader: 'sass-loader',
             options: {
-              cacheDirectory: process.env.BABEL_CACHE_DIRECTORY || true,
-              babelrc: false,
-              configFile: false,
-              presets: [
-                require.resolve('@wordpress/babel-preset-default'),
-              ],
+              sassOptions: { indentedSyntax: true },
             },
           },
         ],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|woff|woff2|eot|ttf)$/i,
+        use: 'url-loader?limit=2048',
+      },
+      {
+        test: /\.(svg|svgz)(\?.+)?$/,
+        oneOf: [
+          // {
+          //   resourceQuery: /inline/,
+          //   loader: 'vue-svg-loader',
+          //   options: {
+          //     svgo: {
+          //       plugins: [
+          //         { removeDoctype: true },
+          //         { removeComments: true },
+          //       ],
+          //     },
+          //   },
+          // },
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 2048,
+              name: 'svg/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.jsx$/i,
+        use: [require.resolve('thread-loader'), {
+          loader: require.resolve('babel-loader'),
+          options: {
+            cacheDirectory: process.env.BABEL_CACHE_DIRECTORY || true,
+            babelrc: false,
+            configFile: false,
+            presets: [require.resolve('@wordpress/babel-preset-default')],
+          },
+        }],
       },
     ],
   },

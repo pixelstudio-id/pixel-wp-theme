@@ -3,48 +3,8 @@
 require_once __DIR__ . '/gallery-slider/gallery-slider.php';
 
 if (is_admin()) {
-  add_action('admin_enqueue_scripts', 'my_admin_gutenberg_assets', 100);
-  add_action('enqueue_block_editor_assets', 'my_editor_assets', 1000);
-
   add_filter('px_disallowed_blocks', 'my_disallowed_blocks');
   // add_filter('px_blocks_disabled_tab', 'my_blocks_disabled_tab');
-} else {
-  add_action('wp_enqueue_scripts', 'my_public_gutenberg_assets', 99);
-}
-
-
-/**
- * Front-end CSS and JS
- * @action wp_enqueue_scripts 100
- */
-function my_public_gutenberg_assets() {
-  wp_enqueue_style('my-gutenberg', MY_DIST . '/my-gutenberg.css', [], MY_VERSION);
-  wp_enqueue_script('my-gutenberg', MY_DIST . '/my-gutenberg.js', [], MY_VERSION, true);
-
-  // Disable gutenberg default styling
-  wp_dequeue_style('wp-block-library');
-  wp_dequeue_style('wp-block-library-theme');
-  wp_dequeue_style('global-styles');
-}
-
-/**
- * WP Admin assets
- * @action admin_enqueue_scripts 100
- */
-function my_admin_gutenberg_assets() {
-  wp_dequeue_style('global-styles-css-custom-properties');
-}
-
-
-/**
- * Gutenberg editor assets
- * @action enqueue_block_editor_assets 100
- */ 
-function my_editor_assets() {
-  if (!is_admin()) { return; }
-
-  wp_enqueue_script('my-editor', MY_DIST . '/my-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
-  wp_enqueue_style('my-editor', MY_DIST . '/my-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
 }
 
 /**

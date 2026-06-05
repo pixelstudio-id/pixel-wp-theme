@@ -52,12 +52,12 @@
   &.alignright
     --_hAlign: flex-end
     text-align: right
+    margin-left: auto
 
   &.alignright,
   &.alignleft
     float: none
-    margin-right: auto
-    margin-left: auto
+    max-width: none
 
   &.has-no-heading,
   &.has-no-description
@@ -143,6 +143,9 @@ a.wp-block-px-icon
 
     p + p
       margin-top: 0.5rem
+
+  a
+    color: inherit
 
 .wp-block-px-icon.is-style-inline
   --_iconSize: 1rem

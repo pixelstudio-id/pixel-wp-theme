@@ -57,16 +57,6 @@
           "name": "White to Top"
         },
         {
-          "slug": "color-1-to-bottom",
-          "gradient": "linear-gradient(to bottom, var(--color1), transparent)",
-          "name": "Color 1 to Bottom"
-        },
-        {
-          "slug": "color-1-to-top",
-          "gradient": "linear-gradient(to top, var(--color1), transparent)",
-          "name": "Color 1 to Top"
-        },
-        {
           "slug": "color-1-light-to-bottom",
           "gradient": "linear-gradient(to bottom, var(--color1Light), transparent)",
           "name": "Color 1 Light to Bottom"
@@ -75,16 +65,6 @@
           "slug": "color-1-light-to-top",
           "gradient": "linear-gradient(to top, var(--color1Light), transparent)",
           "name": "Color 1 Light to Top"
-        },
-        {
-          "slug": "color-2-to-bottom",
-          "gradient": "linear-gradient(to bottom, var(--color2), transparent)",
-          "name": "Color 2 to Bottom"
-        },
-        {
-          "slug": "color-2-to-top",
-          "gradient": "linear-gradient(to top, var(--color2), transparent)",
-          "name": "Color 2 to Top"
         },
         {
           "slug": "color-2-light-to-bottom",
@@ -140,7 +120,12 @@
 					"size": "var(--space6)",
 					"slug": "space6",
 					"name": "6"
-				}
+				},
+        {
+          "name": "Auto",
+          "size": "auto",
+          "slug": "auto"
+        }
 			],
       "units": [ "px", "%", "rem", "vh", "vw" ]
     },

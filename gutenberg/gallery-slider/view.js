@@ -14,7 +14,7 @@ function initGallerySlider() {
       slidesPerGroup: 1,
       loop: true,
       spaceBetween: 20,
-      navigation: false,
+      navigation: true,
       pagination: {
         enabled: true,
         clickable: true,
@@ -29,6 +29,10 @@ function initGallerySlider() {
           slidesPerGroup: columns,
         },
       },
+      // hide the ugly default arrow and replace it via CSS
+      injectStyles: [`
+        svg { display: none; }
+      `],
     };
 
     Object.assign($slider, params);

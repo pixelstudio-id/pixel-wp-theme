@@ -1,18 +1,22 @@
 @import "@lib/helpers"
   
 swiper-container
-  --_bulletColor: var(--main)
-  --_bulletColorHover: var(--mainLight)
+  --_bulletColor: var(--color1)
+  --_bulletColorHover: var(--color1)
 
   .has-main-background-color &
     --_bulletColor: var(--baseInv)
     --_bulletColorHover: rgba(var(--baseInvRGB), .4)
 
+  &::part(container),
+  &::part(wrapper)
+    height: auto
+
   // Next Prev
   &::part(button-prev),
   &::part(button-next)
     border-radius: 50%
-    background: var(--mainLight) var(--_image) no-repeat center center
+    background: var(--color1Light) var(--_image) no-repeat center center
     background-size: auto 60%
     transition: var(--gTransition)
     width: 2.25rem

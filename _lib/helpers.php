@@ -44,3 +44,36 @@ class Helper {
   }
 }
 
+/**
+ * Get the Cookie and Nonce by visiting this endpoint while logged-in in your browser.
+ * For use in Postman or other API testing tools.
+ * 
+ * @route GET /token
+ */
+/*
+add_action('rest_api_init', 'my_api_helpers');
+function my_api_helpers() {
+  register_rest_route(MY_NAMESPACE, '/token', [
+    'methods' => 'GET',
+    'permission_callback' => '__return_true',
+    'callback' => function() {
+      $nonce = wp_create_nonce('wp_rest');
+      $cookie = '';
+
+      foreach ($_COOKIE as $key => $value) {
+        $is_login_cookie = preg_match('/^wordpress_logged_in_/', $key);
+
+        if ($is_login_cookie) {
+          $cookie = "{$key}={$value}";
+          break;
+        }
+      }
+
+      return [
+        'X-WP-Nonce' => $nonce,
+        'Cookie' => $cookie,
+      ];
+    }
+  ]);
+}
+*/

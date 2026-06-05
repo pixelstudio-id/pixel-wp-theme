@@ -1,27 +1,29 @@
 // This file is using .scss format to make it easier to write Maps & List
 
-// Colors used in the theme.
-//
-// Filter is used to change the color of PNG icon or SVG in pseudo-selector using `filter` property.
-// Generate the value by copying the hex color here https://codepen.io/hrsetyono/pen/BaxyJQv
+// Colors used in the theme.json
 $colors: (
-  ( hex: #252427, var: '--base',       slug: 'base',   filter: invert(14%) sepia(5%) saturate(482%) hue-rotate(219deg) brightness(95%) contrast(97%)),
-  ( hex: #ffffff, var: '--baseInvert', slug: 'base-invert', filter: invert(100%) sepia(10%) saturate(7462%) hue-rotate(173deg) brightness(117%) contrast(108%) ),
+  ( hex: #252427, var: '--base',    slug: 'base'),
+  ( hex: #ffffff, var: '--baseInv', slug: 'base-inv'),
 
-  ( hex: #888888, var: '--gray',       slug: 'gray',       filter: invert(60%) sepia(0%) saturate(0%) hue-rotate(151deg) brightness(90%) contrast(88%)),
-  ( hex: #3C3C3C, var: '--grayDark',   slug: 'gray-dark',  filter: invert(35%) sepia(0%) saturate(0%) hue-rotate(193deg) brightness(98%) contrast(89%)),
-  ( hex: #F5F5F5, var: '--grayLight',  slug: 'gray-light', filter: invert(100%) sepia(2%) saturate(1493%) hue-rotate(171deg) brightness(114%) contrast(76%)),
+  ( hex: #888888, var: '--gray',       slug: 'gray'),
+  ( hex: #3C3C3C, var: '--grayDark',   slug: 'gray-dark'),
+  ( hex: #F5F5F5, var: '--grayLight',  slug: 'gray-light'),
 
-  ( hex: #283167, var: '--color1Dark',  slug: 'color-1-dark',  filter: invert(17%) sepia(11%) saturate(5879%) hue-rotate(206deg) brightness(96%) contrast(93%)),
-  ( hex: #5C6BC0, var: '--color1',      slug: 'color-1',       filter: invert(59%) sepia(80%) saturate(2621%) hue-rotate(178deg) brightness(91%) contrast(87%)),
-  ( hex: #D3D7EE, var: '--color1Light', slug: 'color-1-light', filter: invert(87%) sepia(18%) saturate(184%) hue-rotate(170deg) brightness(105%) contrast(95%)),
+  ( hex: #283167, var: '--color1Dark',  slug: 'color-1-dark'),
+  ( hex: #5C6BC0, var: '--color1',      slug: 'color-1'),
+  ( hex: #D3D7EE, var: '--color1Light', slug: 'color-1-light'),
 
-  ( hex: #26A65B, var: '--color2Dark',  slug: 'color-2-dark',  filter: invert(49%) sepia(22%) saturate(1352%) hue-rotate(92deg) brightness(103%) contrast(90%)),
-  ( hex: #2ecc71, var: '--color2',      slug: 'color-2',       filter: invert(64%) sepia(63%) saturate(493%) hue-rotate(92deg) brightness(90%) contrast(90%)),
-  ( hex: #def7e8, var: '--color2Light', slug: 'color-2-light', filter: invert(98%) sepia(67%) saturate(213%) hue-rotate(65deg) brightness(100%) contrast(95%)),
+  ( hex: #26A65B, var: '--color2Dark',  slug: 'color-2-dark'),
+  ( hex: #2ecc71, var: '--color2',      slug: 'color-2'),
+  ( hex: #def7e8, var: '--color2Light', slug: 'color-2-light'),
+);
 
-  ( hex: #e74c3c, var: '--colorAlert',      slug: 'color-alert',       filter: invert(34%) sepia(62%) saturate(1730%) hue-rotate(337deg) brightness(96%) contrast(89%) ),
-  ( hex: #f8cdc9, var: '--colorAlertLight', slug: 'color-alert-light', filter: invert(84%) sepia(4%) saturate(1652%) hue-rotate(315deg) brightness(103%) contrast(94%) )
+// Colors that aren't in theme.json and only used programmatically
+$other-colors: (
+  ( hex: #e74c3c, var: '--colorAlert'),
+  ( hex: #f8cdc9, var: '--colorAlertLight'),
+  ( hex: #26A65B, var: '--colorGood'),
+  ( hex: #CDF4DD, var: '--colorGoodLight'),
 );
 
 // BRAND COLORS
@@ -77,17 +79,15 @@ $colors: (
 
 // COLORS CSS VARIABLE
 :root {
-  @each $c in $colors {
+  $merged-colors: join($colors, $other-colors);
+  @each $c in $merged-colors {
     $var: map-get($c, 'var');
     $hex: map-get($c, 'hex');
-    $slug: map-get($c, 'slug');
-    $filter: map-get($c, 'filter');
 
     #{$var} : #{$hex};
     // RGB version for transparency
     // How to use: `rgba(--color1, .5)` which will output `rgba(var(--color1RGB), .5)`
     #{$var}RGB : #{ red($hex) }, #{ green($hex) }, #{ blue($hex) };
-    #{$var}Filter: $filter;
   }
 
   // Other colors
@@ -96,7 +96,7 @@ $colors: (
   --panelBg     : #eff1f5;
 
   --baseDark: #1E1E1F;
-  --baseDark2: #141415;
+  --baseDarker: #141415;
 
   // Compatibility for newer/older color names
   $altNames: (
@@ -117,7 +117,6 @@ $colors: (
   @each $altName, $name in $altNames {
     #{$altName}: var(#{$name});
     #{$altName}RGB: var(#{$name}RGB);
-    // #{$altName}Filter: var(#{$name}Filter);
   }
 }
 
@@ -138,12 +137,10 @@ $colors: (
   .has-#{$slug}-background-color {
     --bgColor: var(#{$var});
     --bgColorRGB: var(#{$var}RGB);
-    --bgFilter: var(#{$var}Filter);
   }
   .has-#{$slug}-color {
     --textColor: var(#{$var});
     --textColorRGB: var(#{$var}RGB);
-    --textFilter: var(#{$var}Filter);
   }
 }
 
@@ -179,9 +176,9 @@ $fonts: (
     format: 'woff2',
     files: (
       ('400', 400, normal),
-      ('400italic', 400, italic),
+      ('400-italic', 400, italic),
       ('700', 700, normal),
-      ('700italic', 700, italic)
+      ('700-italic', 700, italic)
     ),
   ),
   'notoserif': (
@@ -189,9 +186,9 @@ $fonts: (
     format: 'woff2',
     files: (
       ('400', 400, normal),
-      ('400italic', 400, italic),
+      ('400-italic', 400, italic),
       ('700', 700, normal),
-      ('700italic', 700, italic)
+      ('700-italic', 700, italic)
     ),
   ),
 );

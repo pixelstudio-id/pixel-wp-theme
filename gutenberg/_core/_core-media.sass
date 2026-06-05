@@ -8,6 +8,11 @@
     border-radius: 9999px
 
   &.alignleft,
+  &.alignright,
+  &.aligncenter
+    width: auto
+
+  &.alignleft,
   &.alignright
     position: relative
     z-index: 2
@@ -18,8 +23,6 @@
       display: block
       margin-top: 0.25rem
       text-align: inherit
-    img
-      width: 100%
 
   &.alignleft
     float: left
@@ -53,6 +56,10 @@
   &.alignwide
     img
       width: 100%
+  
+.wp-block-image.has-background
+  padding: 0.75rem
+  border-radius: var(--gRadius)
 
 // hover effect
 .wp-block-image > a,
@@ -108,7 +115,7 @@
     &.columns-8
       --columns: 8
 
-@media ($above-s) and ($below-m)
+  @media ($above-s) and ($below-m)
     &.columns-6,
     &.columns-7,
     &.columns-8
@@ -351,6 +358,10 @@
   > *
     width: 100%
     max-width: var(--contentSize)
+  .alignleft
+    margin-right: auto
+  .alignright
+    margin-left: auto
   .alignwide
     max-width: var(--wideSize)
 
@@ -510,3 +521,4 @@
 
   video
     width: 100%
+    border-radius: var(--gRadius)

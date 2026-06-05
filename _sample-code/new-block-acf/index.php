@@ -36,6 +36,8 @@ function my_acf_format_sample($value, $post_id, $field) {
  * Render ACF xxx block
  */
 function my_acf_render_xxx_block($block, $content='', $is_preview=false, $post_id=0) {
+  if (wp_doing_ajax()) { return; } // prevent being rendered when saving post
+
   $fields = get_fields();
   $title = $fields['title'] ?? '';
   $content = $fields['content'] ?? '';

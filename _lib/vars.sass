@@ -13,9 +13,10 @@
   --hTextTransform : initial
   --hColor         : inherit
 
+  --1rem       : 16px
   --xsFontSize : 0.75rem
   --sFontSize  : 0.875rem
-  --fontSize   : 16px
+  --fontSize   : 1rem
   --mFontSize  : 1.25rem
   --lFontSize  : 1.5rem
   --xlFontSize : 2rem
@@ -78,13 +79,10 @@ body.admin-bar
 
 // GUTENBERG PADDING/MARGIN
 \:root
-  --space-2: 0.25rem
-  --space-1: 0.5rem
-  --space0: 0.75rem
-  --space1: 1rem
-  --space2: 1.5rem
-  --space3: 2rem
-  --space4: 2.5rem
+  --space1: 0.5rem
+  --space2: 1rem
+  --space3: 1.5rem
+  --space4: 2.25rem
   --space5: 3rem
   --space6: 4rem
 
@@ -95,6 +93,7 @@ body.admin-bar
   --wp--preset--spacing--space-4: var(--space4)
   --wp--preset--spacing--space-5: var(--space5)
   --wp--preset--spacing--space-6: var(--space6)
+  --wp--preset--spacing--auto: auto
 
   // for use in wp-admin because it doesn't add the extra dash
   --wp--preset--spacing--negative1: var(--negative1)
@@ -104,4 +103,15 @@ body.admin-bar
   --wp--preset--spacing--space4: var(--space4)
   --wp--preset--spacing--space5: var(--space5)
   --wp--preset--spacing--space6: var(--space6)
+
+  @media ($below-s)
+    --space4: 2rem
+    --space5: 2.5rem
+    --space6: 3rem
+
+  @media ($below-xs)
+    --space3: 1.25rem
+    --space4: 1.625rem
+    --space5: 2.125rem
+    --space6: 2.5rem
 

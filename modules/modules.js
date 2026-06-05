@@ -1,4 +1,4 @@
-import './my-main.sass';
+import './modules.sass';
 
 import './swiper/view.sass';
 

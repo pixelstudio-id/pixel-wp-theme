@@ -21,7 +21,9 @@ if (class_exists('WooCommerce')) {
 // Initial setup
 my_before_setup_theme();
 add_action('after_setup_theme', 'my_after_setup_theme');
-add_action('acf/input/admin_footer', 'my_acf_change_color_palette');
+add_action('wp_enqueue_scripts', 'my_enqueue_public_assets', 99);
+add_action('admin_enqueue_scripts', 'my_enqueue_admin_assets', 100);
+add_action('enqueue_block_editor_assets', 'my_enqueue_editor_assets', 1000);
 
 
 /////
@@ -44,7 +46,6 @@ function my_after_setup_theme() {
   add_theme_support('menus');
   add_theme_support('custom-logo');
   add_theme_support('title-tag');
-  add_theme_support('post-thumbnails');
   add_theme_support('html5', [
     'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'navigation-widgets', 'style', 'script'
   ]);
@@ -80,24 +81,52 @@ function my_after_setup_theme() {
 //   ]);
 // }
 
+
 /**
- * Change the palette on ACF Color Picker
- * 
- * @action acf/input/admin_footer
- * @todo - don't forget to change accordingly if you use ACF Color Picker
+ * Front-end CSS and JS
+ * @action wp_enqueue_scripts 100
  */
-function my_acf_change_color_palette() { ?>
-  <script>
-  (function() {
-    acf.add_filter('color_picker_args', function(args, $field) {
-      args.palettes = [
-        '#5C6BC0', '#D3D7EE',
-        '#2ecc71', '#def7e8',
-        '#e74c3c', '#fbdedb',
-        '#252427', '#ffffff'
-      ];
-      return args;
-    });
-  })();
-  </script>
-<?php }
+function my_enqueue_public_assets() {
+  wp_enqueue_style('my-theme', MY_DIST . '/my-theme.css', [], MY_VERSION);
+  wp_enqueue_script('my-theme', MY_DIST . '/my-theme.js', [], MY_VERSION, true);
+
+  wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js', [], '11.0.0', true);
+  // wp_enqueue_script('h-scroll'); // enable if using Animation
+
+  // @todo - enable this if you need to use AJAX with PixelFetch.js
+  // wp_localize_script('my-theme', 'myApiSettings', [
+  //   'nonce' => wp_create_nonce('wp_rest'),
+  //   'myUrl' => esc_url_raw(rest_url()) . MY_NAMESPACE,
+  //   'wpUrl' => esc_url_raw(rest_url()) . 'wp/v2',
+  // ]);
+
+  // Disable gutenberg default styling
+  wp_dequeue_style('wp-block-library');
+  wp_dequeue_style('wp-block-library-theme');
+  wp_dequeue_style('global-styles');
+}
+
+/**
+ * WP Admin assets
+ * @action admin_enqueue_scripts 100
+ */
+function my_enqueue_admin_assets() {
+  wp_enqueue_script('my-admin', MY_DIST . '/my-admin.js', [], MY_VERSION , true);
+  wp_enqueue_style('my-admin', MY_DIST . '/my-admin.css', [], MY_VERSION);
+
+  // @todo - enable this if you need to use AJAX with PixelFetch.js within admin panel
+  // wp_localize_script('my-admin', 'myApiSettings', [
+  //   'nonce' => wp_create_nonce('wp_rest'),
+  //   'myUrl' => esc_url_raw(rest_url()) . MY_NAMESPACE,
+  //   'wpUrl' => esc_url_raw(rest_url()) . 'wp/v2',
+  // ]);
+
+  wp_dequeue_style('global-styles-css-custom-properties');
+}
+
+function my_enqueue_editor_assets() {
+  if (!is_admin()) { return; }
+
+  wp_enqueue_script('my-editor', MY_DIST . '/my-editor.js', [ 'wp-blocks', 'wp-dom' ] , MY_VERSION, true);
+  wp_enqueue_style('my-editor', MY_DIST . '/my-editor.css', [ 'wp-edit-blocks' ], MY_VERSION);
+}

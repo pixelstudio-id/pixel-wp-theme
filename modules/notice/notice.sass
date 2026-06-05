@@ -20,7 +20,6 @@
   &.has-base-background-color
     --_color: var(--baseInv)
     --_colorRGB: var(--baseInvRGB)
-    --_filter: var(--baseInvFilter)
 
   p a
     display: inline-block
@@ -56,9 +55,9 @@
   &::before
     content: ""
     display: inline-block
-    background: url('./img/xmark.svg') no-repeat center center
-    background-size: 40% auto
-    filter: var(--_filter, var(--baseFilter))
+    -webkit-mask: url('./img/xmark.svg') no-repeat center center / contain
+    mask: url('./img/xmark.svg') no-repeat center center / contain
+    background-color: var(--_filter)
 
     width: 100%
     height: 100%

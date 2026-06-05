@@ -3,6 +3,7 @@ import './my-shop.sass';
 const myCart = {
   init() {
     this.bottomBar();
+    this.openCartOnAdded();
   },
 
   /**
@@ -23,6 +24,19 @@ const myCart = {
         $form.classList.add('is-toggled');
       }
     }
+  },
+
+  /**
+   * Open the Cart Offcanvas when product is added to cart via AJAX
+   */
+  openCartOnAdded() {
+    // have to use jQuery for WC compatibility
+    window.jQuery('body').on('added_to_cart', () => {
+      const $cart = document.querySelector('.h-cart');
+      if ($cart) {
+        $cart.classList.add('is-active');
+      }
+    });
   },
 };
 

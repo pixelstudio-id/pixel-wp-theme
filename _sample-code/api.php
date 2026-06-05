@@ -23,12 +23,6 @@ function my_init_api() {
     },
     'callback' => '_my_api_sample_post'
   ]);
-
-  register_rest_route(MY_NAMESPACE, '/token', [
-    'methods' => 'GET',
-    'permission_callback' => '__return_true',
-    'callback' => '_my_api_get_token'
-  ]);
 }
 
 /**
@@ -50,14 +44,16 @@ function _my_api_sample_get($params) {
  * This route is only accessible by User with "edit_posts" capability.
  * You need to pass in this Header:
  * 
- *     X-WP-Nonce xxxxxx
- *     Cookie wordpress_logged_in_xxxxx=pixelstudio%xxxxxx
+ *     X-WP-Nonce   xxxxxx
+ *     Cookie       wordpress_logged_in_xxxxx=pixelstudio%xxxxxx
  * 
- * Get the nonce and cookie by logging in and visitting `mysite.com/wp-json/<namespace>/token`
+ * Get the nonce and cookie by logging in and visitting `mysite.com/wp-json/kotta/v1/token` (need to enable this endpoint from /_lib/helpers.php first)
  * 
  * or if you use JWT Auth plugin:
  * 
- *     Authorization: Bearer <token>
+ *     Authorization: Bearer <jwt-token>
+ * 
+ * jwt-token is given by the response when you're logging in via JWT endpoint
  */
 function _my_api_sample_post($request) {
   $params = $request->get_params();
@@ -68,29 +64,4 @@ function _my_api_sample_post($request) {
   ]);
   
   return 'post request';
-}
-
-/**
- * Get the Cookie and Nonce by visiting this endpoint while logged-in in your browser.
- * For use in Postman or other API testing tools.
- * 
- * @route GET /token
- */
-function _my_api_get_token() {
-  $nonce = wp_create_nonce('wp_rest');
-  $cookie = '';
-
-  foreach ($_COOKIE as $key => $value) {
-    $is_login_cookie = preg_match('/^wordpress_logged_in_/', $key);
-
-    if ($is_login_cookie) {
-      $cookie = "{$key}={$value}";
-      break;
-    }
-  }
-
-  return [
-    'X-WP-Nonce' => $nonce,
-    'Cookie' => $cookie,
-  ];
 }

@@ -54,7 +54,7 @@ function my_after_setup_theme() {
   // Pixel Library Support
   add_theme_support('px-megamenu');
   add_theme_support('px-faq-block');
-  add_theme_support('px-icon-block', 'v6'); // v6-regular, v6-light, v6-duotone
+  add_theme_support('px-icon-block', 'v7-regular'); // v7-regular, v7-light, v7-duotone
   add_theme_support('px-tabs-block');
 
   add_theme_support('h-comment-editor'); // Enable this if you allow comment in the website
@@ -99,11 +99,6 @@ function my_enqueue_public_assets() {
   //   'myUrl' => esc_url_raw(rest_url()) . MY_NAMESPACE,
   //   'wpUrl' => esc_url_raw(rest_url()) . 'wp/v2',
   // ]);
-
-  // Disable gutenberg default styling
-  wp_dequeue_style('wp-block-library');
-  wp_dequeue_style('wp-block-library-theme');
-  wp_dequeue_style('global-styles');
 }
 
 /**
@@ -113,15 +108,6 @@ function my_enqueue_public_assets() {
 function my_enqueue_admin_assets() {
   wp_enqueue_script('my-admin', MY_DIST . '/my-admin.js', [], MY_VERSION , true);
   wp_enqueue_style('my-admin', MY_DIST . '/my-admin.css', [], MY_VERSION);
-
-  // @todo - enable this if you need to use AJAX with PixelFetch.js within admin panel
-  // wp_localize_script('my-admin', 'myApiSettings', [
-  //   'nonce' => wp_create_nonce('wp_rest'),
-  //   'myUrl' => esc_url_raw(rest_url()) . MY_NAMESPACE,
-  //   'wpUrl' => esc_url_raw(rest_url()) . 'wp/v2',
-  // ]);
-
-  wp_dequeue_style('global-styles-css-custom-properties');
 }
 
 function my_enqueue_editor_assets() {

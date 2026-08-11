@@ -371,10 +371,6 @@
   @media ($above-s)
     background-attachment: fixed
 
-// Cover Below Header
-.wp-block-cover.is-style-px-below-header
-  margin-top: calc(var(--headerHeight) * -1) !important
-
 // Cover Mobile
 .wp-block-cover__image-background[style*="--pxMobileMediaURL"]
   @media ($below-s)
@@ -500,10 +496,6 @@
   border: 0
   border-radius: var(--gRadius)
 
-  // hide the file name
-  > a[id*="wp-block-file--media-"]
-    display: none
-
   &.alignleft
     --_align: flex-start
     float: none
@@ -511,6 +503,42 @@
   &.alignright
     --_align: flex-end
     float: none
+
+  // hide the link text
+  > a[id*="wp-block-file--media"]
+    display: none
+
+// the download button
+.wp-block-file .wp-block-file__button
+  display: grid
+  align-items: center
+  grid-template-columns: 1.25rem 1fr
+  column-gap: 0.75rem
+  row-gap: 0.25rem
+  background-color: var(--bgColor, var(--color1))
+  border-radius: 5rem
+  padding-right: 1.5rem
+  padding-left: 1.5rem
+  margin-left: 0
+  text-transform: uppercase
+  text-align: left
+  color: var(--textColor, var(--baseInv))
+
+  &::before
+    content: ""
+    grid-row: span 2
+    display: block
+    width: 1.25rem
+    height: 1.25rem
+    -webkit-mask: url('./img/arrow-down-to-line.svg') no-repeat center center / contain
+    mask: url('./img/arrow-down-to-line.svg') no-repeat center center / contain
+    background-color: currentColor
+
+  span,
+  small
+    display: block
+  small
+    opacity: .75
 
 
 ///// VIDEO

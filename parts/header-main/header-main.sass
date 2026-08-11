@@ -23,10 +23,6 @@
   font-size: var(--sFontSize)
   color: var(--_color)
 
-  body.px-has-transparent-header &
-    --_color: var(--baseInv)
-    --_hoverColor: var(--color2)
-
   &.is-stuck
     box-shadow: var(--shadow1)
 
@@ -85,11 +81,6 @@
   + img
     display: none
 
-  body.px-has-transparent-header &
-    display: none
-    + img
-      display: block
-
   header.is-stuck &
     + img
       display: none
@@ -147,10 +138,6 @@
     @media ($below-xs)
       display: none
 
-  // when transparent
-  body.px-has-transparent-header &
-    --toggleColor: var(--baseInv)
-
 ///// HEADER MENU
 
 .header-menu
@@ -188,9 +175,6 @@
     right: 10px
     height: 3px
     background-color: var(--base)
-
-    body.px-has-transparent-header &
-      background-color: var(--baseInv)
 
   .menu-item:hover > a::before
     visibility: visible

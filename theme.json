@@ -22,12 +22,11 @@
       "palette": [
         { "name": "Primary",       "slug": "color-1",       "color": "var(--color1)" },
         { "name": "Primary Light", "slug": "color-1-light", "color": "var(--color1Light)" },
+        { "name": "Primary Dark",  "slug": "color-1-dark",  "color": "var(--color1Dark)" },
 
         { "name": "Secondary",       "slug": "color-2",       "color": "var(--color2)" },
         { "name": "Secondary Light", "slug": "color-2-light", "color": "var(--color2Light)" },
-
-        { "name": "Tertiary",       "slug": "color-3",       "color": "var(--color3)" },
-        { "name": "Tertiary Light", "slug": "color-3-light", "color": "var(--color3Light)" },
+        { "name": "Secondary Dark",  "slug": "color-2-dark",  "color": "var(--color2Dark)" },
 
         { "name": "Base",        "slug": "base",   "color": "var(--base)" },
         { "name": "Base Inverse", "slug": "base-inv", "color": "var(--baseInv)" },

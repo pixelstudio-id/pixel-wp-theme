@@ -11,7 +11,7 @@ const stickyHeader = {
     let $visibleElems = $elems;
 
     // If has transparent header, filter only visible elements
-    if (document.body.classList.contains('h-has-transparent-header')) {
+    if (document.body.classList.contains('px-has-transparent-header')) {
       this.hasTransparentHeader = true;
       $visibleElems = this.getVisibleElems($elems);
 
@@ -48,7 +48,7 @@ const stickyHeader = {
     $elem.classList.toggle('is-stuck', isStuck);
 
     if (this.hasTransparentHeader) {
-      document.body.classList.toggle('h-has-transparent-header', !isStuck);
+      document.body.classList.toggle('px-has-transparent-header', !isStuck);
     }
   },
 };

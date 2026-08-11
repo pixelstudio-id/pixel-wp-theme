@@ -1,0 +1,29 @@
+@import "@lib/helpers"
+
+.wp-block-cover.is-style-px-below-header
+  margin-top: calc(var(--headerHeight) * -1) !important
+
+body.px-has-transparent-header
+  // show the alternate logo
+  .wp-block-site-logo__alt
+    display: none
+    + img
+      display: block
+
+  .widget_h_toggle a
+    --toggleColor: var(--baseInv)
+
+  .h-widget-button
+    border-color: rgba(--baseInv, .3)
+    color: var(--baseInv)
+
+  .header,
+  .header-mobile
+    --_color: var(--baseInv)
+    --_hoverColor: var(--color2)
+
+  .header-menu .menu-item > a::before
+    background-color: var(--baseInv)
+
+  .toggle-offcanvas
+    --toggleColor: var(--baseInv)

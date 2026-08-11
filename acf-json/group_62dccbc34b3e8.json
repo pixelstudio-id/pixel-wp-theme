@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "<span class=\"dashicons dashicons-warning\"><\/span> First children under Mega Menu become a \"Heading\". It doesn't have URL and Description",
+            "message": "⚠️ First children under Mega Menu become a \"Heading\". It doesn't have URL and Description",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -162,7 +162,7 @@
             "name": "icon",
             "aria-label": "",
             "type": "image",
-            "instructions": "<i class=\"dashicons dashicons-warning\"><\/i> This icon is only visible in Footer and mobile screen",
+            "instructions": "⚠️ This icon is only visible in Footer and mobile screen",
             "required": 0,
             "conditional_logic": [
                 [

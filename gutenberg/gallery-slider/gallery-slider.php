@@ -1,13 +1,13 @@
 <?php
 
-add_filter('render_block_core/gallery', '_px_setup_gallery_slider', 10, 2);
+add_filter('render_block_core/gallery', 'my_setup_gallery_slider', 10, 2);
   
 /**
  * Change the HTML tag to Swiper's elements
  * 
  * @filter render_block_core/gallery
  */
-function _px_setup_gallery_slider($content, $block) {
+function my_setup_gallery_slider($content, $block) {
   // add `columns-x` class if column is not set
   // if (!isset($block['attrs']['columns'])) {
   //   $items_count = count($block['innerBlocks']);

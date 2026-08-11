@@ -155,9 +155,9 @@
     border-radius: var(--gRadius)
 
   @media ($below-s)
-    .wp-block-columns:not(.is-not-stacked-on-mobile) &
+    .wp-block-columns:not(.is-not-stacked-on-mobile) > &
       flex-basis: 100% !important
-      width: 100%  
+      width: 100%
 
 .wp-block-columns.is-style-px-no-gap
   column-gap: 0
@@ -292,8 +292,9 @@
 ///// SEPARATOR
 
 .wp-block-separator
+  --_borderColor: #{rgba(--base, .2)}
   display: block
-  border-top: 2px solid var(--bgColor, var(--gray))
+  border-top: 2px solid var(--_borderColor)
   margin: 2.5rem auto
   padding: 0
   width: 120px
@@ -301,9 +302,7 @@
   clear: both
 
   &.has-background
-    height: 0.5rem
-    border-top: none
-    border-radius: var(--gRadius)
+    --_borderColor: var(--bgColor)
 
   &.alignleft,
   &.alignright
@@ -339,4 +338,4 @@
       font-family: var(--codeFontFamily)
       font-size: var(--lFontSize)
       letter-spacing: 1.5rem
-      color: var(--bgColor, var(--base))
+      color: var(--_borderColor)

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/gallery-slider/gallery-slider.php';
+// require_once __DIR__ . '/cover-below-header/cover-below-header.php';
 
 if (is_admin()) {
   add_filter('px_disallowed_blocks', 'my_disallowed_blocks');

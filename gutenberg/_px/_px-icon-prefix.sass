@@ -1,0 +1,118 @@
+@import "@lib/helpers"
+
+// Icon setting on Heading, Button, and List Item
+
+// HEADING
+.wp-block-heading[style*="--pxIcon"]
+  display: flex
+  column-gap: 0.5em
+  position: relative
+
+  &.has-text-align-center
+    justify-content: center
+  &.has-text-align-right
+    justify-content: flex-end
+
+  &.has-text-align-right i
+    order: 2
+  
+  i::before
+    content: ""
+    display: inline-block
+    position: relative
+    z-index: 2
+    width: 1em
+    height: 1em
+    vertical-align: middle
+    background-color: var(--pxIconColor, currentColor)
+    -webkit-mask: var(--pxIcon) center / contain no-repeat
+    mask: var(--pxIcon) center / contain no-repeat
+
+  &[style*="--pxIconBg"] i
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    vertical-align: baseline
+    background-color: var(--pxIconBg)
+    padding: 0.2em
+    border-radius: 0.25rem
+    width: 1.125em
+    height: 1.125em
+    line-height: 1
+
+  &[style*="--pxIconBg"] i::before
+    width: 0.75em
+    height: 0.75em
+    margin: 0
+
+// LIST ITEM
+li[style*="--pxIcon"]
+  --_iconSpace: 1.5rem
+  position: relative
+  list-style-type: none
+  padding-left: var(--_iconSpace)
+  margin-left: calc(var(--_iconSpace) * -1)
+
+  + li[style*="--pxIcon"]
+    margin-top: 0.375em
+
+    ul.is-style-px-inline &,
+    ol.is-style-px-inline &
+      margin-top: 0
+
+  i
+    margin-left: calc(var(--_iconSpace) * -1)
+    margin-right: 0.5em
+
+  i::before
+    content: ""
+    display: inline-block
+    position: relative
+    z-index: 2
+    width: 1.25em
+    height: 1.25em
+    vertical-align: middle
+    background-color: var(--pxIconColor, currentColor)
+    -webkit-mask: var(--pxIcon) center / contain no-repeat
+    mask: var(--pxIcon) center / contain no-repeat
+
+  &[style*="--pxIconBg"] i
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    vertical-align: baseline
+    background-color: var(--pxIconBg)
+    padding: 0.2em
+    border-radius: 0.25rem
+    width: 1.375em
+    height: 1.375em
+    line-height: 1
+
+  &[style*="--pxIconBg"] i::before
+    width: 0.875em
+    height: 0.875em
+
+  a
+    text-decoration: none
+  a:hover
+    text-decoration: underline
+
+// BUTTON
+.wp-block-button[style*="--pxIcon"]
+  .wp-block-button__link
+    display: inline-flex
+    align-items: center
+    column-gap: 0.5em
+  
+  .wp-block-button__link::before
+    content: ""
+    display: inline-block
+    width: 1.375em
+    height: 1.375em
+    background-color: var(--pxIconColor, currentColor)
+    -webkit-mask: var(--pxIcon) center / contain no-repeat
+    mask: var(--pxIcon) center / contain no-repeat
+
+  &.is-icon-position-right
+    .wp-block-button__link::before
+      order: 2
